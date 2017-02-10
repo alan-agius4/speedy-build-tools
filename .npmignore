@@ -1,0 +1,16 @@
+node_modules
+/.idea
+/tools
+/_artifact
+/typings
+/test
+/src
+.vscode
+
+.editorconfig
+jsconfig.json
+karma.conf.js
+karma-test-shim.js
+tsconfig.json
+tslint.json
+typings.json
