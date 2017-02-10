@@ -2,7 +2,10 @@
   "name": "@speedy/build-tools",
   "version": "0.0.0",
   "description": "Node scripts and API to build your application and library...",
-  "main": "./bin/speedy-build-tools.js",
+  "main": "./dist/index.js",
+  "bin": {
+    "speedy-build-tools": "./bin/speedy-build-tools.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/alan-agius4/speedy-build-tools.git"
