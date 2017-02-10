@@ -14,6 +14,7 @@
 		"strictNullChecks": true,
 		"outDir": "./dist",
 		"noEmitOnError": false,
+		"noImplicitUseStrict": true,
 		"types": [
 			"node"
 		],
@@ -25,6 +26,6 @@
 		"node_modules"
 	],
 	"include": [
-		"**/*.ts"
+		"src/**/*.ts"
 	]
 }
