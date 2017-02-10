@@ -1,0 +1,39 @@
+{
+  "name": "speedy-build-tools",
+  "version": "0.0.0",
+  "description": "Node scripts and API to build your application and library...",
+  "main": "./bin/speedy-build-tools.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alan-agius4/speed-build-tools.git"
+  },
+  "keywords": [
+    "node",
+    "build",
+    "scripts",
+    "tools"
+  ],
+  "author": "Alan Agius",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alan-agius4/speed-build-tools/issues"
+  },
+  "homepage": "https://github.com/alan-agius4/speed-build-tools#readme",
+  "dependencies": {
+    "colors": "^1.1.2",
+    "glob": "^7.1.1",
+    "lodash": "^4.17.4",
+    "path": "^0.12.7",
+    "tslint": "^3.15.1",
+    "yargs": "^6.6.0"
+  },
+  "devDependencies": {
+    "@types/colors": "^1.1.1",
+    "@types/glob": "^5.0.30",
+    "@types/lodash": "4.14.51",
+    "@types/node": "^7.0.5",
+    "@types/yargs": "^6.6.0",
+    "typescript": "~2.0.9"
+  },
+  "typings": "dist/index.d.ts"
+}
