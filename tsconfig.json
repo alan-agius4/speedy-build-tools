@@ -12,6 +12,8 @@
 		"allowUnreachableCode": false,
 		"skipLibCheck": true,
 		"strictNullChecks": true,
+		"outDir": "./dist",
+		"noEmitOnError": false,
 		"types": [
 			"node"
 		],

@@ -7,6 +7,10 @@
     "type": "git",
     "url": "git+https://github.com/alan-agius4/speedy-build-tools.git"
   },
+  "scripts": {
+    "build": "tsc",
+    "clean": "rimraf ./dist"
+  },
   "keywords": [
     "node",
     "build",
@@ -24,16 +28,18 @@
     "glob": "^7.1.1",
     "lodash": "^4.17.4",
     "path": "^0.12.7",
+    "rimraf": "^2.5.4",
     "tslint": "^4.4.2",
     "yargs": "^6.6.0"
   },
   "devDependencies": {
     "@types/colors": "^1.1.1",
     "@types/glob": "^5.0.30",
-    "@types/lodash": "4.14.51",
+    "@types/lodash": "^4.14.51",
     "@types/node": "^7.0.5",
+    "@types/rimraf": "0.0.28",
     "@types/yargs": "^6.6.0",
-    "typescript": "~2.0.9"
+    "typescript": "~2.1.6"
   },
   "typings": "dist/index.d.ts"
 }

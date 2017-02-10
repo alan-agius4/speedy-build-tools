@@ -16,10 +16,10 @@ export function lintTs(pattern: string | string[]): Promise<{}> {
 			timer.finish();
 			return x;
 		})
-		.catch((error: any) => logger.error(error));
+		.catch(error => logger.error(error));
 }
 
-export function lintTsWorker(pattern: string | string[]): Promise<any> {
+export function lintTsWorker(pattern: string | string[]): Promise<LintResult[]> {
 	const promises = globArray(toArray(pattern)).map(x => lintFile(x));
 	return Promise.all(promises);
 }
