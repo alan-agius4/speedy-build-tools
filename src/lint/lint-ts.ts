@@ -1,8 +1,9 @@
 import * as Linter from "tslint";
+
 import { Logger } from "../utils/logger";
 import { Timer } from "../utils/timer";
 import { Worker } from "../utils/worker/worker.client";
-import { readFileAsync, globArray, toArray } from "../utils/helpers";
+import { readFileAsync, globArray, toArray } from "../utils";
 
 import { LintResult } from "./lint-ts.model";
 
