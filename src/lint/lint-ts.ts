@@ -1,11 +1,9 @@
-import * as Linter from "tslint";
+import { Linter, LintResult } from "tslint";
 
 import { Logger } from "../utils/logger";
 import { Timer } from "../utils/timer";
 import { Worker } from "../utils/worker/worker.client";
-import { readFileAsync, globArray, toArray } from "../utils";
-
-import { LintResult } from "./lint-ts.model";
+import { readFileAsync, globArray, toArray } from "../utils/utils";
 
 const logger = new Logger("Lint TS");
 const timer = new Timer(logger);
@@ -29,17 +27,15 @@ export function lintTsWorker(pattern: string | string[]): Promise<any> {
 export function lintFile(filePath: string): Promise<LintResult> {
 	return readFileAsync(filePath)
 		.then((fileContents: string) => {
-			const linter = new Linter(filePath, fileContents, {
-				configuration: {},
+			const linter = new Linter({
 				formatter: null!,
 				formattersDirectory: null!,
-				rulesDirectory: null!
-			});
+				rulesDirectory: null!,
+				fix: false
+			})
 
-			return {
-				filePath: filePath,
-				failures: linter.lint().failures
-			};
+			linter.lint(filePath, fileContents, {});
+
+			return linter.getResult();
 		});
-
 }
