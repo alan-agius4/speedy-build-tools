@@ -1,5 +1,5 @@
 {
-  "name": "speedy-build-tools",
+  "name": "@speedy/build-tools",
   "version": "0.0.0",
   "description": "Node scripts and API to build your application and library...",
   "main": "./bin/speedy-build-tools.js",
