@@ -2,9 +2,9 @@ import { readFile } from "fs";
 import { IOptions, sync } from "glob";
 import { pullAll, isArray } from "lodash";
 
-export function readFileAsync(filePath: string): Promise<string> {
+export function readFileAsync(path: string): Promise<string> {
 	return new Promise((resolve, reject) => {
-		readFile(filePath, "utf-8", (error, data) => {
+		readFile(path, "utf-8", (error, data) => {
 			if (error) {
 				return reject(error);
 			}
@@ -27,7 +27,7 @@ export function globArray(patterns: string[], options: IOptions = {}): string[] 
 
 export function toArray<T>(pattern: T | T[]): T[] {
 	if (!isArray(pattern)) {
-		pattern = [pattern];
+		return [pattern];
 	}
 
 	return pattern;
