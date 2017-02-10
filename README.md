@@ -1,2 +1,2 @@
-# speed-build-tools
+# @speedy/build-tools
 Build tools
