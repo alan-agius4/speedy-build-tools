@@ -12,21 +12,21 @@ describe("utilsSpec", () => {
 	});
 
 	describe("globArray", () => {
-		const filesExludingSpec = ["test.ts"];
-		const specFiles = ["test.spec.ts"];
-		const allFiles = [...filesExludingSpec, ...specFiles];
+		const files = ["test.ts", "test2.ts"];
+		const specFiles = ["test.spec.ts", "test2.spec.ts"];
+		const allFiles = [...files, ...specFiles];
 
 		beforeEach(() => {
 			spyOn(glob, "sync").and.returnValues(allFiles, specFiles);
 		});
 
-		it("must return all paths matching pattern", () => {
+		it("must return files matching pattern", () => {
 			expect(globArray(["*.ts"])).toEqual(allFiles);
 		});
 
-		it("must return paths excluding negative patterns", () => {
-			expect(globArray(["*.ts", "!*.spec.ts"])).toEqual(filesExludingSpec);
+		it("must return files excluding negative pattern", () => {
+			expect(globArray(["*.ts", "!*.spec.ts"])).toEqual(files);
 		});
 	});
-
+  
 });
