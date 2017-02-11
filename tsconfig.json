@@ -16,7 +16,8 @@
 		"noEmitOnError": false,
 		"noImplicitUseStrict": true,
 		"types": [
-			"node"
+			"node",
+			"jasmine"
 		],
 		"lib": [
 			"es2015"

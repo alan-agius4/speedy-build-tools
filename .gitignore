@@ -3,3 +3,4 @@ _artifact
 .idea
 dist/
 *.log
+test

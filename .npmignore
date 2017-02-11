@@ -10,7 +10,6 @@ node_modules
 .editorconfig
 jsconfig.json
 karma.conf.js
-karma-test-shim.js
 tsconfig.json
 tslint.json
 typings.json
