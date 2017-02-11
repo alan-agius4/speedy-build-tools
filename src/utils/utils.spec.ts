@@ -27,4 +27,5 @@ describe("utilsSpec", () => {
             expect(globArray(["*.ts", "!*.spec.ts"])).toEqual(filesExludingSpec);
         });
     });
+
 });
