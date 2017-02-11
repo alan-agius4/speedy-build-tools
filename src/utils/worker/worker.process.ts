@@ -1,5 +1,3 @@
-import { camelCase } from "lodash";
-
 import { Logger } from "../logger";
 import { WorkerMessage } from "./worker.model";
 
@@ -7,7 +5,7 @@ const logger = new Logger("Worker Process");
 
 process.on("message", (message: WorkerMessage) => {
 	try {
-		const task = require(message.modulePath!)[camelCase(message.task)] as Function;
+		const task = require(message.modulePath!)[message.task!] as Function;
 
 		(task.apply(null, message.parameters) as Promise<{}>)
 			.then(
