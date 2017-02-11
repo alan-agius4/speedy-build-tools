@@ -16,23 +16,23 @@ export function lintTs(pattern: string | string[]): Promise<{}> {
 			timer.finish();
 			return x;
 		})
-		.catch((error: any) => logger.error(error));
+		.catch(error => logger.error(error));
 }
 
-export function lintTsWorker(pattern: string | string[]): Promise<any> {
-	const promises = globArray(toArray<string>(pattern)).map(x => lintFile(x));
+export function lintTsWorker(pattern: string | string[]): Promise<LintResult[]> {
+	const promises = globArray(toArray(pattern)).map(x => lintFile(x));
 	return Promise.all(promises);
 }
 
 export function lintFile(filePath: string): Promise<LintResult> {
 	return readFileAsync(filePath)
-		.then((fileContents: string) => {
+		.then(fileContents => {
 			const linter = new Linter({
 				formatter: null!,
 				formattersDirectory: null!,
 				rulesDirectory: null!,
 				fix: false
-			})
+			});
 
 			linter.lint(filePath, fileContents, {});
 

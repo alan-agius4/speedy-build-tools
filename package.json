@@ -2,10 +2,18 @@
   "name": "@speedy/build-tools",
   "version": "0.0.0",
   "description": "Node scripts and API to build your application and library...",
-  "main": "./bin/speedy-build-tools.js",
+  "main": "./dist/index.js",
+  "bin": {
+    "speedy-build-tools": "./bin/speedy-build-tools.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/alan-agius4/speedy-build-tools.git"
+  },
+  "scripts": {
+    "build": "tsc && rimraf ./dist/**/*.spec.*",
+    "test": "tsc --outDir ./test && jasmine JASMINE_CONFIG_PATH=jasmine.json",
+    "clean": "rimraf ./dist"
   },
   "keywords": [
     "node",
@@ -24,16 +32,21 @@
     "glob": "^7.1.1",
     "lodash": "^4.17.4",
     "path": "^0.12.7",
+    "rimraf": "^2.5.4",
     "tslint": "^4.4.2",
     "yargs": "^6.6.0"
   },
   "devDependencies": {
     "@types/colors": "^1.1.1",
     "@types/glob": "^5.0.30",
-    "@types/lodash": "4.14.51",
+    "@types/jasmine": "^2.5.41",
+    "@types/lodash": "^4.14.51",
     "@types/node": "^7.0.5",
+    "@types/rimraf": "0.0.28",
     "@types/yargs": "^6.6.0",
-    "typescript": "~2.0.9"
+    "browserify": "^14.0.0",
+    "jasmine": "^2.5.3",
+    "typescript": "~2.1.6"
   },
   "typings": "dist/index.d.ts"
 }

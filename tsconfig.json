@@ -12,8 +12,12 @@
 		"allowUnreachableCode": false,
 		"skipLibCheck": true,
 		"strictNullChecks": true,
+		"outDir": "./dist",
+		"noEmitOnError": false,
+		"noImplicitUseStrict": true,
 		"types": [
-			"node"
+			"node",
+			"jasmine"
 		],
 		"lib": [
 			"es2015"
@@ -23,6 +27,6 @@
 		"node_modules"
 	],
 	"include": [
-		"**/*.ts"
+		"src/**/*.ts"
 	]
 }
