@@ -1,31 +1,32 @@
 import * as glob from "glob";
+
 import { toArray, globArray } from "./utils";
 
 describe("utilsSpec", () => {
 
-    describe("toArray", () => {
-        it("must convert value to array", () => {
-            const value = "hello world";
-            expect(toArray(value)).toEqual([value]);
-        });
-    });
+	describe("toArray", () => {
+		it("must convert value to array", () => {
+			const value = "hello world";
+			expect(toArray(value)).toEqual([value]);
+		});
+	});
 
-    describe("globArray", () => {
-        const filesExludingSpec = ["test.ts"];
-        const specFiles = ["test.spec.ts"];
-        const allFiles = [...filesExludingSpec, ...specFiles];
+	describe("globArray", () => {
+		const files = ["test.ts", "test2.ts"];
+		const specFiles = ["test.spec.ts", "test2.spec.ts"];
+		const allFiles = [...files, ...specFiles];
 
-        beforeEach(() => {
-            spyOn(glob, "sync").and.returnValues(allFiles, specFiles);
-        });
+		beforeEach(() => {
+			spyOn(glob, "sync").and.returnValues(allFiles, specFiles);
+		});
 
-        it("must return all paths matching pattern", () => {
-            expect(globArray(["*.ts"])).toEqual(allFiles);
-        });
+		it("must return files matching pattern", () => {
+			expect(globArray(["*.ts"])).toEqual(allFiles);
+		});
 
-        it("must return paths excluding negative patterns", () => {
-            expect(globArray(["*.ts", "!*.spec.ts"])).toEqual(filesExludingSpec);
-        });
-    });
-
+		it("must return files excluding negative pattern", () => {
+			expect(globArray(["*.ts", "!*.spec.ts"])).toEqual(files);
+		});
+	});
+  
 });
