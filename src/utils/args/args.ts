@@ -5,7 +5,6 @@ import {
 	choices,
 	number,
 	array,
-	command,
 	alias as argvAlias,
 	default as argvDefault
 } from "yargs";

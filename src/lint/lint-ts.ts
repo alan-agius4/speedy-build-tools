@@ -2,12 +2,16 @@ import { Linter, LintResult, Configuration } from "tslint";
 import { resolve } from "path";
 import { CommandModule, Argv, argv } from "yargs";
 
-import { Logger } from "../utils/logger";
-import { Timer } from "../utils/timer";
-import { Worker } from "../utils/worker/worker.client";
-import { readFileAsync, globArray, toArray } from "../utils/utils";
-import { Args } from "../utils/args/args";
-import { Arguments } from "../utils/args/args.model";
+import {
+	Logger,
+	Worker,
+	Timer,
+	readFileAsync,
+	globArray,
+	toArray,
+	Args,
+	Arguments
+} from "../utils";
 
 const logger = new Logger("Lint TS");
 const timer = new Timer(logger);
@@ -22,7 +26,7 @@ interface LintTSArguments extends Arguments {
 export function lintTs(files?: string | string[], config?: string): Promise<LintResult[]> {
 	timer.start();
 
-	return Worker.run(__filename, "lintTsWorker", files)
+	return Worker.run(__filename, lintTsWorker.name, files)
 		.then(x => {
 			timer.finish();
 			return x;
