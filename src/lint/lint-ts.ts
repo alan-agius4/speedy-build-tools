@@ -51,11 +51,14 @@ export function lintTsWorker(files?: string | string[], config?: string): Promis
 	return Promise
 		.all(promises)
 		.then(result => {
-			result
-				.filter(x => x.failureCount > 0)
-				.forEach(x => logger.info(x.output));
+			const failures = result.filter(x => x.failureCount > 0);
+			failures.forEach(x => logger.info(x.output));
 
-			return result;
+			if (!args.continueOnError) {
+				process.exit(1);
+			}
+
+			return failures;
 		});
 }
 
@@ -76,7 +79,7 @@ function lintFile(filePath: string): Promise<LintResult> {
 function setupArgs<T>(yargs?: Argv): T {
 	Args.setBoolean("continueOnError", false);
 	Args.set("files", "./src/**/*.ts", "f");
-	Args.set("config", resolve(__dirname, "./tslint.json"), "c");
+	Args.set("config", resolve(__dirname, "../tslint.json"), "c");
 	return yargs ? yargs.argv : argv;
 }
 
