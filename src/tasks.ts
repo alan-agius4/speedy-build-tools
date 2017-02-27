@@ -1,7 +1,6 @@
 import { command } from "yargs";
+import { tsLintModule } from "./lint/lint-ts";
 
-import { tsLintCmdModule } from "./lint/lint-ts";
-
-command(tsLintCmdModule)
+command(tsLintModule)
 	.help()
 	.argv;

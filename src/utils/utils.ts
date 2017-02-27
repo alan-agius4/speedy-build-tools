@@ -4,6 +4,8 @@ import { pullAll, isArray } from "lodash";
 import { join, sep, normalize } from "path";
 import { lastIndexOf } from "lodash";
 
+import { Logger } from "./logger";
+
 export function readFileAsync(path: string): Promise<string> {
 	return new Promise((resolve, reject) => {
 		readFile(path, "utf-8", (error, data) => {
@@ -46,7 +48,6 @@ export function findRoot(filePath: string): string | null {
 	}
 
 	let position = lastIndexOf(filePath, sep);
-
 	if (position < 0) {
 		return null;
 	}

@@ -10,7 +10,7 @@ export class Logger {
 	}
 
 	info(message: string) {
-		console.log(white(this.formatMessage(message)));
+		console.info(white(this.formatMessage(message)));
 	}
 
 	debug(message: string) {
@@ -19,7 +19,7 @@ export class Logger {
 	}
 
 	warn(message: string) {
-		console.log(yellow(this.formatMessage(message)));
+		console.warn(yellow(this.formatMessage(message)));
 	}
 
 	error(message: string | null, error?: Error) {

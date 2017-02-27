@@ -42,7 +42,7 @@ export namespace Worker {
 
 	function create(task: string): ChildProcess | null {
 		try {
-			const childProcess = fork(join(__dirname, "worker.process.js"), process.env.argv);
+			const childProcess = fork(join(__dirname, "worker.process.js"), process.argv);
 
 			workers.push({
 				task: task,
