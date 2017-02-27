@@ -1,6 +1,8 @@
 import * as glob from "glob";
+import * as mock from "mock-fs";
+import { normalize } from "path";
 
-import { toArray, globArray } from "./utils";
+import { toArray, globArray, findRoot } from "./utils";
 
 describe("utilsSpec", () => {
 
@@ -28,5 +30,27 @@ describe("utilsSpec", () => {
 			expect(globArray(["*.ts", "!*.spec.ts"])).toEqual(files);
 		});
 	});
-  
+
+	describe("findRoot", () => {
+		beforeEach(() => {
+			mock({
+				"src/apps/": {
+					"empty-dir": {}
+				},
+				"src/package.json": ""
+			});
+		});
+
+		afterEach(() => {
+			mock.restore();
+		});
+
+		it("must return the correct path to package.json", () => {
+			expect(findRoot("src/apps")).toEqual(normalize("src/"));
+		});
+
+		it("must return the null when package.json doesn't exist", () => {
+			expect(findRoot("invalid/path")).toEqual(null);
+		});
+	});
 });
