@@ -1,6 +1,10 @@
-import { readFile } from "fs";
+import { readFile, statSync } from "fs";
 import { IOptions, sync } from "glob";
 import { pullAll, isArray } from "lodash";
+import { join, sep, normalize } from "path";
+import { lastIndexOf } from "lodash";
+
+import { Logger } from "./logger";
 
 export function readFileAsync(path: string): Promise<string> {
 	return new Promise((resolve, reject) => {
@@ -31,4 +35,24 @@ export function toArray<T>(pattern: T | T[]): T[] {
 	}
 
 	return pattern;
+}
+
+export function findRoot(filePath: string): string | null {
+	filePath = normalize(filePath) || process.cwd();
+
+	try {
+		const directory = join(filePath, sep);
+		statSync(join(directory, "package.json"));
+		return directory;
+	} catch (e) {
+	}
+
+	let position = lastIndexOf(filePath, sep);
+	if (position < 0) {
+		return null;
+	}
+
+	const truncatedPath = filePath.substr(0, position++);
+
+	return findRoot(truncatedPath);
 }
