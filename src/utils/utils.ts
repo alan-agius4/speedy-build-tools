@@ -37,11 +37,11 @@ export function toArray<T>(pattern: T | T[]): T[] {
 	return pattern;
 }
 
-export function findRoot(filePath: string): string | null {
-	filePath = normalize(filePath) || process.cwd();
+export function findRoot(filePath?: string): string | null {
+	filePath = filePath || process.cwd();
 
 	try {
-		const directory = join(filePath, sep);
+		const directory = join(normalize(filePath), sep);
 		statSync(join(directory, "package.json"));
 		return directory;
 	} catch (e) {
