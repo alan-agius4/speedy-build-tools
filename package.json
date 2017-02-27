@@ -11,9 +11,11 @@
     "url": "git+https://github.com/alan-agius4/speedy-build-tools.git"
   },
   "scripts": {
+    "prebuild": "npm run clean",
     "build": "tsc && rimraf ./dist/**/*.spec.*",
     "test": "tsc --outDir ./test && jasmine JASMINE_CONFIG_PATH=jasmine.json",
-    "clean": "rimraf ./dist"
+    "clean": "rimraf ./dist",
+    "lint": "tslint -c tslint.json ./src/**/*.ts"
   },
   "keywords": [
     "node",

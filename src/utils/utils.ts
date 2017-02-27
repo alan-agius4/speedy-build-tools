@@ -1,8 +1,7 @@
 import { readFile, statSync } from "fs";
 import { IOptions, sync } from "glob";
-import { pullAll, isArray } from "lodash";
+import { pullAll, isArray, lastIndexOf } from "lodash";
 import { join, sep, normalize } from "path";
-import { lastIndexOf } from "lodash";
 
 import { Logger } from "./logger";
 
@@ -38,13 +37,14 @@ export function toArray<T>(pattern: T | T[]): T[] {
 }
 
 export function findRoot(filePath?: string): string | null {
-	filePath = filePath || process.cwd();
+	filePath = normalize(filePath || process.cwd());
 
 	try {
-		const directory = join(normalize(filePath), sep);
+		const directory = join(filePath, sep);
 		statSync(join(directory, "package.json"));
 		return directory;
 	} catch (e) {
+		// do nothing
 	}
 
 	let position = lastIndexOf(filePath, sep);
