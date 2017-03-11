@@ -8,7 +8,7 @@ export function getRootPath(): string {
 		return _rootPath;
 	}
 
-	_rootPath = findRoot();
+	_rootPath = findFileRecursively();
 	if (!_rootPath) {
 		_rootPath = "";
 	}
@@ -40,24 +40,34 @@ export function toArray<T>(pattern: T | T[]): T[] {
 	return pattern;
 }
 
-export function findRoot(fileName?: string, filePath?: string): string | null {
-	filePath = normalize(filePath || process.cwd());
+/**
+ * Find a file recursively in the filesystem from the starting path upwards.
+ *
+ * Defaults: fileName: package.json, startPath: process.cwd()
+ *
+ * @export
+ * @param {string} [fileName="package.json"]
+ * @param {string} [startPath=process.cwd()]
+ * @returns {(string | null)}
+ */
+export function findFileRecursively(fileName = "package.json", startPath = process.cwd()): string | null {
+	startPath = normalize(startPath);
 
 	try {
-		const directory = join(filePath, sep);
-		statSync(join(directory, fileName ? fileName : "package.json"));
+		const directory = join(startPath, sep);
+		statSync(join(directory, fileName));
 		return directory;
 	} catch (error) {
 		// do nothing
 	}
 
-	let position = _.lastIndexOf(filePath, sep);
+	let position = _.lastIndexOf(startPath, sep);
 	if (position < 0) {
 		return null;
 	}
 
-	const truncatedPath = filePath.substr(0, position++);
-	return findRoot(fileName, truncatedPath);
+	const truncatedPath = startPath.substr(0, position++);
+	return findFileRecursively(fileName, truncatedPath);
 }
 
 export function getConfigFilePath(file: string): string {

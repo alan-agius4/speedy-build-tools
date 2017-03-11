@@ -3,7 +3,7 @@ import { normalize } from "path";
 
 import {
 	toArray,
-	findRoot,
+	findFileRecursively,
 	readFileAsync,
 	readJsonFileAsync
 } from "./index";
@@ -79,7 +79,7 @@ describe("utilsSpec", () => {
 		});
 	});
 
-	describe("findRoot", () => {
+	describe("findFileRecursively", () => {
 		beforeEach(() => {
 			mockFs({
 				"src/apps/": {
@@ -94,11 +94,11 @@ describe("utilsSpec", () => {
 		});
 
 		it("must return the correct path to package.json", () => {
-			expect(findRoot("package.json", "src/apps/")).toEqual(normalize("src/"));
+			expect(findFileRecursively("package.json", "src/apps/")).toEqual(normalize("src/"));
 		});
 
 		it("must return the null when package.json doesn't exist", () => {
-			expect(findRoot("package.json", "invalid/path")).toEqual(null);
+			expect(findFileRecursively("package.json", "invalid/path")).toEqual(null);
 		});
 	});
 });
