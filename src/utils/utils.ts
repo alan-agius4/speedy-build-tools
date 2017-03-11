@@ -1,5 +1,5 @@
 import * as _ from "lodash";
-import { readFile, statSync } from "fs";
+import { readFile, statSync, existsSync } from "fs";
 import { join, sep, normalize, isAbsolute } from "path";
 
 let _rootPath: string | null;
@@ -60,16 +60,16 @@ export function findRoot(fileName?: string, filePath?: string): string | null {
 	return findRoot(fileName, truncatedPath);
 }
 
-export function getConfigFilePath(filePath: string): string {
-	if (isAbsolute(filePath)) {
-		return filePath;
+export function getConfigFilePath(file: string): string {
+	if (isAbsolute(file)) {
+		return file;
 	}
 
-	let path = findRoot(filePath);
+	const path = join(getRootPath(), file);
 
-	if (!path) {
-		path = join(__dirname, "../../");
+	if (existsSync(path)) {
+		return path;
 	}
 
-	return join(path, filePath);
+	return join(__dirname, "../../", file);
 }
