@@ -1,11 +1,13 @@
-export { Worker } from "./worker/worker.client";
+export * from "./utils";
+
 export * from "./worker/worker.process";
+export { Worker } from "./worker/worker.client";
 export { WorkerMessage, WorkerProcess } from "./worker/worker.model";
 
+export { Arguments, ArgumentOptions } from "./args/args.model";
 export { Args } from "./args/args";
-export { Arguments } from "./args/args.model";
 
 export { Logger } from "./logger";
 export { Timer } from "./timer";
 
-export * from "./utils";
+export { CommandModule, buildCommandModule } from "./command-module";

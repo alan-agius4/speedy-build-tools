@@ -1,6 +1,15 @@
-import { command } from "yargs";
-import { tsLintModule } from "./lint/lint-ts";
+import * as yargs from "yargs";
 
-command(tsLintModule)
+import { lintSassModule, lintTsModule } from "./lint";
+
+yargs
+	.command(lintSassModule)
+	.command(lintTsModule)
+
 	.help()
+	.alias("help", "h")
+
+	.version()
+	.alias("version", "v")
+	.wrap(yargs.terminalWidth() - 1) // - 1 is required to fit in screen
 	.argv;

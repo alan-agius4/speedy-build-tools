@@ -1,8 +1,76 @@
-import * as glob from "glob";
+import * as mockFs from "mock-fs";
+import { normalize } from "path";
 
-import { toArray, globArray } from "./utils";
+import {
+	toArray,
+	findRoot,
+	readFileAsync,
+	readJsonFileAsync
+} from "./index";
 
 describe("utilsSpec", () => {
+
+	describe("readFileAsync", () => {
+		beforeEach(() => {
+			mockFs({
+				"file.txt": "hello world"
+			});
+		});
+
+		afterEach(() => {
+			mockFs.restore();
+		});
+
+		it("must reject promise when file is not found", async done => {
+			try {
+				await readFileAsync("invalid.txt");
+			} catch (error) {
+				expect(error).toBeTruthy();
+			}
+
+			done();
+
+		});
+
+		it("must return file content when file exists", async done => {
+			const x = await readFileAsync("file.txt");
+			expect(x).toBe("hello world");
+			done();
+		});
+	});
+
+	describe("readJsonFileAsync", () => {
+		const json = {
+			"id": 10,
+			text: "hello world"
+		};
+
+		beforeEach(() => {
+			mockFs({
+				"file.json": JSON.stringify(json)
+			});
+		});
+
+		afterEach(() => {
+			mockFs.restore();
+		});
+
+		it("must reject promise when file is not found", async done => {
+			try {
+				await readJsonFileAsync("invalid.json");
+			} catch (error) {
+				expect(error).toBeTruthy();
+			}
+
+			done();
+		});
+
+		it("must return file content as object when file exists", async done => {
+			const x = await readJsonFileAsync("file.json");
+			expect(x).toEqual(json);
+			done();
+		});
+	});
 
 	describe("toArray", () => {
 		it("must convert value to array", () => {
@@ -11,22 +79,26 @@ describe("utilsSpec", () => {
 		});
 	});
 
-	describe("globArray", () => {
-		const files = ["test.ts", "test2.ts"];
-		const specFiles = ["test.spec.ts", "test2.spec.ts"];
-		const allFiles = [...files, ...specFiles];
-
+	describe("findRoot", () => {
 		beforeEach(() => {
-			spyOn(glob, "sync").and.returnValues(allFiles, specFiles);
+			mockFs({
+				"src/apps/": {
+					"empty-dir": {}
+				},
+				"src/package.json": ""
+			});
 		});
 
-		it("must return files matching pattern", () => {
-			expect(globArray(["*.ts"])).toEqual(allFiles);
+		afterEach(() => {
+			mockFs.restore();
 		});
 
-		it("must return files excluding negative pattern", () => {
-			expect(globArray(["*.ts", "!*.spec.ts"])).toEqual(files);
+		it("must return the correct path to package.json", () => {
+			expect(findRoot("package.json", "src/apps/")).toEqual(normalize("src/"));
+		});
+
+		it("must return the null when package.json doesn't exist", () => {
+			expect(findRoot("package.json", "invalid/path")).toEqual(null);
 		});
 	});
-  
 });

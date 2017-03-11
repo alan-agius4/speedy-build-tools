@@ -1,6 +1,20 @@
-import { readFile } from "fs";
-import { IOptions, sync } from "glob";
-import { pullAll, isArray } from "lodash";
+import * as _ from "lodash";
+import { readFile, statSync } from "fs";
+import { join, sep, normalize, isAbsolute } from "path";
+
+let _rootPath: string | null;
+export function getRootPath(): string {
+	if (!_.isNil(_rootPath)) {
+		return _rootPath;
+	}
+
+	_rootPath = findRoot();
+	if (!_rootPath) {
+		_rootPath = "";
+	}
+
+	return _rootPath;
+}
 
 export function readFileAsync(path: string): Promise<string> {
 	return new Promise((resolve, reject) => {
@@ -14,21 +28,48 @@ export function readFileAsync(path: string): Promise<string> {
 	});
 }
 
-export function globArray(patterns: string[], options: IOptions = {}): string[] {
-	let fileMatches: string[] = [];
-
-	for (let pattern of patterns) {
-		const patternMatches = sync(pattern, options);
-		fileMatches = pattern.startsWith("!") ? pullAll(fileMatches, patternMatches) : [...fileMatches, ...patternMatches];
-	}
-
-	return fileMatches;
+export async function readJsonFileAsync<T>(path: string): Promise<T> {
+	return JSON.parse(await readFileAsync(path));
 }
 
 export function toArray<T>(pattern: T | T[]): T[] {
-	if (!isArray(pattern)) {
+	if (!_.isArray(pattern)) {
 		return [pattern];
 	}
 
 	return pattern;
+}
+
+export function findRoot(fileName?: string, filePath?: string): string | null {
+	filePath = normalize(filePath || process.cwd());
+
+	try {
+		const directory = join(filePath, sep);
+		statSync(join(directory, fileName ? fileName : "package.json"));
+		return directory;
+	} catch (e) {
+		// do nothing
+	}
+
+	let position = _.lastIndexOf(filePath, sep);
+	if (position < 0) {
+		return null;
+	}
+
+	const truncatedPath = filePath.substr(0, position++);
+	return findRoot(fileName, truncatedPath);
+}
+
+export function getConfigFilePath(filePath: string): string {
+	if (isAbsolute(filePath)) {
+		return filePath;
+	}
+
+	let path = findRoot(filePath);
+
+	if (!path) {
+		path = join(__dirname, "../../");
+	}
+
+	return join(path, filePath);
 }
