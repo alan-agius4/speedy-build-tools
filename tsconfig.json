@@ -12,8 +12,10 @@
 		"allowUnreachableCode": false,
 		"skipLibCheck": true,
 		"strictNullChecks": true,
-		"outDir": "./dist",
 		"noEmitOnError": false,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"stripInternal": true,
 		"noImplicitUseStrict": true,
 		"types": [
 			"node",
@@ -27,6 +29,7 @@
 		"node_modules"
 	],
 	"include": [
+		"typings/**/*.d.ts",
 		"src/**/*.ts"
 	]
 }

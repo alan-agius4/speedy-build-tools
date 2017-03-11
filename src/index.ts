@@ -1,3 +1,3 @@
-export { lintTs } from "./lint/lint-ts";
+export * from "./lint";
 
 export * from "./utils";

@@ -1,51 +1,62 @@
-import { isNil } from "lodash";
-import {
-	argv,
-	boolean,
-	choices,
-	number,
-	array,
-	alias as argvAlias,
-	default as argvDefault
-} from "yargs";
+import * as  _ from "lodash";
+import * as yargs from "yargs";
 
-import { Arguments } from "./args.model";
-
+import { Arguments, ArgumentOptions } from "./args.model";
 export namespace Args {
 
-	setBoolean("debug", false);
-	setBoolean("prod", false, "rel");
+	if (process.env.npm_config_argv) {
+		yargs.parse(JSON.parse(process.env.npm_config_argv).original);
+	}
 
-	export function setArray<T>(key: string, values: Array<T>, defaultValue?: T, alias?: string) {
-		set<T>(key, defaultValue, alias);
+	set<Arguments>([{
+		key: "debug",
+		description: "Show debug information",
+		boolean: true
+	}]);
 
-		if (values) {
-			choices(key, values);
+	/**
+	 * Register command arguments. When `default` value is specified the argument `type` will be inferred.
+	 * @export
+	 * @template T
+	 * @param {ArgumentOptions<T>[]} args
+	 * @returns {yargs.Argv}
+	 */
+	export function set<T>(args: ArgumentOptions<T>[]): T {
+		for (let x of args) {
+			yargs.option(x.key, x);
+
+			if (_.isNil(x.default) || x.boolean || x.type || x.number || x.array || x.string) {
+				continue;
+			}
+
+			if (_.isNumber(x.default)) {
+				yargs.number(x.key);
+			}
+
+			if (_.isBoolean(x.default)) {
+				yargs.boolean(x.key);
+			}
+
+			if (_.isString(x.default)) {
+				yargs.string(x.key);
+			}
+
+			if (_.isArray(x.default)) {
+				yargs.array(x.key);
+			}
 		}
 
-		array(key);
+		return yargs.argv;
 	}
 
-	export function setBoolean(key: string, defaultValue?: boolean, alias?: string) {
-		set<boolean>(key, defaultValue, alias);
-		boolean(key);
+	export function mergeWithOptions<T extends Partial<Arguments>>(defaultArgs: ArgumentOptions<T>[], options?: Partial<T>): T {
+		// todo: add generic type when issue is solved
+		// https://github.com/Microsoft/TypeScript/issues/10727
+
+		return Object.assign({}, Args.set(defaultArgs), options);
 	}
 
-	export function setNumber(key: string, defaultValue?: number, alias?: string) {
-		set<number>(key, defaultValue, alias);
-		number(key);
-	}
-
-	export function set<T>(key: string, defaultValue?: T, alias?: string) {
-		if (alias) {
-			argvAlias(key, alias);
-		}
-
-		if (!isNil(defaultValue)) {
-			argvDefault(key, defaultValue);
-		}
-	}
-
-	export const getAll = <T extends Arguments>() => argv as T;
+	export const getAll = <T extends Arguments>() => yargs.argv as T;
 	export const env = Args.getAll();
+
 }
