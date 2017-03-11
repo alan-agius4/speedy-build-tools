@@ -47,7 +47,7 @@ export function findRoot(fileName?: string, filePath?: string): string | null {
 		const directory = join(filePath, sep);
 		statSync(join(directory, fileName ? fileName : "package.json"));
 		return directory;
-	} catch (e) {
+	} catch (error) {
 		// do nothing
 	}
 
