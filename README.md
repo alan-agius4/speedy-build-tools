@@ -49,9 +49,9 @@ ___
 speedy-build-tools clean --paths .tmp/**
 ```
 
-| Option              | Description                                                           | Default Value           | Type    |
-|---------------------|-----------------------------------------------------------------------|-------------------------|---------|
-| `--paths, -p`       | Paths to be deleted  - Supports glob patterns                         |                         | Array   |
+| Option        | Description                                   | Type  |
+|---------------|-----------------------------------------------|-------|
+| `--paths, -p` | Paths to be deleted  - Supports glob patterns | Array |
 
 ## Lint Sass
 
