@@ -2,7 +2,10 @@ import * as  _ from "lodash";
 import * as yargs from "yargs";
 
 import { Arguments, ArgumentOptions } from "./args.model";
+
 export namespace Args {
+
+	const ARGS_REQUIRED_FLAGS = ["require", "required", "demand"];
 
 	if (process.env.npm_config_argv) {
 		yargs.parse(JSON.parse(process.env.npm_config_argv).original);
@@ -50,10 +53,13 @@ export namespace Args {
 	}
 
 	export function mergeWithOptions<T extends Partial<Arguments>>(defaultArgs: ArgumentOptions<T>[], options?: Partial<T>): T {
+		// if this has been called it means that the CLI was called and required 'args' have been passed.
+		// thus the required flags are not required anymore. Or it's from the API which we need to handle else where.
+		const args = defaultArgs.map(x => _.omit<ArgumentOptions<T>, ArgumentOptions<T>>(x, ARGS_REQUIRED_FLAGS));
+
 		// todo: add generic type when issue is solved
 		// https://github.com/Microsoft/TypeScript/issues/10727
-
-		return Object.assign({}, Args.set(defaultArgs), options);
+		return Object.assign({}, Args.set(args), options);
 	}
 
 	export const getAll = <T extends Arguments>() => yargs.argv as T;
