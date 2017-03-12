@@ -15,9 +15,6 @@ export function buildCommandModule(options: CommandModule): yargs.CommandModule 
 		command: options.command,
 		describe: options.description,
 		handler: () => options.handler().catch(() => process.exit(1)),
-		builder: (yargs) => {
-			console.log(yargs.argv);
-			return Args.set(options.args);
-		}
+		builder: () => Args.set(options.args)
 	};
 }
