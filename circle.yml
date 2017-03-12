@@ -4,6 +4,8 @@ machine:
   post:
     - npm install -g npm@3.x.x
 compile:
-  - npm build
+  override:
+    - npm build
 test:
-  - npm test
+  override:
+    - npm test
