@@ -14,7 +14,7 @@ npm install @speedy/build-tools --save-dev
 
 # NPM Scripts
 
-Instead of depending on external task runners, @speedy/build-toold can be configured to being executed from npm scripts.
+Instead of depending on external task runners, speedy build-tools can be configured to being executed from npm scripts.
 
 ```json
 "scripts": {
