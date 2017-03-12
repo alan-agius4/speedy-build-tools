@@ -32,8 +32,8 @@
     "lint": "tslint -c tslint.json ./src/**/*.ts --format stylish",
     "watch": "npm run clean && tsc -p tsconfig.build.json -w",
     "changelog": "./node_modules/.bin/conventional-changelog -p angular -i CHANGELOG.md -s",
-    "preversion": "npm test && npm run changelog",
-    "version": "npm run build",
+    "preversion": "npm test",
+    "version": "npm run build && npm run changelog",
     "postversion": "git commit --all -m 'chore(all): update for release' && git push -all && npm publish"
   },
   "dependencies": {
