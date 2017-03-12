@@ -23,7 +23,7 @@ Instead of depending on external task runners, speedy build-tools can be configu
 },
 ````
 
-To run the build script found in the package.json scripts property, execute:
+To run the build script found in the `package.json` scripts, execute:
 
 ```
 npm run lint-sass
@@ -31,6 +31,8 @@ npm run lint-sass
 
 
 # Tasks
+These tasks are available within `speedy-build-tools` and can be added to npm scripts.
+
 
 | Task                  | Description                                                                                            |
 |-----------------------|--------------------------------------------------------------------------------------------------------|
