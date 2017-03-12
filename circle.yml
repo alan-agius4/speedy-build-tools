@@ -5,4 +5,4 @@ machine:
     - npm install -g npm@3.x.x
 test:
   override:
-    - nvm use 6 && npm test
+    - nvm use 6 && npm lint && npm test 

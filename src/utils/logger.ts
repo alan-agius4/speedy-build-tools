@@ -12,7 +12,7 @@ export class Logger {
 	}
 
 	info(message: string) {
-		console.log(white(this.formatMessage(message)));
+		console.info(white(this.formatMessage(message)));
 	}
 
 	debug(method: string, message: string) {
