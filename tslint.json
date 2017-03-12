@@ -1,10 +1,6 @@
 {
 	"rules": {
 		"arrow-parens": false,
-		"array-type": [
-			true,
-			"array-simple"
-		],
 		"class-name": true,
 		"comment-format": [
 			true,
