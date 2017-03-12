@@ -5,7 +5,7 @@ machine:
     - npm install -g npm@3.x.x
 compile:
   override:
-    - npm build
+    - npm run build
 test:
   override:
-    - npm test
+    - npm run test
