@@ -6,6 +6,7 @@ export const ARGS: ArgumentOptions<CleanOptions>[] = [
 		key: "paths",
 		alias: "p",
 		description: "Paths to be deleted  - Supports glob patterns",
-		array: true
+		array: true,
+		required: true
 	}
 ];
