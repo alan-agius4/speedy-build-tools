@@ -1,6 +1,6 @@
 import * as mockFs from "mock-fs";
 
-import { Logger, globArray } from "../utils";
+import { Logger, globArray, Timer } from "../utils";
 import { clean } from "./clean";
 
 describe("cleanSpec", () => {
@@ -26,6 +26,8 @@ describe("cleanSpec", () => {
 			}
 		});
 
+		spyOn(Timer.prototype, "finish").and.stub();
+		spyOn(Timer.prototype, "start").and.stub();
 		spyOn(Logger.prototype, "info").and.stub();
 		spyOn(Logger.prototype, "debug").and.stub();
 	});

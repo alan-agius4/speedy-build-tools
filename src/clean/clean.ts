@@ -25,6 +25,10 @@ export async function clean(options: CleanOptions): Promise<boolean> {
 		const mergedOptions = Args.mergeWithOptions(ARGS, options);
 		const paths = mergedOptions.paths;
 
+		if (_.isEmpty(paths)) {
+			throw new Error("Paths is missing");
+		}
+
 		if (_.isString(paths)) {
 			rimraf.sync(paths);
 		} else if (paths.length === 1) {
