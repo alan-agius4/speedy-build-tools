@@ -34,7 +34,7 @@
     "changelog": "./node_modules/.bin/conventional-changelog -p angular -i CHANGELOG.md -s",
     "preversion": "npm test && npm run changelog",
     "version": "npm run build",
-    "postversion": "git push && git push --tags && npm run publish"
+    "postversion": "git commit --all -m 'chore(all): update for release' && git push -all && npm publish"
   },
   "dependencies": {
     "chalk": "^1.1.3",
