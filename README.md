@@ -1,6 +1,6 @@
 # @speedy/build-tools
 [![CircleCI](https://circleci.com/gh/alan-agius4/speedy-build-tools.svg?style=shield)](https://circleci.com/gh/alan-agius4/speedy-build-tools)
-[![npm version](https://badge.fury.io/js/@speedy%2Fbuild-tools.svg)](https://badge.fury.io/js/%40speedy%2Fbuild-tools)
+[![npm version](https://badge.fury.io/js/%40speedy%2Fbuild-tools.svg)](https://badge.fury.io/js/%40speedy%2Fbuild-tools)
 [![Dependency Status](https://img.shields.io/david/alan-agius4/speedy-build-tools.svg?style=flat-square)](https://david-dm.org/alan-agius4/speedy-build-tools)
 [![devDependency Status](https://img.shields.io/david/dev/alan-agius4/speedy-build-tools.svg?style=flat-square)](https://david-dm.org/alan-agius4/speedy-build-tools#info=devDependencies)
 
