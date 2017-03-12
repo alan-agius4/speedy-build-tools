@@ -3,6 +3,7 @@ machine:
     version: 6.9.5
   post:
     - npm install -g npm@3.x.x
+compile:
+  - npm build
 test:
-  override:
-    - nvm use 6 && npm lint && npm test 
+  - npm test
