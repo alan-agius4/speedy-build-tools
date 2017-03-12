@@ -1,7 +1,7 @@
 {
   "name": "@speedy/build-tools",
   "version": "0.0.0",
-  "description": "Node scripts and API to build your application and library...",
+  "description": "Node CLI and API to build your application and library...",
   "main": "./dist/index.js",
   "bin": {
     "speedy-build-tools": "./bin/speedy-build-tools.js"
@@ -22,7 +22,9 @@
     "node",
     "build",
     "scripts",
-    "tools"
+    "tools",
+    "cli",
+    "api"
   ],
   "author": "Alan Agius",
   "license": "ISC",
