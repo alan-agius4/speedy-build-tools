@@ -29,7 +29,7 @@ export async function clean(options: CleanOptions): Promise<boolean> {
 			throw new Error("Paths is missing");
 		}
 
-		await Promise.all(globArray(paths).map(x => rimraf.sync(x)));
+		await globArray(paths).map(x => rimraf.sync(x));
 
 		return true;
 	} catch (error) {
