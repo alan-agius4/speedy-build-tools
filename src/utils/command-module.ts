@@ -1,4 +1,5 @@
 import * as yargs from "yargs";
+
 import { ArgumentOptions } from "./args/args.model";
 import { Args } from "./args/args";
 
