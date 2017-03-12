@@ -38,9 +38,20 @@ These tasks are available within `speedy-build-tools` and can be added to npm sc
 
 | Task                  | Description                                                                                            |
 |-----------------------|--------------------------------------------------------------------------------------------------------|
+| `clean`               | Delete files and directories                                                                           |
 | `lint-sass`           | Lint Sass files                                                                                        |
 | `lint-ts`             | Lint Typescipt files                                                                                   |
 ___
+
+## Clean
+
+```
+speedy-build-tools clean --paths .tmp/**
+```
+
+| Option              | Description                                                           | Default Value           | Type    |
+|---------------------|-----------------------------------------------------------------------|-------------------------|---------|
+| `--paths, -p`       | Paths to be deleted  - Supports glob patterns                         |                         | Array   |
 
 ## Lint Sass
 

@@ -6,7 +6,7 @@ import { Args } from "./args/args";
 export interface CommandModule {
 	command: string;
 	description: string;
-	handler: () => Promise<any>;
+	handler: (options?: any) => Promise<any>;
 	args: ArgumentOptions<any>[];
 }
 
