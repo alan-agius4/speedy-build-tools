@@ -1,4 +1,5 @@
 import * as _ from "lodash";
+import * as rimraf from "rimraf";
 import { sync } from "fast-glob";
 import { readFile, statSync, existsSync } from "fs";
 import { join, sep, normalize, isAbsolute } from "path";
@@ -15,6 +16,18 @@ export function getRootPath(): string {
 	}
 
 	return _rootPath;
+}
+
+export function deleteAsync(path: string): Promise<boolean> {
+	return new Promise((resolve, reject) => {
+		rimraf(path, error => {
+			if (error) {
+				return reject(error);
+			}
+
+			return resolve(true);
+		});
+	});
 }
 
 export function readFileAsync(path: string): Promise<string> {

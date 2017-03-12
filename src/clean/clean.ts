@@ -1,7 +1,7 @@
 import * as _ from "lodash";
-import * as rimraf from "rimraf";
 
 import {
+	deleteAsync,
 	Logger,
 	Timer,
 	Args,
@@ -29,7 +29,7 @@ export async function clean(options: CleanOptions): Promise<boolean> {
 			throw new Error("Paths is missing");
 		}
 
-		await globArray(paths).map(x => rimraf.sync(x));
+		await Promise.all(globArray(paths).map(deleteAsync));
 
 		return true;
 	} catch (error) {
