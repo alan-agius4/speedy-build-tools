@@ -1,4 +1,3 @@
-import * as glob from "fast-glob";
 import { Linter, LintResult, Configuration } from "tslint";
 
 import {
@@ -8,6 +7,7 @@ import {
 	readFileAsync,
 	buildCommandModule,
 	Args,
+	globArray,
 	getConfigFilePath,
 	readJsonFileAsync
 } from "../../utils";
@@ -50,7 +50,7 @@ export async function handlelintTs(options: Partial<LintTsOptions>): Promise<Lin
 
 	const failures = (
 		await Promise.all(
-			glob.sync(mergedOptions.files).map(x => lintFile(x, configData, linter))
+			globArray(mergedOptions.files).map(x => lintFile(x, configData, linter))
 		)
 	).filter(x => x.failureCount > 0);
 

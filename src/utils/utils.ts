@@ -1,4 +1,5 @@
 import * as _ from "lodash";
+import { sync } from "fast-glob";
 import { readFile, statSync, existsSync } from "fs";
 import { join, sep, normalize, isAbsolute } from "path";
 
@@ -26,6 +27,13 @@ export function readFileAsync(path: string): Promise<string> {
 			return resolve(data);
 		});
 	});
+}
+
+export function globArray(source: string | string[]): string[] {
+	// empty bashNative is required to fix the below issue on MAC OSX
+	// https://github.com/jonschlinkert/bash-glob/issues/2#issuecomment-285879264
+
+	return sync(source, { bashNative: [] });
 }
 
 export async function readJsonFileAsync<T>(path: string): Promise<T> {

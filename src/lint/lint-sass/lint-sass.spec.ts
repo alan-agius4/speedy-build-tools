@@ -36,7 +36,7 @@ describe("lintSassSpec", () => {
 	it("must return errors when incorrect SASS is present", async done => {
 		const result = await handleLintSass({
 			...OPTIONS,
-			files: "src/invalid.scss"
+			files: "**/*.scss"
 		});
 
 		expect(result.length).toBeTruthy();

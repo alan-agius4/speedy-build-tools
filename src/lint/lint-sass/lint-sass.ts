@@ -1,4 +1,3 @@
-import * as glob from "fast-glob";
 import * as stylefmt from "stylefmt";
 import * as postcss from "postcss";
 import { writeFileSync } from "fs";
@@ -11,6 +10,7 @@ import {
 	Args,
 	readJsonFileAsync,
 	readFileAsync,
+	globArray,
 	buildCommandModule,
 	getConfigFilePath
 } from "../../utils";
@@ -44,7 +44,7 @@ export async function handleLintSass(options: Partial<LintSassOptions>): Promise
 
 	const failures = (
 		await Promise.all(
-			glob.sync(mergedOptions.files).map(x => lintFile(x, configData, mergedOptions))
+			globArray(mergedOptions.files).map(x => lintFile(x, configData, mergedOptions))
 		)
 	).filter(x => x.errored);
 
