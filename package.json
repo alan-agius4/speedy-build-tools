@@ -10,14 +10,6 @@
     "type": "git",
     "url": "git+https://github.com/alan-agius4/speedy-build-tools.git"
   },
-  "scripts": {
-    "prebuild": "npm run lint & npm run clean",
-    "build": "tsc -p tsconfig.build.json",
-    "test": "npm run clean && tsc -p tsconfig.test.json && jasmine JASMINE_CONFIG_PATH=jasmine.json",
-    "clean": "rimraf ./dist & rimraf ./test",
-    "lint": "tslint -c tslint.json ./src/**/*.ts --format stylish",
-    "watch": "npm run clean && tsc -p tsconfig.build.json -w"
-  },
   "keywords": [
     "node",
     "build",
@@ -32,6 +24,14 @@
     "url": "https://github.com/alan-agius4/speedy-build-tools/issues"
   },
   "homepage": "https://github.com/alan-agius4/speedy-build-tools#readme",
+  "scripts": {
+    "prebuild": "npm run lint & npm run clean",
+    "build": "tsc -p tsconfig.build.json",
+    "test": "npm run clean && tsc -p tsconfig.test.json && jasmine JASMINE_CONFIG_PATH=jasmine.json",
+    "clean": "rimraf ./dist & rimraf ./test",
+    "lint": "tslint -c tslint.json ./src/**/*.ts --format stylish",
+    "watch": "npm run clean && tsc -p tsconfig.build.json -w"
+  },
   "dependencies": {
     "chalk": "^1.1.3",
     "codelyzer": "^2.0.0",
