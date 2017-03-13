@@ -46,7 +46,7 @@ sbt clean --paths **/.tmp
 ```
 
 # Tasks
-These tasks are all the available within `speedy-build-tools` and can be added to npm scripts.
+These are all the available tasks within `speedy-build-tools` and can be added to npm scripts.
 
 
 | Task                  | Description                                                                                            |
