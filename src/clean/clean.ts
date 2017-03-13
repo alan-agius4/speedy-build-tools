@@ -5,7 +5,7 @@ import {
 	Logger,
 	Timer,
 	Args,
-	globArray,
+	glob,
 	buildCommandModule
 } from "../utils";
 
@@ -29,7 +29,7 @@ export async function clean(options: CleanOptions): Promise<boolean> {
 			throw new Error("Paths is missing");
 		}
 
-		await Promise.all(globArray(paths).map(deleteAsync));
+		await Promise.all(glob(paths).map(deleteAsync));
 
 		return true;
 	} catch (error) {
