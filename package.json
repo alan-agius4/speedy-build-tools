@@ -1,6 +1,6 @@
 {
   "name": "@speedy/build-tools",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Node CLI and API to build your application and library...",
   "main": "./dist/index.js",
   "bin": {
