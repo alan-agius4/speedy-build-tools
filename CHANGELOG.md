@@ -2,33 +2,17 @@
 ## [0.0.2](https://github.com/alan-agius4/speedy-build-tools/compare/v0.0.1...v0.0.2) (2017-03-13)
 
 
-### Chores
-
-* **utils:** globbing ([a12d7bc](https://github.com/alan-agius4/speedy-build-tools/commit/a12d7bc))
-
-
 ### Features
 
 * **clean:** Initial implementation of clean task ([b3a8203](https://github.com/alan-agius4/speedy-build-tools/commit/b3a8203))
 * **utils:** implement `deleteAsync` ([5e093f1](https://github.com/alan-agius4/speedy-build-tools/commit/5e093f1))
 
-
-* Feature/utils (#20) ([ded0455](https://github.com/alan-agius4/speedy-build-tools/commit/ded0455))
-
-
 ### BREAKING CHANGES
-
-* rename `globArray` to `glob`
-
-* refactor(utils): move `toArray` to `collection` utils
-
-* chore(filesystem): rename to file-system
 * **utils:** rename `globArray` to `glob`
 
 
-
 <a name="0.0.1"></a>
-# 0.0.1 (2017-03-12)
+## 0.0.1 (2017-03-12)
 
 
 ### Features
