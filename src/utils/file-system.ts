@@ -64,7 +64,6 @@ export function glob(source: string | string[]): string[] {
  * @returns {(string | null)}
  */
 export function findFileRecursively(fileName = "package.json", startPath = process.cwd()): string | null {
-	console.log("findFileRecursively");
 	startPath = normalize(startPath);
 
 	try {
