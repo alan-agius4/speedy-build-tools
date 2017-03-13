@@ -62,9 +62,9 @@ ___
 speedy-build-tools clean --paths .tmp/**
 ```
 
-| Option        | Description                                   | Type  |
-|---------------|-----------------------------------------------|-------|
-| `--paths, -p` | Paths to be deleted  - Supports glob patterns | Array |
+| Option          | Description                                   | Type  |
+|-----------------|-----------------------------------------------|-------|
+| `--paths`, `-p` | Paths to be deleted  - Supports glob patterns | Array |
 
 ## Lint Sass
 
@@ -74,8 +74,8 @@ speedy-build-tools lint-sass
 
 | Option              | Description                                                           | Default Value           | Type    |
 |---------------------|-----------------------------------------------------------------------|-------------------------|---------|
-| `--config, -c`      | Lint rules file path                                                  | `.stylelintrc`          | string  |
-| `--files, -f`       | Files to be linted - Supports glob patterns                           | `src/**/*.*(scss|sass)` | Array   |
+| `--config`, `-c`    | Lint rules file path                                                  | `.stylelintrc`          | string  |
+| `--files`, `-f`     | Files to be linted - Supports glob patterns                           | `src/**/*.*(scss|sass)` | Array   |
 | `--formatter`       | Formatter to use to format the linter results                         | `verbose`               | string  |
 | `--fix`             | Determines whether to auto fix lint issues (which support fixing)     | `false`                 | boolean |
 | `--continueOnError` | Determines whether to exit with a non-zero status code on lint errors | `false`                 | boolean |
@@ -93,8 +93,8 @@ speedy-build-tools lint-ts
 
 | Option              | Description                                                           | Default Value | Type    |
 |---------------------|-----------------------------------------------------------------------|---------------|---------|
-| `--config, -c`      | Lint rules file path                                                  | `tslint.json` | string  |
-| `--files, -f`       | Files to be linted - Supports glob patterns                           | `src/**/*.ts` | Array   |
+| `--config`, `-c`    | Lint rules file path                                                  | `tslint.json` | string  |
+| `--files`, `-f`     | Files to be linted - Supports glob patterns                           | `src/**/*.ts` | Array   |
 | `--formatter`       | Formatter to use to format the linter results                         | `stylish`     | string  |
 | `--fix`             | Determines whether to auto fix lint issues (which support fixing)     | `false`       | boolean |
 | `--continueOnError` | Determines whether to exit with a non-zero status code on lint errors | `false`       | boolean |
@@ -108,7 +108,7 @@ ___
 | Option            | Description            |
 |-------------------|------------------------|
 | `--debug`         | Show debug information |
-| `--help, -h`      | Show help              |
+| `--help`, `-h`    | Show help              |
 | `--version`, `-v` | Show version number    |
 
 Display general help
