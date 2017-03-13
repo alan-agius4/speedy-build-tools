@@ -4,7 +4,8 @@
   "description": "Node CLI and API to build your application and library...",
   "main": "./dist/index.js",
   "bin": {
-    "speedy-build-tools": "./bin/speedy-build-tools.js"
+    "speedy-build-tools": "./bin/speedy-build-tools.js",
+    "sbt": "./bin/speedy-build-tools.js"
   },
   "repository": {
     "type": "git",

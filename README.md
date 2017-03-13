@@ -16,7 +16,7 @@ npm install @speedy/build-tools --save-dev
 
 # NPM Scripts
 
-Instead of depending on external task runners, speedy build-tools can be configured to being executed from npm scripts.
+Instead of depending on external task runners, `speedy-build-tools` can be configured to being executed from npm scripts.
 
 ```json
 "scripts": {
@@ -31,9 +31,22 @@ To run the build script found in the `package.json` scripts, execute:
 npm run lint-sass
 ```
 
+# CLI
+
+You can also use the CLI tasks direcly without the need to added them as NPM scripts.
+
+```
+speedy-build-tools clean --paths **/.tmp
+``` 
+
+alternatively use the shorthand version:
+
+```
+sbt clean --paths **/.tmp
+```
 
 # Tasks
-These tasks are available within `speedy-build-tools` and can be added to npm scripts.
+These tasks are all the available within `speedy-build-tools` and can be added to npm scripts.
 
 
 | Task                  | Description                                                                                            |
@@ -105,6 +118,7 @@ speedy-build-tools --help
 ```
 
 Display help specific to a task:
+
 ```
 speedy-build-tools lint-sass --help
 ```
