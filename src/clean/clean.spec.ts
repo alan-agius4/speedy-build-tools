@@ -1,6 +1,6 @@
 import * as mockFs from "mock-fs";
 
-import { Logger, globArray, Timer } from "../utils";
+import { Logger, glob, Timer } from "../utils";
 import { clean } from "./clean";
 
 describe("cleanSpec", () => {
@@ -44,7 +44,7 @@ describe("cleanSpec", () => {
 
 		const result = await clean({ paths });
 		expect(result).toBe(true);
-		expect(globArray(paths).length).toBeFalsy();
+		expect(glob(paths).length).toBeFalsy();
 
 		done();
 	});
@@ -59,7 +59,7 @@ describe("cleanSpec", () => {
 
 		const result = await clean({ paths });
 		expect(result).toBe(true);
-		expect(globArray("**/file-1.json").length).toBeTruthy();
+		expect(glob("**/file-1.json").length).toBeTruthy();
 
 		done();
 	});

@@ -46,7 +46,7 @@ export async function readJsonFileAsync<T>(path: string): Promise<T> {
 	return JSON.parse(await readFileAsync(path));
 }
 
-export function globArray(source: string | string[]): string[] {
+export function glob(source: string | string[]): string[] {
 	// empty bashNative is required to fix the below issue on MAC OSX
 	// https://github.com/jonschlinkert/bash-glob/issues/2#issuecomment-285879264
 

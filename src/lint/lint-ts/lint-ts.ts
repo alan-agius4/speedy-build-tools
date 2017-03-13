@@ -7,7 +7,7 @@ import {
 	readFileAsync,
 	buildCommandModule,
 	Args,
-	globArray,
+	glob,
 	getConfigFilePath,
 	readJsonFileAsync
 } from "../../utils";
@@ -50,7 +50,7 @@ export async function handlelintTs(options: Partial<LintTsOptions>): Promise<Lin
 
 	const failures = (
 		await Promise.all(
-			globArray(mergedOptions.files).map(x => lintFile(x, configData, linter))
+			glob(mergedOptions.files).map(x => lintFile(x, configData, linter))
 		)
 	).filter(x => x.failureCount > 0);
 
