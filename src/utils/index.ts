@@ -1,4 +1,4 @@
-export * from "./utils";
+export * from "./filesystem";
 
 export * from "./worker/worker.process";
 export { Worker } from "./worker/worker.client";

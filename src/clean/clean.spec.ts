@@ -20,7 +20,7 @@ describe("cleanSpec", () => {
 					"sub-dir": {
 						"file-1.json": "",
 						"file-2.json": "",
-						"file-3.json": "",
+						"file-3.json": ""
 					}
 				}
 			}
