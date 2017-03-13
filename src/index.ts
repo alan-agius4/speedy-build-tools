@@ -1,4 +1,4 @@
 export * from "./lint";
-export * from "./clean/clean";
+export { clean, CleanOptions } from "./clean/clean";
 
 export * from "./utils";
