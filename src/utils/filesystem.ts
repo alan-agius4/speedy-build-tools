@@ -53,14 +53,6 @@ export function glob(source: string | string[]): string[] {
 	return sync(source, { bashNative: [] });
 }
 
-export function toArray<T>(pattern: T | T[]): T[] {
-	if (!_.isArray(pattern)) {
-		return [pattern];
-	}
-
-	return pattern;
-}
-
 /**
  * Find a file recursively in the filesystem from the starting path upwards.
  *

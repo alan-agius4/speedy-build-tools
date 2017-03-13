@@ -1,12 +1,7 @@
 import * as mockFs from "mock-fs";
 import { normalize } from "path";
 
-import {
-	toArray,
-	findFileRecursively,
-	readFileAsync,
-	readJsonFileAsync
-} from "./index";
+import { findFileRecursively, readFileAsync, readJsonFileAsync } from "./filesystem";
 
 describe("filesystemSpec", () => {
 
@@ -29,7 +24,6 @@ describe("filesystemSpec", () => {
 			}
 
 			done();
-
 		});
 
 		it("must return file content when file exists", async done => {
@@ -69,13 +63,6 @@ describe("filesystemSpec", () => {
 			const x = await readJsonFileAsync("file.json");
 			expect(x).toEqual(json);
 			done();
-		});
-	});
-
-	describe("toArray", () => {
-		it("must convert value to array", () => {
-			const value = "hello world";
-			expect(toArray(value)).toEqual([value]);
 		});
 	});
 

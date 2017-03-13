@@ -1,3 +1,4 @@
+export * from "./collection";
 export * from "./filesystem";
 
 export * from "./worker/worker.process";
