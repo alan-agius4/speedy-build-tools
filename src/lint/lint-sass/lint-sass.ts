@@ -10,7 +10,7 @@ import {
 	Args,
 	readJsonFileAsync,
 	readFileAsync,
-	glob,
+	globArray,
 	buildCommandModule,
 	getConfigFilePath
 } from "../../utils";
@@ -44,7 +44,7 @@ export async function handleLintSass(options: Partial<LintSassOptions>): Promise
 
 	const failures = (
 		await Promise.all(
-			glob(mergedOptions.files).map(x => lintFile(x, configData, mergedOptions))
+			globArray(mergedOptions.files).map(x => lintFile(x, configData, mergedOptions))
 		)
 	).filter(x => x.errored);
 
