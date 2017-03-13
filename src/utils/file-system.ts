@@ -54,7 +54,7 @@ export function glob(source: string | string[]): string[] {
 }
 
 /**
- * Find a file recursively in the filesystem from the starting path upwards.
+ * Find a file recursively in the file system from the starting path upwards.
  *
  * Defaults: fileName: package.json, startPath: process.cwd()
  *
@@ -64,6 +64,7 @@ export function glob(source: string | string[]): string[] {
  * @returns {(string | null)}
  */
 export function findFileRecursively(fileName = "package.json", startPath = process.cwd()): string | null {
+	console.log("findFileRecursively");
 	startPath = normalize(startPath);
 
 	try {

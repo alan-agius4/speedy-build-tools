@@ -1,5 +1,5 @@
 export * from "./collection";
-export * from "./filesystem";
+export * from "./file-system";
 
 export * from "./worker/worker.process";
 export { Worker } from "./worker/worker.client";

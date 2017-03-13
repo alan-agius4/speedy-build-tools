@@ -1,9 +1,9 @@
 import * as mockFs from "mock-fs";
 import { normalize } from "path";
 
-import { findFileRecursively, readFileAsync, readJsonFileAsync } from "./filesystem";
+import { findFileRecursively, readFileAsync, readJsonFileAsync } from "./file-system";
 
-describe("filesystemSpec", () => {
+describe("fileSystemSpec", () => {
 
 	describe("readFileAsync", () => {
 		beforeEach(() => {

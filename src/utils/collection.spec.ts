@@ -1,6 +1,6 @@
 import { toArray } from "./collection";
 
-describe("filesystemSpec", () => {
+describe("fileSystemSpec", () => {
 	describe("toArray", () => {
 		it("must convert value to array", () => {
 			const value = "hello world";
