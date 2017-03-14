@@ -1,7 +1,8 @@
 import * as yargs from "yargs";
 
 import { cleanModule } from "./clean/clean";
-import { lintSassModule, lintTsModule } from "./lint";
+import { lintSassModule } from "./lint/lint-sass/lint-sass";
+import { lintTsModule } from "./lint/lint-ts/lint-ts";
 
 yargs
 	.command(lintSassModule)
