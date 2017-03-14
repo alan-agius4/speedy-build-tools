@@ -22,8 +22,7 @@ export async function clean(options: CleanOptions): Promise<boolean> {
 
 	try {
 		timer.start();
-		const mergedOptions = Args.mergeWithOptions(ARGS, options);
-		const paths = mergedOptions.paths;
+		const { paths } = Args.mergeWithOptions(ARGS, options);
 
 		if (_.isEmpty(paths)) {
 			throw new Error("Paths is missing");
