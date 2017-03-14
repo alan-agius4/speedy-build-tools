@@ -6,15 +6,15 @@
 
 **Currently under development.**
 
-# Getting Started
+## Getting Started
 
-## Installation
+### Installation
 
 ```
 npm install @speedy/build-tools --save-dev
 ```
 
-# NPM Scripts
+## NPM Scripts
 
 Instead of depending on external task runners, `speedy-build-tools` can be configured to being executed from npm scripts.
 
@@ -31,7 +31,7 @@ To run the build script found in the `package.json` scripts, execute:
 npm run lint-sass
 ```
 
-# CLI
+## CLI
 
 You can also use the CLI tasks direcly without the need to added them as NPM scripts.
 
@@ -45,7 +45,7 @@ alternatively use the shorthand version:
 sbt clean --paths **/.tmp
 ```
 
-# Tasks
+## Tasks
 These are all the available tasks within `speedy-build-tools` and can be added to npm scripts.
 
 
@@ -56,7 +56,7 @@ These are all the available tasks within `speedy-build-tools` and can be added t
 | `lint-ts`             | Lint Typescipt files                                                                                   |
 ___
 
-## Clean
+### Clean
 
 ```
 speedy-build-tools clean --paths .tmp/**
@@ -64,9 +64,9 @@ speedy-build-tools clean --paths .tmp/**
 
 | Option          | Description                                   | Type  |
 |-----------------|-----------------------------------------------|-------|
-| `--paths`, `-p` | Paths to be deleted  - Supports glob patterns | Array |
+| `--paths`, `-p` | Paths to be deleted - Supports glob patterns  | Array |
 
-## Lint Sass
+### Lint Sass
 
 ```
 speedy-build-tools lint-sass
@@ -80,12 +80,12 @@ speedy-build-tools lint-sass
 | `--fix`             | Determines whether to auto fix lint issues (which support fixing)     | `false`                 | boolean |
 | `--continueOnError` | Determines whether to exit with a non-zero status code on lint errors | `false`                 | boolean |
 
-### Rules
+#### Rules
 By default, it will try to locate the `.stylelintrc` file in the root of your project folder. If the file is not found it will fallback to an internal `.stylelintrc`. This file can also be used as a base for your rules.
 
 ___
 
-## Lint Typescript
+### Lint Typescript
 
 ```
 speedy-build-tools lint-ts
@@ -99,12 +99,12 @@ speedy-build-tools lint-ts
 | `--fix`             | Determines whether to auto fix lint issues (which support fixing)     | `false`       | boolean |
 | `--continueOnError` | Determines whether to exit with a non-zero status code on lint errors | `false`       | boolean |
 
-### Rules
+#### Rules
 By default, it will try to locate the `tslint.json` file in the root of your project folder. If the file is not found it will fallback to an internal `tslint.json`. This file can also be used as a base for your rules.
 
 ___
 
-## Global Options
+### Global Options
 | Option            | Description            |
 |-------------------|------------------------|
 | `--debug`         | Show debug information |
@@ -129,7 +129,7 @@ To display help when running the task from a mapped npm script you should omit t
 npm run lint-sass help
 ```
 
-# Stack
+## Stack
 
 - [Stylelint](https://github.com/stylelint/stylelint)
 - [Stylelint SCSS](https://github.com/kristerkari/stylelint-scss)
