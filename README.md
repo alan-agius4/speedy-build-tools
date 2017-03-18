@@ -53,7 +53,7 @@ These are all the available tasks within `speedy-build-tools` and can be added t
 |-----------------------|--------------------------------------------------------------------------------------------------------|
 | `clean`               | Delete files and directories                                                                           |
 | `lint-sass`           | Lint Sass files                                                                                        |
-| `lint-ts`             | Lint Typescript files                                                                                   |
+| `lint-ts`             | Lint Typescript files                                                                                  |
 ___
 
 ### Clean
