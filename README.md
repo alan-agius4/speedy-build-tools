@@ -2,7 +2,7 @@
 [![CircleCI](https://circleci.com/gh/alan-agius4/speedy-build-tools.svg?style=shield)](https://circleci.com/gh/alan-agius4/speedy-build-tools)
 [![npm version](https://img.shields.io/npm/v/@speedy/build-tools.svg)](https://www.npmjs.com/package/@speedy/build-tools)
 [![Dependency Status](https://img.shields.io/david/alan-agius4/speedy-build-tools.svg?style=flat-square)](https://david-dm.org/alan-agius4/speedy-build-tools)
-[![devDependency Status](https://img.shields.io/david/dev/alan-agius4/speedy-build-tools.svg?style=flat-square)](https://david-dm.org/alan-agius4/speedy-build-tools#info=devDependencies)
+[![devDependency Status](https://img.shields.io/david/dev/alan-agius4/speedy-build-tools.svg?style=flat-square)](https://david-dm.org/alan-agius4/speedy-build-tools?type=dev)
 
 **Currently under development.**
 
