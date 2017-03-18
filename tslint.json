@@ -12,7 +12,6 @@
 			true,
 			"tabs"
 		],
-		"space-before-function-paren": true,
 		"prefer-const": true,
 		"label-position": true,
 		"max-line-length": [
