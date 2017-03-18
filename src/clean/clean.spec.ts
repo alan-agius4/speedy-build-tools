@@ -36,7 +36,7 @@ describe("cleanSpec", () => {
 		mockFs.restore();
 	});
 
-	it("must delete path matching glob", async done => {
+	it("should delete path matching glob", async done => {
 		const paths = [
 			"**/*.txt",
 			"**/*.json"
@@ -49,7 +49,7 @@ describe("cleanSpec", () => {
 		done();
 	});
 
-	it("must not delete path matching negative glob", async done => {
+	it("should not delete path matching negative glob", async done => {
 		const paths = [
 			"**/*",
 			"!**/src",
