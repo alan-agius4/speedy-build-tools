@@ -1,15 +1,16 @@
 import * as  _ from "lodash";
 import * as yargs from "yargs";
 
+import { Dictionary } from "../dictionary";
+import { toPrimitive } from "../string";
 import { Arguments, ArgumentOptions } from "./args.model";
 
 export namespace Args {
 
+	const ARGS_REGEXP = /-/g;
 	const ARGS_REQUIRED_FLAGS = ["require", "required", "demand"];
 
-	if (process.env.npm_config_argv) {
-		yargs.parse(JSON.parse(process.env.npm_config_argv).original);
-	}
+	yargs.parse(mergedConfigArgsAndProcessArgv());
 
 	set<Arguments>([{
 		key: "debug",
@@ -52,6 +53,88 @@ export namespace Args {
 		return yargs.argv;
 	}
 
+	/**
+	 * Merges `process.env.npm_config_argv` with `process.argv` and remove duplicate arguments
+	 *
+	 * @export
+	 * @returns {string[]}
+	 */
+	export function mergedConfigArgsAndProcessArgv(): string[] {
+		if (!process.env.npm_config_argv) {
+			return process.argv;
+		}
+
+		const parsedArgv = parse(process.argv);
+		const parsedConfigArgv = parse(JSON.parse(process.env.npm_config_argv).original);
+		const mergedArgv = { ...parsedArgv, ...parsedConfigArgv };
+		const tranformedArgs = _.flatten(_.get<string[]>(parsedArgv, "_"));
+
+		_.forEach(mergedArgv, (value, key) => {
+			if (key === "_") {
+				return;
+			};
+
+			const tranformedKey = `--${key}`;
+
+			if (_.isArray(value)) {
+				tranformedArgs.push(tranformedKey, ..._.flatten(value).map(_.toString));
+				return;
+			}
+
+			tranformedArgs.push(tranformedKey, _.toString(value));
+		});
+
+		return tranformedArgs;
+	}
+
+	/**
+	 * Parse Argv and tranform them to a Dictionary
+	 *
+	 * @export
+	 * @param {string[]} argv
+	 * @returns {Dictionary<any>}
+	 */
+	export function parse(argv: string[]): Dictionary<any> {
+		const parsedArgv: Dictionary<any> = {};
+		let previousKey = "_";
+
+		for (let i = 0; i < argv.length; i++) {
+			const keyOrValue = argv[i];
+			const castedValue = toPrimitive(keyOrValue);
+
+			if (_.startsWith(keyOrValue, "-") && !_.isNumber(castedValue)) {
+				previousKey = keyOrValue.replace(ARGS_REGEXP, "");
+				// by default set the value to true, since argv with no value are truthy
+				parsedArgv[previousKey] = true;
+				continue;
+			}
+
+			if (_.isEmpty(parsedArgv)) {
+				parsedArgv[previousKey] = castedValue;
+				continue;
+			}
+
+			const currentValue = parsedArgv[previousKey];
+
+			if (_.isBoolean(currentValue)) {
+				// we have a value for the parameter, so we override it.
+				parsedArgv[previousKey] = castedValue;
+			} else if (_.isArray(currentValue)) {
+				parsedArgv[previousKey] = [...currentValue, castedValue];
+			} else {
+				parsedArgv[previousKey] = [currentValue, castedValue];
+			}
+		}
+
+		return parsedArgv;
+	}
+
+	/**
+	 * Merges `Default Arguments` object with process `Arguments` and `Options`
+	 *
+	 * @export
+	 * @returns {string[]}
+	 */
 	export function mergeWithOptions<T extends Partial<Arguments>>(defaultArgs: ArgumentOptions<T>[], options?: Partial<T>): T {
 		// if this has been called it means that the CLI was called and required 'args' have been passed.
 		// thus the required flags are not required anymore. Or it's from the API which we need to handle else where.
