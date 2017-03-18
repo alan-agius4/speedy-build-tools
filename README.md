@@ -135,4 +135,3 @@ npm run lint-sass help
 - [Stylelint SCSS](https://github.com/kristerkari/stylelint-scss)
 - [Stylefmt](https://github.com/morishitter/stylefmt)
 - [TSLint](http://palantir.github.io/tslint)
-- [Codelyzer](https://github.com/mgechev/codelyzer)
