@@ -99,8 +99,9 @@ export namespace Args {
 		};
 
 		let previousKey = "_";
+		let i = _.startsWith(argv[0], "-") ? 0 : 2;
 
-		for (let i = 2; i < argv.length; i++) {
+		for (i; i < argv.length; i++) {
 			const keyOrValue = argv[i];
 			const castedValue = toPrimitive(keyOrValue);
 
