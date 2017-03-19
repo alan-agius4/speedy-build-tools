@@ -52,6 +52,7 @@ These are all the available tasks within `speedy-build-tools` and can be added t
 | Task            | Description                  |
 |-----------------|------------------------------|
 | clean [paths..] | Delete files and directories |
+| `lint-html`     | Lint Html files              |
 | `lint-sass`     | Lint Sass files              |
 | `lint-ts`       | Lint Typescript files        |
 ___
@@ -66,6 +67,18 @@ speedy-build-tools clean .tmp/** .test/**
 | Option          | Description                                   | Type  |
 |-----------------|-----------------------------------------------|-------|
 | `--paths`, `-p` | Paths to be deleted - Supports glob patterns  | Array |
+
+### Lint Html
+
+```
+speedy-build-tools lint-html
+```
+
+| Option              | Description                                                           | Default Value           | Type    |
+|---------------------|-----------------------------------------------------------------------|-------------------------|---------|
+| `--config`, `-c`    | Lint rules file path                                                  | `.htmlhintrc`           | string  |
+| `--files`, `-f`     | Files to be linted - Supports glob patterns                           | `src/**/*.*(html|htm)`  | Array   |
+| `--continueOnError` | Determines whether to exit with a non-zero status code on lint errors | `false`                 | boolean |
 
 ### Lint Sass
 

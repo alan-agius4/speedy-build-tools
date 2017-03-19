@@ -3,10 +3,12 @@ import * as yargs from "yargs";
 import { cleanModule } from "./clean/clean";
 import { lintSassModule } from "./lint/lint-sass/lint-sass";
 import { lintTsModule } from "./lint/lint-ts/lint-ts";
+import { lintHtmlModule } from "./lint/lint-html/lint-html";
 
 yargs
 	.command(lintSassModule)
 	.command(lintTsModule)
+	.command(lintHtmlModule)
 
 	.command(cleanModule)
 
