@@ -8,7 +8,6 @@ import { Arguments, ArgumentOptions } from "./args.model";
 export namespace Args {
 
 	const ARGS_REGEXP = /-/g;
-	const ARGS_REQUIRED_FLAGS = ["require", "required", "demand"];
 
 	yargs.parse(mergedConfigArgsAndProcessArgv());
 
@@ -61,11 +60,11 @@ export namespace Args {
 	 */
 	export function mergedConfigArgsAndProcessArgv(): string[] {
 		if (!process.env.npm_config_argv) {
-			return process.argv;
+			return process.argv.slice(2);
 		}
 
 		const parsedArgv = parse(process.argv);
-		const parsedConfigArgv = parse(JSON.parse(process.env.npm_config_argv).original);
+		const parsedConfigArgv = parse(JSON.parse(process.env.npm_config_argv).cooked);
 		const mergedArgv = { ...parsedArgv, ...parsedConfigArgv };
 		const tranformedArgs = _.flatten(_.get<string[]>(parsedArgv, "_"));
 
@@ -95,10 +94,13 @@ export namespace Args {
 	 * @returns {Dictionary<any>}
 	 */
 	export function parse(argv: string[]): Dictionary<any> {
-		const parsedArgv: Dictionary<any> = {};
+		const parsedArgv: Dictionary<any> = {
+			"_": []
+		};
+
 		let previousKey = "_";
 
-		for (let i = 0; i < argv.length; i++) {
+		for (let i = 2; i < argv.length; i++) {
 			const keyOrValue = argv[i];
 			const castedValue = toPrimitive(keyOrValue);
 
@@ -106,11 +108,6 @@ export namespace Args {
 				previousKey = keyOrValue.replace(ARGS_REGEXP, "");
 				// by default set the value to true, since argv with no value are truthy
 				parsedArgv[previousKey] = true;
-				continue;
-			}
-
-			if (_.isEmpty(parsedArgv)) {
-				parsedArgv[previousKey] = castedValue;
 				continue;
 			}
 
@@ -130,22 +127,28 @@ export namespace Args {
 	}
 
 	/**
-	 * Merges `Default Arguments` object with process `Arguments` and `Options`
+	 * Merges `Arguments` default values with `Options`
 	 *
 	 * @export
 	 * @returns {string[]}
 	 */
-	export function mergeWithOptions<T extends Partial<Arguments>>(defaultArgs: ArgumentOptions<T>[], options?: Partial<T>): T {
-		// if this has been called it means that the CLI was called and required 'args' have been passed.
-		// thus the required flags are not required anymore. Or it's from the API which we need to handle else where.
-		const args = defaultArgs.map(x => _.omit<ArgumentOptions<T>, ArgumentOptions<T>>(x, ARGS_REQUIRED_FLAGS));
+	export function mergeWithOptions<T>(defaultArgs: ArgumentOptions<T>[], options?: Partial<T>): T {
+		const defaultOptions = {} as T;
+
+		for (let arg of defaultArgs) {
+			if (_.isNil(arg.default)) {
+				continue;
+			}
+
+			_.set(defaultOptions, arg.key, arg.default);
+		}
 
 		// todo: add generic type when issue is solved
 		// https://github.com/Microsoft/TypeScript/issues/10727
-		return Object.assign({}, Args.set(args), options);
+		return Object.assign({}, defaultOptions, options);
 	}
 
 	export const getAll = <T extends Arguments>() => yargs.argv as T;
-	export const env = Args.getAll();
+	export const env = getAll();
 
 }
