@@ -80,6 +80,9 @@ speedy-build-tools lint-html
 | `--files`, `-f`     | Files to be linted - Supports glob patterns                           | `src/**/*.*(html|htm)`  | Array   |
 | `--continueOnError` | Determines whether to exit with a non-zero status code on lint errors | `false`                 | boolean |
 
+#### Rules
+By default, it will try to locate the `.htmlhintrc` file in the root of your project folder. If the file is not found it will fallback to an internal `.htmlhintrc`. This file can also be used as a base for your rules.
+
 ### Lint Sass
 
 ```
