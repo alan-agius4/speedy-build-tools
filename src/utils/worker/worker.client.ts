@@ -29,7 +29,7 @@ export namespace Worker {
 					kill(worker.pid);
 				})
 				.on("error", error => logger.error(`task: ${task}, pid: ${worker.pid}`, error))
-				.on("exit", () => logger.debug("run", `Exit task: ${task}, pid: ${worker.pid}`))
+				.on("exit", () => logger.debug(run.name, `Exit task: ${task}, pid: ${worker.pid}`))
 				.send({
 					task,
 					modulePath,
@@ -47,7 +47,7 @@ export namespace Worker {
 				process: childProcess
 			});
 
-			logger.debug("create", `task: ${task}, pid: ${childProcess.pid}`);
+			logger.debug(create.name, `task: ${task}, pid: ${childProcess.pid}`);
 
 			return childProcess;
 		} catch (error) {
@@ -67,7 +67,7 @@ export namespace Worker {
 
 		try {
 			worker.process.kill("SIGTERM");
-			logger.debug("kill", `task: ${worker.task}, pid: ${pid}`);
+			logger.debug(kill.name, `task: ${worker.task}, pid: ${pid}`);
 		} catch (error) {
 			logger.error(`Unable to 'kill' worker task: ${worker.task}, pid: ${pid}`, error);
 		} finally {

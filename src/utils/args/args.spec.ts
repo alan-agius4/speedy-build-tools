@@ -11,7 +11,7 @@ describe("argsSpec", () => {
 
 		beforeAll(() => {
 			process.env.npm_config_argv = JSON.stringify({
-				original: [
+				cooked: [
 					"run",
 					"clean",
 					"--config",
@@ -47,6 +47,7 @@ describe("argsSpec", () => {
 
 		it("should return 'files' argument as array", () => {
 			yargs.parse(Args.mergedConfigArgsAndProcessArgv());
+			yargs.array("files");
 
 			expect(yargs.argv.files).toEqual([
 				"file-1.txt",

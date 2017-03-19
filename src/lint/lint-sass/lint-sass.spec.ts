@@ -6,9 +6,12 @@ import { LintSassOptions } from "./lint-sass.model";
 
 describe("lintSassSpec", () => {
 
-	const OPTIONS: Partial<LintSassOptions> = {
+	const OPTIONS: LintSassOptions = {
+		config: ".stylelintrc",
 		continueOnError: true,
-		fix: false
+		formatter: "verbose",
+		fix: false,
+		files: []
 	};
 
 	beforeEach(() => {
