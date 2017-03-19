@@ -38,7 +38,7 @@ export async function lintSass(options?: Partial<LintSassOptions>): Promise<Lint
 /** @internal */
 export async function handleLintSass(options: LintSassOptions): Promise<LinterResult[]> {
 	const configFilePath = getConfigFilePath(options.config);
-	logger.debug("handleLintSass", `Config file path: ${configFilePath}`);
+	logger.debug(handleLintSass.name, `Config file path: ${configFilePath}`);
 
 	const configData = await readJsonFileAsync<JSON>(configFilePath);
 

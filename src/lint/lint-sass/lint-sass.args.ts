@@ -1,6 +1,6 @@
 import * as _ from "lodash";
 
-import { getConfigFilePath, ArgumentOptions } from "../../utils";
+import { ArgumentOptions } from "../../utils";
 import { LintSassOptions, LINT_SASS_FORMATTERS } from "./lint-sass.model";
 
 export const ARGS: ArgumentOptions<LintSassOptions>[] = [
@@ -8,7 +8,7 @@ export const ARGS: ArgumentOptions<LintSassOptions>[] = [
 		key: "config",
 		alias: "c",
 		description: "Lint rules file path",
-		default: getConfigFilePath(".stylelintrc")
+		default: ".stylelintrc"
 	},
 	{
 		key: "files",
