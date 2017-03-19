@@ -49,12 +49,12 @@ sbt clean --paths **/.tmp
 These are all the available tasks within `speedy-build-tools` and can be added to npm scripts.
 
 
-| Task            | Description                  |
-|-----------------|------------------------------|
-| clean [paths..] | Delete files and directories |
-| `lint-html`     | Lint Html files              |
-| `lint-sass`     | Lint Sass files              |
-| `lint-ts`       | Lint Typescript files        |
+| Task              | Description                  |
+|-------------------|------------------------------|
+| `clean [paths..]` | Delete files and directories |
+| `lint-html`       | Lint Html files              |
+| `lint-sass`       | Lint Sass files              |
+| `lint-ts`         | Lint Typescript files        |
 ___
 
 ### Clean
