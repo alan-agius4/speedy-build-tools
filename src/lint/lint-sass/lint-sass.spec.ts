@@ -42,7 +42,7 @@ describe("lintSassSpec", () => {
 			files: "**/*.scss"
 		});
 
-		expect(result.length).toBeTruthy();
+		expect(result.length).toBeGreaterThan(0);
 		done();
 	});
 
@@ -52,7 +52,7 @@ describe("lintSassSpec", () => {
 			files: "src/valid.scss"
 		});
 
-		expect(result.length).toBeFalsy();
+		expect(result.length).toBe(0);
 		done();
 	});
 
@@ -63,7 +63,7 @@ describe("lintSassSpec", () => {
 			fix: true
 		});
 
-		expect(result.length).toBeFalsy();
+		expect(result.length).toBe(0);
 		done();
 	});
 
@@ -73,7 +73,7 @@ describe("lintSassSpec", () => {
 			files: "src/can-fix.scss"
 		});
 
-		expect(result.length).toBeTruthy();
+		expect(result.length).toBeGreaterThan(0);
 		done();
 	});
 

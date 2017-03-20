@@ -28,7 +28,7 @@ describe("lintHtmlSpec", () => {
 				continueOnError: true
 			});
 
-			expect(result).toBeTruthy();
+			expect(result.length).toBeGreaterThan(0);
 			done();
 		});
 
@@ -39,7 +39,7 @@ describe("lintHtmlSpec", () => {
 				continueOnError: true
 			});
 
-			expect(result.length).toBeFalsy();
+			expect(result.length).toBe(0);
 			done();
 		});
 
