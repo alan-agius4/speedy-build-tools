@@ -1,6 +1,6 @@
 import * as mockFs from "mock-fs";
-import { Logger } from "../../utils";
 
+import { Logger } from "../../utils";
 import { handleLintHtml } from "./lint-html";
 
 describe("lintHtmlSpec", () => {
