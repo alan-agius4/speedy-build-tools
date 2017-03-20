@@ -68,6 +68,8 @@ speedy-build-tools clean .tmp/** .test/**
 |-----------------|-----------------------------------------------|-------|
 | `--paths`, `-p` | Paths to be deleted - Supports glob patterns  | Array |
 
+___
+
 ### Lint Html
 
 ```
@@ -82,6 +84,8 @@ speedy-build-tools lint-html
 
 #### Rules
 By default, it will try to locate the `.htmlhintrc` file in the root of your project folder. If the file is not found it will fallback to an internal `.htmlhintrc`. This file can also be used as a base for your rules.
+
+___
 
 ### Lint Sass
 
