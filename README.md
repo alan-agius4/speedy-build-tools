@@ -37,11 +37,8 @@ You can also use the CLI tasks direcly without the need to added them as NPM scr
 
 ```
 speedy-build-tools clean --paths **/.tmp
-``` 
 
-alternatively use the shorthand version:
-
-```
+// or shorthand
 sbt clean --paths **/.tmp
 ```
 
