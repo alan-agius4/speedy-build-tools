@@ -4,6 +4,9 @@
 [![Dependency Status](https://img.shields.io/david/alan-agius4/speedy-build-tools.svg?style=flat-square)](https://david-dm.org/alan-agius4/speedy-build-tools)
 [![devDependency Status](https://img.shields.io/david/dev/alan-agius4/speedy-build-tools.svg?style=flat-square)](https://david-dm.org/alan-agius4/speedy-build-tools?type=dev)
 
+Node CLI/API for build tools and utilities such as linting (html, sass, ts), clean, compile, etc...
+in order to simplify building libraries and applications.
+
 **Currently under development.**
 
 ## Getting Started
@@ -16,7 +19,7 @@ npm install @speedy/build-tools --save-dev
 
 ## NPM Scripts
 
-Instead of depending on external task runners, `speedy-build-tools` can be configured to being executed from npm scripts.
+Instead of depending on external task runners, `speedy-build-tools` can be configured to run from npm scripts (`package.json`).
 
 ```json
 "scripts": {
@@ -25,7 +28,7 @@ Instead of depending on external task runners, `speedy-build-tools` can be confi
 },
 ````
 
-To run the build script found in the `package.json` scripts, execute:
+Run NPM script as following
 
 ```
 npm run lint-sass
@@ -33,7 +36,7 @@ npm run lint-sass
 
 ## CLI
 
-You can also use the CLI tasks direcly without the need to added them as NPM scripts.
+CLI can also be used directly without being added to NPM scripts.
 
 ```
 speedy-build-tools clean --paths **/.tmp
@@ -43,7 +46,7 @@ speedy clean --paths **/.tmp
 ```
 
 ## Tasks
-These are all the available tasks within `speedy-build-tools` and can be added to npm scripts.
+Available tasks within `speedy-build-tools` which can be used via CLI.
 
 
 | Task              | Description                  |
@@ -80,7 +83,9 @@ speedy-build-tools lint-html
 | `--continueOnError` | Determines whether to exit with a non-zero status code on lint errors | `false`                 | boolean |
 
 #### Rules
-By default, it will try to locate the `.htmlhintrc` file in the root of your project folder. If the file is not found it will fallback to an internal `.htmlhintrc`. This file can also be used as a base for your rules.
+By default, it will try to locate the `.htmlhintrc` file in the root of your project folder. 
+If the file is not found it will fallback to an internal `.htmlhintrc`.
+This file can also be used as a base for your rules.
 
 ___
 
@@ -99,7 +104,9 @@ speedy-build-tools lint-sass
 | `--continueOnError` | Determines whether to exit with a non-zero status code on lint errors | `false`                 | boolean |
 
 #### Rules
-By default, it will try to locate the `.stylelintrc` file in the root of your project folder. If the file is not found it will fallback to an internal `.stylelintrc`. This file can also be used as a base for your rules.
+By default, it will try to locate the `.stylelintrc` file in the root of your project folder. 
+If the file is not found it will fallback to an internal `.stylelintrc`.
+This file can also be used as a base for your rules.
 
 ___
 
@@ -118,7 +125,9 @@ speedy-build-tools lint-ts
 | `--continueOnError` | Determines whether to exit with a non-zero status code on lint errors | `false`       | boolean |
 
 #### Rules
-By default, it will try to locate the `tslint.json` file in the root of your project folder. If the file is not found it will fallback to an internal `tslint.json`. This file can also be used as a base for your rules.
+By default, it will try to locate the `tslint.json` file in the root of your project folder. 
+If the file is not found it will fallback to an internal `tslint.json`.
+This file can also be used as a base for your rules.
 
 ___
 
