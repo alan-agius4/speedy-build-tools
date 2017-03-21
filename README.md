@@ -51,7 +51,7 @@ These are all the available tasks within `speedy-build-tools` and can be added t
 | `clean [paths..]` | Delete files and directories |
 | `lint-html`       | Lint Html files              |
 | `lint-sass`       | Lint Sass files              |
-| `lint-ts`         | Lint Typescript files        |
+| `lint-ts`         | Lint TypeScript files        |
 ___
 
 ### Clean
@@ -103,7 +103,7 @@ By default, it will try to locate the `.stylelintrc` file in the root of your pr
 
 ___
 
-### Lint Typescript
+### Lint TypeScript
 
 ```
 speedy-build-tools lint-ts
