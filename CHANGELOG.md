@@ -1,3 +1,24 @@
+<a name="0.1.0"></a>
+# [0.1.0](https://github.com/alan-agius4/speedy-build-tools/compare/v0.0.3...v0.1.0) (2017-03-21)
+
+
+### Bug Fixes
+
+* **args:** handle arguments with `=` as they were not being parsed properly ([d2b9e56](https://github.com/alan-agius4/speedy-build-tools/commit/d2b9e56))
+* **tslint:** fixed result from being emitted multiple times ([981589b](https://github.com/alan-agius4/speedy-build-tools/commit/981589b))
+
+
+### Features
+
+* **cli:** cli shorthand command ([63c3744](https://github.com/alan-agius4/speedy-build-tools/commit/63c3744))
+
+
+### BREAKING CHANGES
+
+* **cli:** replace `sbt` to `speedy` as a shorthand version
+
+
+
 <a name="0.0.3"></a>
 ## [0.0.3](https://github.com/alan-agius4/speedy-build-tools/compare/v0.0.2...v0.0.3) (2017-03-19)
 
