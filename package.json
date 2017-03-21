@@ -5,7 +5,7 @@
   "main": "./dist/index.js",
   "bin": {
     "speedy-build-tools": "./bin/speedy-build-tools.js",
-    "sbt": "./bin/speedy-build-tools.js"
+    "speedy": "./bin/speedy-build-tools.js"
   },
   "repository": {
     "type": "git",
