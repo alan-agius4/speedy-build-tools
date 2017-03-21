@@ -6,6 +6,11 @@ export interface LintTsOptions {
 	fix: boolean;
 }
 
+export interface LintTsResult {
+	failuresCount: number;
+	fixesCount?: number;
+}
+
 export type LintTsFormatters = "vso"
 	| "verbose"
 	| "prose"

@@ -1,4 +1,4 @@
-import { Linter, LintResult, Configuration } from "tslint";
+import { Linter, Configuration } from "tslint";
 
 import {
 	Logger,
@@ -12,18 +12,18 @@ import {
 	readJsonFileAsync
 } from "../../utils";
 
-import { LintTsOptions } from "./lint-ts.model";
+import { LintTsOptions, LintTsResult } from "./lint-ts.model";
 import { ARGS } from "./lint-ts.args";
 
 const logger = new Logger("Lint TS");
 
-export async function lintTs(options?: Partial<LintTsOptions>): Promise<LintResult[]> {
+export async function lintTs(options?: Partial<LintTsOptions>): Promise<LintTsResult> {
 	const timer = new Timer(logger);
 
 	try {
 		timer.start();
 		const mergedOptions = Args.mergeWithOptions(ARGS, options);
-		return await Worker.run<LintResult[]>(__filename, handlelintTs.name, mergedOptions);
+		return await Worker.run<LintTsResult>(__filename, handleLintTs.name, mergedOptions);
 	} catch (error) {
 		logger.error("", error);
 		throw error;
@@ -33,9 +33,9 @@ export async function lintTs(options?: Partial<LintTsOptions>): Promise<LintResu
 }
 
 /** @internal */
-export async function handlelintTs(options: LintTsOptions): Promise<LintResult[]> {
+export async function handleLintTs(options: LintTsOptions): Promise<LintTsResult> {
 	const configFilePath = getConfigFilePath(options.config);
-	logger.debug(handlelintTs.name, `Config file path: ${configFilePath}`);
+	logger.debug(handleLintTs.name, `Config file path: ${configFilePath}`);
 
 	const configData = await readJsonFileAsync<Configuration.IConfigurationLoadResult>(configFilePath);
 
@@ -48,32 +48,33 @@ export async function handlelintTs(options: LintTsOptions): Promise<LintResult[]
 		formatter: options.formatter
 	});
 
-	const failures = (
-		await Promise.all(
-			glob(options.files).map(x => lintFile(x, configData, linter))
-		)
-	).filter(x => x.failureCount > 0);
+	await Promise.all(
+		glob(options.files).map(x => lintFile(x, configData, linter))
+	);
 
-	failures.forEach(x => logger.info(x.output));
-
-	if (failures.length && !options.continueOnError) {
-		process.exit(1);
+	const result = linter.getResult();
+	if (result.failureCount > 0) {
+		logger.info(result.output);
+		if (!options.continueOnError) {
+			process.exit(1);
+		}
 	}
 
-	return failures;
+	return {
+		failuresCount: result.failureCount,
+		fixesCount: result.fixes ? result.fixes.length : undefined
+	};
 }
 
-async function lintFile(filePath: string, configData: Configuration.IConfigurationLoadResult, linter: Linter): Promise<LintResult> {
+async function lintFile(filePath: string, configData: Configuration.IConfigurationLoadResult, linter: Linter): Promise<void> {
 	logger.debug(lintFile.name, `filePath: ${filePath}`);
 	linter.lint(filePath, await readFileAsync(filePath), configData);
-
-	return linter.getResult();
 }
 
 /** @internal */
 export const lintTsModule = buildCommandModule({
 	command: "lint-ts",
-	description: "Lint Typescript files",
+	description: "Lint TypeScript files",
 	handler: lintTs,
 	args: ARGS
 });
