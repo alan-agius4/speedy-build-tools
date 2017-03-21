@@ -53,8 +53,10 @@ export async function handleLintTs(options: LintTsOptions): Promise<LintTsResult
 	);
 
 	const result = linter.getResult();
-	if (result.failureCount > 0) {
+
+	if (result.failureCount) {
 		logger.info(result.output);
+
 		if (!options.continueOnError) {
 			process.exit(1);
 		}
