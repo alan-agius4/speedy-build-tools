@@ -15,7 +15,7 @@
 
 ### BREAKING CHANGES
 
-* **cli:** replace `sbt` to `speedy` as a shorthand version
+* **cli:** replace `sbt` with `speedy` as a shorthand version
 
 
 
