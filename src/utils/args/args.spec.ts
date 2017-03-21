@@ -58,13 +58,17 @@ describe("argsSpec", () => {
 
 
 	describe("parse", () => {
-		const ARGS = ["--debug", "--config", "config-1.txt", "config-2.txt", "--help", "false"];
-
 		it("should parse 'Args' and convert them to a dictionary", () => {
-			const parsedArgs = Args.parse(ARGS);
+			const parsedArgs = Args.parse(["--debug", "--config", "config-1.txt", "config-2.txt", "--help", "false"]);
 			expect(_.get(parsedArgs, "help")).toBe(false);
 			expect(_.get(parsedArgs, "debug")).toBe(true);
 			expect(_.get(parsedArgs, "config")).toEqual(["config-1.txt", "config-2.txt"]);
+		});
+
+		it("should parse args with equals as key/value pair", () => {
+			const parsedArgs = Args.parse(["--debug=true", "--help=false"]);
+			expect(_.get(parsedArgs, "help")).toBe(false);
+			expect(_.get(parsedArgs, "debug")).toBe(true);
 		});
 	});
 

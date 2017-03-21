@@ -7,7 +7,7 @@ import { Arguments, ArgumentOptions } from "./args.model";
 
 export namespace Args {
 
-	const ARGS_REGEXP = /-/g;
+	const ARGS_REGEXP = /^(-+)([\w\-]*)(=?)([\w\-\s]*)$/;
 
 	yargs.parse(mergedConfigArgsAndProcessArgv());
 
@@ -25,7 +25,7 @@ export namespace Args {
 	 * @returns {yargs.Argv}
 	 */
 	export function set<T>(args: ArgumentOptions<T>[]): T {
-		for (const x of args) {
+		for (let x of args) {
 			yargs.option(x.key, x);
 
 			if (_.isNil(x.default) || x.boolean || x.type || x.number || x.array || x.string) {
@@ -106,9 +106,12 @@ export namespace Args {
 			const castedValue = toPrimitive(keyOrValue);
 
 			if (_.startsWith(keyOrValue, "-") && !_.isNumber(castedValue)) {
-				previousKey = keyOrValue.replace(ARGS_REGEXP, "");
+				const stringPartial = ARGS_REGEXP.exec(keyOrValue)!;
+
+				previousKey = stringPartial[2];
 				// by default set the value to true, since argv with no value are truthy
-				parsedArgv[previousKey] = true;
+				const value = stringPartial[4];
+				parsedArgv[previousKey] = value ? toPrimitive(value) : true;
 				continue;
 			}
 
@@ -136,7 +139,7 @@ export namespace Args {
 	export function mergeWithOptions<T>(defaultArgs: ArgumentOptions<T>[], options?: Partial<T>): T {
 		const defaultOptions = {} as T;
 
-		for (const arg of defaultArgs) {
+		for (let arg of defaultArgs) {
 			if (_.isNil(arg.default)) {
 				continue;
 			}
