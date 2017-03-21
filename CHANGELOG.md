@@ -5,7 +5,7 @@
 ### Bug Fixes
 
 * **args:** handle arguments with `=` as they were not being parsed properly ([d2b9e56](https://github.com/alan-agius4/speedy-build-tools/commit/d2b9e56))
-* **tslint:** fixed result from being emitted multiple times ([981589b](https://github.com/alan-agius4/speedy-build-tools/commit/981589b))
+* **lint ts:** fixed result from being emitted multiple times ([981589b](https://github.com/alan-agius4/speedy-build-tools/commit/981589b))
 
 
 ### Features
