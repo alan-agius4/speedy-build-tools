@@ -25,7 +25,7 @@ export namespace Args {
 	 * @returns {yargs.Argv}
 	 */
 	export function set<T>(args: ArgumentOptions<T>[]): T {
-		for (let x of args) {
+		for (const x of args) {
 			yargs.option(x.key, x);
 
 			if (_.isNil(x.default) || x.boolean || x.type || x.number || x.array || x.string) {
@@ -139,7 +139,7 @@ export namespace Args {
 	export function mergeWithOptions<T>(defaultArgs: ArgumentOptions<T>[], options?: Partial<T>): T {
 		const defaultOptions = {} as T;
 
-		for (let arg of defaultArgs) {
+		for (const arg of defaultArgs) {
 			if (_.isNil(arg.default)) {
 				continue;
 			}
