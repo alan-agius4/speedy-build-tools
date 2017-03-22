@@ -1,3 +1,13 @@
+<a name="0.1.2"></a>
+## [0.1.2](https://github.com/alan-agius4/speedy-build-tools/compare/v0.1.1...v0.1.2) (2017-03-22)
+
+
+### Features
+
+* **lint config:** move them into a seperate folder ([9bd5299](https://github.com/alan-agius4/speedy-build-tools/commit/9bd5299))
+
+
+
 <a name="0.1.1"></a>
 ## [0.1.1](https://github.com/alan-agius4/speedy-build-tools/compare/v0.1.0...v0.1.1) (2017-03-22)
 
