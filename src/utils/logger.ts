@@ -16,7 +16,7 @@ export class Logger {
 	}
 
 	debug(method: string, message: string) {
-		if (Args.env.debug) {
+		if (!Args.env.debug) {
 			return;
 		}
 
