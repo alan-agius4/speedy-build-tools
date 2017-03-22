@@ -58,8 +58,7 @@ export async function handleLintHtml(options: LintHtmlOptions): Promise<HtmlLint
 	return failures;
 }
 
-// todo: change Dictionary to type boolean | string when typyings are released
-async function lintFile(filePath: string, configData: Dictionary<any>): Promise<HtmlLintResult> {
+async function lintFile(filePath: string, configData: RuleSet): Promise<HtmlLintResult> {
 	logger.debug(lintFile.name, `filePath: ${filePath}`);
 
 	return {
