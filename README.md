@@ -85,8 +85,7 @@ speedy-build-tools lint-html
 #### Rules
 By default, it will try to locate the `.htmlhintrc` file in the root of your project folder.
 
-If the file is not found it will fallback to an internal `.htmlhintrc`.
-This file can also be used as a base for your rules.
+If the file is not found it will fallback to an internal `.htmlhintrc` found in `config` folder.
 
 ___
 
@@ -107,7 +106,7 @@ speedy-build-tools lint-sass
 #### Rules
 By default, it will try to locate the `.stylelintrc` file in the root of your project folder.
 
-If the file is not found it will fallback to an internal `.stylelintrc`.
+If the file is not found it will fallback to an internal `.stylelintrc` found in `config` folder.
 This file can also be used as a base for your rules.
 
 ___
@@ -129,7 +128,7 @@ speedy-build-tools lint-ts
 #### Rules
 By default, it will try to locate the `tslint.json` file in the root of your project folder.
 
-If the file is not found it will fallback to an internal `tslint.json`.
+If the file is not found it will fallback to an internal `tslint.json` found in `config` folder.
 This file can also be used as a base for your rules.
 
 ___
