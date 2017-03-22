@@ -3,8 +3,8 @@ import { join } from "path";
 import { findIndex } from "lodash";
 
 import { Logger } from "../logger";
-import { WorkerProcess, WorkerMessage } from "./worker.model";
 import "./worker.process";
+import { WorkerProcess, WorkerMessage } from "./worker.model";
 
 const logger = new Logger("Worker Client");
 
@@ -30,7 +30,13 @@ export namespace Worker {
 					kill(worker.pid);
 				})
 				.on("error", error => logger.error(`task: ${task}, pid: ${worker.pid}`, error))
-				.on("exit", () => logger.debug(run.name, `Exit task: ${task}, pid: ${worker.pid}`))
+				.on("exit", code => {
+					logger.debug(run.name, `Exit task: ${task}, pid: ${worker.pid}, exitCode: ${code}`);
+
+					if (code > 0) {
+						process.exit(1);
+					}
+				})
 				.send({
 					task,
 					modulePath,
