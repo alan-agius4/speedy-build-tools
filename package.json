@@ -1,7 +1,7 @@
 {
   "name": "@speedy/build-tools",
   "version": "0.1.0",
-  "description": "Node CLI and API to build your application and library...",
+  "description": "Node CLI/API for build tools and utilities such as linting (html, sass, ts), clean, compile, etc... in order to simplify building libraries and applications.",
   "main": "./dist/index.js",
   "bin": {
     "speedy-build-tools": "./bin/speedy-build-tools.js",
