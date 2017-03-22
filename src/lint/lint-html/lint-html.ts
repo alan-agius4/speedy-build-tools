@@ -12,8 +12,7 @@ import {
 	readFileAsync,
 	glob,
 	buildCommandModule,
-	getConfigFilePath,
-	Dictionary
+	getConfigFilePath
 } from "../../utils";
 
 import { LintHtmlOptions, HtmlLintResult } from "./lint-html.model";
