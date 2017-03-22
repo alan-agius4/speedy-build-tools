@@ -49,12 +49,12 @@ speedy clean --paths **/.tmp
 Available tasks within `speedy-build-tools` which can be used via CLI.
 
 
-| Task              | Description                  |
-|-------------------|------------------------------|
-| `clean [paths..]` | Delete files and directories |
-| `lint-html`       | Lint Html files              |
-| `lint-sass`       | Lint Sass files              |
-| `lint-ts`         | Lint TypeScript files        |
+| Task               | Description                  |
+|--------------------|------------------------------|
+| `clean [paths...]` | Delete files and directories |
+| `lint-html`        | Lint Html files              |
+| `lint-sass`        | Lint Sass files              |
+| `lint-ts`          | Lint TypeScript files        |
 ___
 
 ### Clean

@@ -41,7 +41,7 @@ export async function clean(options: CleanOptions): Promise<boolean> {
 
 /** @internal */
 export const cleanModule = buildCommandModule({
-	command: "clean [paths..]",
+	command: "clean [paths...]",
 	description: "Delete files and directories",
 	handler: clean,
 	args: ARGS
