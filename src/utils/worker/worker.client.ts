@@ -4,6 +4,7 @@ import { findIndex } from "lodash";
 
 import { Logger } from "../logger";
 import { WorkerProcess, WorkerMessage } from "./worker.model";
+import "./worker.process";
 
 const logger = new Logger("Worker Client");
 
