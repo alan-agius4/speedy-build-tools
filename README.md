@@ -19,7 +19,7 @@ npm install @speedy/build-tools --save-dev
 
 ## NPM Scripts
 
-Instead of depending on external task runners, `speedy-build-tools` can be configured to run from npm scripts (`package.json`).
+Instead of depending on external task runners, `speedy-build-tools` can be configured to run from npm scripts in `package.json`.
 
 ```json
 "scripts": {
@@ -83,7 +83,8 @@ speedy-build-tools lint-html
 | `--continueOnError` | Determines whether to exit with a non-zero status code on lint errors | `false`                 | boolean |
 
 #### Rules
-By default, it will try to locate the `.htmlhintrc` file in the root of your project folder. 
+By default, it will try to locate the `.htmlhintrc` file in the root of your project folder.
+
 If the file is not found it will fallback to an internal `.htmlhintrc`.
 This file can also be used as a base for your rules.
 
@@ -104,7 +105,8 @@ speedy-build-tools lint-sass
 | `--continueOnError` | Determines whether to exit with a non-zero status code on lint errors | `false`                 | boolean |
 
 #### Rules
-By default, it will try to locate the `.stylelintrc` file in the root of your project folder. 
+By default, it will try to locate the `.stylelintrc` file in the root of your project folder.
+
 If the file is not found it will fallback to an internal `.stylelintrc`.
 This file can also be used as a base for your rules.
 
@@ -125,7 +127,8 @@ speedy-build-tools lint-ts
 | `--continueOnError` | Determines whether to exit with a non-zero status code on lint errors | `false`       | boolean |
 
 #### Rules
-By default, it will try to locate the `tslint.json` file in the root of your project folder. 
+By default, it will try to locate the `tslint.json` file in the root of your project folder.
+
 If the file is not found it will fallback to an internal `tslint.json`.
 This file can also be used as a base for your rules.
 
