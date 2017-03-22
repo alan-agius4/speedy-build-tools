@@ -1,3 +1,19 @@
+<a name="0.1.1"></a>
+## [0.1.1](https://github.com/alan-agius4/speedy-build-tools/compare/v0.1.0...v0.1.1) (2017-03-22)
+
+
+### Bug Fixes
+
+* **logger:** debug should not log when argv is false ([3a39cb8](https://github.com/alan-agius4/speedy-build-tools/commit/3a39cb8))
+* **worker:** error for exporting `worker.process` ([5376926](https://github.com/alan-agius4/speedy-build-tools/commit/5376926))
+
+
+### Features
+
+* **tslint:** exported `LintTsResult` ([078aa81](https://github.com/alan-agius4/speedy-build-tools/commit/078aa81))
+
+
+
 <a name="0.1.0"></a>
 # [0.1.0](https://github.com/alan-agius4/speedy-build-tools/compare/v0.0.3...v0.1.0) (2017-03-21)
 
