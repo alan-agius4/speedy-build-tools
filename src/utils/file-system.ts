@@ -94,5 +94,5 @@ export function getConfigFilePath(file: string): string {
 		return path;
 	}
 
-	return join(__dirname, "../../", file);
+	return join(__dirname, "../../config", file);
 }
