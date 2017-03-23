@@ -4,6 +4,7 @@ node_modules
 /tools
 /typings
 /src
+/test
 /tsconfig.json
 /tslint.json
 
