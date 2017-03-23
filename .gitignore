@@ -1,6 +1,6 @@
 node_modules
-.vscode
-dist/
-*.log
-test
+/dist
+/test
+/.vscode
 npm-debug.*
+*.tgz
