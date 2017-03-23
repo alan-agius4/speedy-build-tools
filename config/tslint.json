@@ -7,7 +7,6 @@
 		],
 		"curly": true,
 		"eofline": false,
-		"seperator-between-imports": true,
 		"prefer-for-of": true,
 		"forin": true,
 		"indent": [
