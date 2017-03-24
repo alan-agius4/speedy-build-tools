@@ -22,16 +22,22 @@ const logger = new Logger("Lint SASS");
 
 export async function lintSass(options?: Partial<LintSassOptions>): Promise<LinterResult[]> {
 	const timer = new Timer(logger);
+	let result: LinterResult[] | undefined;
+	const mergedOptions = Args.mergeWithOptions(ARGS, options);
 
 	try {
 		timer.start();
-		const mergedOptions = Args.mergeWithOptions(ARGS, options);
-		return await Worker.run<LinterResult[]>(__filename, handleLintSass.name, mergedOptions);
+		result = await Worker.run<LinterResult[]>(__filename, handleLintSass.name, mergedOptions);
+		return result;
 	} catch (error) {
 		logger.error("", error);
 		throw error;
 	} finally {
 		timer.finish();
+
+		if (result && result.length && !mergedOptions.continueOnError) {
+			process.exit(1);
+		}
 	}
 }
 
@@ -49,11 +55,6 @@ export async function handleLintSass(options: LintSassOptions): Promise<LinterRe
 	).filter(x => x.errored);
 
 	failures.forEach(x => logger.info(formatters.string(x.results)));
-
-	if (failures.length && !options.continueOnError) {
-		process.exit(1);
-	}
-
 	return failures;
 }
 
