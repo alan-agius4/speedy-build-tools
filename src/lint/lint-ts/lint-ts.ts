@@ -17,16 +17,22 @@ const logger = new Logger("Lint TS");
 
 export async function lintTs(options?: Partial<LintTsOptions>): Promise<LintTsResult> {
 	const timer = new Timer(logger);
+	let result: LintTsResult | undefined;
+	const mergedOptions = Args.mergeWithOptions(ARGS, options);
 
 	try {
 		timer.start();
-		const mergedOptions = Args.mergeWithOptions(ARGS, options);
-		return await Worker.run<LintTsResult>(__filename, handleLintTs.name, mergedOptions);
+		result = await Worker.run<LintTsResult>(__filename, handleLintTs.name, mergedOptions);
+		return result;
 	} catch (error) {
 		logger.error("", error);
 		throw error;
 	} finally {
 		timer.finish();
+
+		if (result && result.failuresCount > 0 && !mergedOptions.continueOnError) {
+			process.exit(1);
+		}
 	}
 }
 
@@ -53,9 +59,6 @@ export async function handleLintTs(options: LintTsOptions): Promise<LintTsResult
 	const result = linter.getResult();
 	if (result.failureCount > 0) {
 		logger.info(result.output);
-		if (!options.continueOnError) {
-			process.exit(1);
-		}
 	}
 
 	return {
