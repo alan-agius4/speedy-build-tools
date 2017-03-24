@@ -2,4 +2,4 @@
 
 process.title = "speedy-build-tools";
 
-module.exports = require("../dist/tasks");
+require("../dist/tasks");
