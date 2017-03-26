@@ -1,3 +1,20 @@
+<a name="0.1.4"></a>
+## [0.1.4](https://github.com/alan-agius4/speedy-build-tools/compare/v0.1.3...v0.1.4) (2017-03-26)
+
+
+### Bug Fixes
+
+* **config:** fixed an issue which was preventing base configs to be shared ([cd05b20](https://github.com/alan-agius4/speedy-build-tools/commit/cd05b20))
+* **lint:** process was exiting before finish log ([c0c6f96](https://github.com/alan-agius4/speedy-build-tools/commit/c0c6f96))
+* **typings:** missing types in package ([69181b1](https://github.com/alan-agius4/speedy-build-tools/commit/69181b1))
+
+
+### Features
+
+* **typescript:** update `TypeScript` to `2.2.1` ([84b71db](https://github.com/alan-agius4/speedy-build-tools/commit/84b71db))
+
+
+
 <a name="0.1.3"></a>
 ## [0.1.3](https://github.com/alan-agius4/speedy-build-tools/compare/v0.1.2...v0.1.3) (2017-03-23)
 
