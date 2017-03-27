@@ -20,3 +20,4 @@ tsconfig.test.json
 yarn.lock
 *.tgz
 npm-debug.*
+.DS_Store

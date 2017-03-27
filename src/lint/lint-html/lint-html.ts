@@ -22,16 +22,22 @@ const logger = new Logger("Lint HTML");
 
 export async function lintHtml(options?: Partial<LintHtmlOptions>): Promise<HtmlLintResult[]> {
 	const timer = new Timer(logger);
+	let result: HtmlLintResult[] | undefined;
+	const mergedOptions = Args.mergeWithOptions(ARGS, options);
 
 	try {
 		timer.start();
-		const mergedOptions = Args.mergeWithOptions(ARGS, options);
-		return await Worker.run<HtmlLintResult[]>(__filename, handleLintHtml.name, mergedOptions);
+		result = await Worker.run<HtmlLintResult[]>(__filename, handleLintHtml.name, mergedOptions);
+		return result;
 	} catch (error) {
 		logger.error("", error);
 		throw error;
 	} finally {
 		timer.finish();
+
+		if (result && result.length && !mergedOptions.continueOnError) {
+			process.exit(1);
+		}
 	}
 }
 
@@ -49,11 +55,6 @@ export async function handleLintHtml(options: LintHtmlOptions): Promise<HtmlLint
 	);
 
 	failures.forEach(x => logger.info(formatFailuresForFile(x)));
-
-	if (failures.length && !options.continueOnError) {
-		process.exit(1);
-	}
-
 	return failures;
 }
 

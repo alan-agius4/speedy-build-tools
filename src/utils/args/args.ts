@@ -22,7 +22,7 @@ export namespace Args {
 	 * @export
 	 * @template T
 	 * @param {ArgumentOptions<T>[]} args
-	 * @returns {yargs.Argv}
+	 * @returns {T}
 	 */
 	export function set<T>(args: ArgumentOptions<T>[]): T {
 		for (const x of args) {
