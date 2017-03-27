@@ -19,3 +19,4 @@ tsconfig.build.json
 tsconfig.test.json
 yarn.lock
 *.tgz
+npm-debug.*
