@@ -1,5 +1,17 @@
 {
 	"rules": {
+		"array-type": [
+			true,
+			"array"
+		],
+		"arrow-parens": [
+			true,
+			"ban-single-arg-parens"
+		],
+		"arrow-return-shorthand": [
+			true,
+			"multiline"
+		],
 		"class-name": true,
 		"comment-format": [
 			true,
@@ -7,13 +19,13 @@
 		],
 		"curly": true,
 		"eofline": false,
-		"prefer-for-of": true,
 		"forin": true,
+		"import-spacing": true,
 		"indent": [
 			true,
 			"tabs"
 		],
-		"prefer-const": true,
+		"interface-over-type-literal": true,
 		"label-position": true,
 		"max-line-length": [
 			true,
@@ -39,8 +51,13 @@
 				]
 			}
 		],
+		"no-angle-bracket-type-assertion": true,
 		"no-arg": true,
 		"no-bitwise": true,
+		"no-consecutive-blank-lines": [
+			true,
+			2
+		],
 		"no-console": [
 			true,
 			"time",
@@ -55,21 +72,43 @@
 		"no-inferrable-types": [
 			true
 		],
+		"no-invalid-this": true,
 		"no-shadowed-variable": true,
 		"no-string-literal": true,
+		"no-string-throw": true,
 		"no-switch-case-fall-through": false,
 		"no-trailing-whitespace": true,
+		"no-unnecessary-initializer": true,
 		"no-unused-expression": true,
+		"no-unused-variable": [
+			true,
+			{
+				"ignore-pattern": "^_"
+			},
+			"check-parameters"
+		],
 		"no-use-before-declare": true,
 		"no-var-keyword": true,
+		"object-literal-key-quotes": [
+			true,
+			"as-needed"
+		],
+		"object-literal-shorthand": true,
 		"object-literal-sort-keys": false,
 		"one-line": [
 			true,
-			"check-open-brace",
 			"check-catch",
 			"check-else",
+			"check-open-brace",
 			"check-whitespace"
 		],
+		"only-arrow-functions": [
+			"allow-declarations",
+			"allow-named-functions",
+			true
+		],
+		"prefer-const": true,
+		"prefer-for-of": true,
 		"quotemark": [
 			true,
 			"double"
@@ -79,12 +118,16 @@
 			true,
 			"always"
 		],
+		"space-before-function-paren": [
+			false,
+			"never"
+		],
 		"switch-default": false,
 		"trailing-comma": [
 			true,
 			{
-				"singleline": "never",
-				"multiline": "never"
+				"multiline": "never",
+				"singleline": "never"
 			}
 		],
 		"triple-equals": [
@@ -94,16 +137,16 @@
 		"use-isnan": true,
 		"variable-name": [
 			true,
-			"check-format",
 			"allow-leading-underscore",
-			"allow-trailing-underscore"
+			"allow-trailing-underscore",
+			"check-format"
 		],
 		"whitespace": [
 			true,
 			"check-branch",
 			"check-decl",
-			"check-operator",
 			"check-module",
+			"check-operator",
 			"check-separator",
 			"check-type"
 		]
