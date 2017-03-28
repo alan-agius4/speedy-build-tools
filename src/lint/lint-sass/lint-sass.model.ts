@@ -1,15 +1,15 @@
+import { FormatterType } from "stylelint";
+
 export interface LintSassOptions {
 	files: string | string[];
 	config: string;
-	formatter: LintSassFormatters;
+	formatter: FormatterType;
 	continueOnError: boolean;
 	fix: boolean;
 }
 
-export type LintSassFormatters = "json" | "string" | "verbose";
-
 export const LINT_SASS_FORMATTERS = {
-	json: "json" as LintSassFormatters,
-	string: "string" as LintSassFormatters,
-	verbose: "verbose" as LintSassFormatters
+	json: "json" as FormatterType,
+	string: "string" as FormatterType,
+	verbose: "verbose" as FormatterType
 };
