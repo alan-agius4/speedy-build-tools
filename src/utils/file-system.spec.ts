@@ -35,7 +35,7 @@ describe("fileSystemSpec", () => {
 
 	describe("readJsonFileAsync", () => {
 		const json = {
-			"id": 10,
+			id: 10,
 			text: "hello world"
 		};
 

@@ -95,7 +95,7 @@ export namespace Args {
 	 */
 	export function parse(argv: string[]): Dictionary<any> {
 		const parsedArgv: Dictionary<any> = {
-			"_": []
+			_: []
 		};
 
 		let previousKey = "_";

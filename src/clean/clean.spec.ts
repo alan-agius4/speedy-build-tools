@@ -7,7 +7,7 @@ describe("cleanSpec", () => {
 
 	beforeEach(() => {
 		mockFs({
-			"src": {
+			src: {
 				"file-1.txt": "",
 				"file-2.txt": "",
 				"file-3.txt": "",

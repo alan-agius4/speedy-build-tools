@@ -63,7 +63,7 @@ async function lintFile(filePath: string, configData: RuleSet): Promise<HtmlLint
 
 	return {
 		result: HTMLHint.verify(await readFileAsync(filePath), configData),
-		filePath: filePath
+		filePath
 	};
 }
 
