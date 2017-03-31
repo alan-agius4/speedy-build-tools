@@ -71,7 +71,7 @@ export namespace Args {
 		_.forEach(mergedArgv, (value, key) => {
 			if (key === "_") {
 				return;
-			};
+			}
 
 			const tranformedKey = `--${key}`;
 
