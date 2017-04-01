@@ -31,6 +31,10 @@
 			true,
 			140
 		],
+		"member-access": [
+			true,
+			"no-public"
+		],
 		"member-ordering": [
 			true,
 			{
@@ -78,16 +82,9 @@
 		"no-string-throw": true,
 		"no-switch-case-fall-through": false,
 		"no-trailing-whitespace": true,
+		"no-unnecessary-callback-wrapper": true,
 		"no-unnecessary-initializer": true,
 		"no-unused-expression": true,
-		"no-unused-variable": [
-			true,
-			{
-				"ignore-pattern": "^_"
-			},
-			"check-parameters"
-		],
-		"no-use-before-declare": true,
 		"no-var-keyword": true,
 		"object-literal-key-quotes": [
 			true,
@@ -109,6 +106,10 @@
 		],
 		"prefer-const": true,
 		"prefer-for-of": true,
+		"prefer-template": [
+			true,
+			"allow-single-concat"
+		],
 		"quotemark": [
 			true,
 			"double"
