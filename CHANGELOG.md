@@ -4,8 +4,8 @@
 
 ### Features
 
-* **lint ts:** update ts lint rules ([7fb49c6](https://github.com/alan-agius4/speedy-build-tools/commit/7fb49c6))
-* **tslint:** updated to `5.x` ([7f68ccb](https://github.com/alan-agius4/speedy-build-tools/commit/7f68ccb))
+* **ts lint:** update ts lint rules ([7fb49c6](https://github.com/alan-agius4/speedy-build-tools/commit/7fb49c6))
+* **ts lint:** updated to `5.x` ([7f68ccb](https://github.com/alan-agius4/speedy-build-tools/commit/7f68ccb))
 
 
 
