@@ -5,6 +5,7 @@ import { lintSassModule } from "./lint/lint-sass/lint-sass";
 import { lintTsModule } from "./lint/lint-ts/lint-ts";
 import { lintHtmlModule } from "./lint/lint-html/lint-html";
 
+// tslint:disable-next-line:no-unused-expression
 yargs
 	.command(lintSassModule)
 	.command(lintTsModule)
