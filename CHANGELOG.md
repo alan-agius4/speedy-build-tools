@@ -1,3 +1,14 @@
+<a name="0.2.0"></a>
+# [0.2.0](https://github.com/alan-agius4/speedy-build-tools/compare/v0.1.4...v0.2.0) (2017-04-01)
+
+
+### Features
+
+* **lint ts:** update ts lint rules ([7fb49c6](https://github.com/alan-agius4/speedy-build-tools/commit/7fb49c6))
+* **tslint:** updated to `5.x` ([7f68ccb](https://github.com/alan-agius4/speedy-build-tools/commit/7f68ccb))
+
+
+
 <a name="0.1.4"></a>
 ## [0.1.4](https://github.com/alan-agius4/speedy-build-tools/compare/v0.1.3...v0.1.4) (2017-03-26)
 
