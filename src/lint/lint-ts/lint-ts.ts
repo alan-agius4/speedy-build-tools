@@ -1,3 +1,4 @@
+import * as _ from "lodash";
 import { Linter, Configuration } from "tslint";
 
 import {
@@ -57,17 +58,17 @@ export async function handleLintTs(options: LintTsOptions): Promise<LintTsResult
 	);
 
 	const result = linter.getResult();
-	if (result.failureCount > 0) {
+	if (!_.isEmpty(result.failures)) {
 		logger.info(result.output);
 	}
 
 	return {
-		failuresCount: result.failureCount,
+		failuresCount: result.failures.length,
 		fixesCount: result.fixes ? result.fixes.length : undefined
 	};
 }
 
-async function lintFile(filePath: string, configData: Configuration.IConfigurationLoadResult, linter: Linter): Promise<void> {
+async function lintFile(filePath: string, configData: Configuration.IConfigurationFile, linter: Linter): Promise<void> {
 	logger.debug(lintFile.name, `filePath: ${filePath}`);
 	linter.lint(filePath, await readFileAsync(filePath), configData);
 }
