@@ -59,7 +59,7 @@ describe("cleanSpec", () => {
 
 		const result = await clean({ paths });
 		expect(result).toBe(true);
-		expect(glob("**/file-1.json").length).toBeTruthy();
+		expect(glob("**/file-1.json").length).toBe(1);
 
 		done();
 	});
