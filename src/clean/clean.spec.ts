@@ -42,9 +42,8 @@ describe("cleanSpec", () => {
 			"**/*.json"
 		];
 
-		const result = await clean({ paths });
-		expect(result).toBe(true);
-		expect(glob(paths).length).toBeFalsy();
+		await clean({ paths });
+		expect(glob(paths).length).toBe(0);
 
 		done();
 	});
@@ -57,8 +56,7 @@ describe("cleanSpec", () => {
 			"!**/file-1.json"
 		];
 
-		const result = await clean({ paths });
-		expect(result).toBe(true);
+		await clean({ paths });
 		expect(glob("**/file-1.json").length).toBe(1);
 
 		done();

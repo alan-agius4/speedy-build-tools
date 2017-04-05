@@ -17,7 +17,7 @@ export interface CleanOptions {
 
 const logger = new Logger("Clean");
 
-export async function clean(options: CleanOptions): Promise<boolean> {
+export async function clean(options: CleanOptions): Promise<void> {
 	const timer = new Timer(logger);
 
 	try {
@@ -29,8 +29,6 @@ export async function clean(options: CleanOptions): Promise<boolean> {
 		}
 
 		await Promise.all(glob(paths).map(deleteAsync));
-
-		return true;
 	} catch (error) {
 		logger.error("", error);
 		throw error;
