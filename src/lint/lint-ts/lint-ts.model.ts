@@ -8,7 +8,7 @@ export interface LintTsOptions {
 
 export interface LintTsResult {
 	failuresCount: number;
-	fixesCount?: number;
+	fixesCount: number;
 }
 
 export type LintTsFormatters = "vso"

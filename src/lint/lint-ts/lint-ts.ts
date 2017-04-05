@@ -64,7 +64,7 @@ export async function handleLintTs(options: LintTsOptions): Promise<LintTsResult
 
 	return {
 		failuresCount: result.failures.length,
-		fixesCount: result.fixes ? result.fixes.length : undefined
+		fixesCount: result.fixes ? result.fixes.length : 0
 	};
 }
 
