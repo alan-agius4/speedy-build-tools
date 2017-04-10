@@ -1,5 +1,6 @@
 import * as stylefmt from "stylefmt";
 import * as postcss from "postcss";
+import * as postcssScss from "postcss-scss";
 import { writeFileSync } from "fs";
 import { lint, LinterResult, formatters, LinterOptions } from "stylelint";
 
@@ -78,7 +79,8 @@ async function lintFile(filePath: string, configData: JSON, options: LintSassOpt
 	const result = await postcss([
 		stylefmt({ configFile: options.config })
 	]).process(fileContent, {
-		from: filePath
+		from: filePath,
+		syntax: postcssScss
 	});
 
 	const fixedFilesContent = result.css;

@@ -47,6 +47,7 @@
     "htmlhint": "^0.9.13",
     "lodash": "^4.17.4",
     "postcss": "^5.2.15",
+    "postcss-scss": "^0.4.1",
     "rimraf": "^2.6.0",
     "stylefmt": "^5.3.0",
     "stylelint": "^7.9.0",
