@@ -1,3 +1,18 @@
+<a name="0.3.0"></a>
+# [0.3.0](https://github.com/alan-agius4/speedy-build-tools/compare/v0.2.0...v0.3.0) (2017-04-10)
+
+
+### Bug Fixes
+
+* **lint sass:** fix error on auto fix when SCSS syntax is present ([e79cd17](https://github.com/alan-agius4/speedy-build-tools/commit/e79cd17))
+
+
+### Features
+
+* **lint ts:** change `fixesCount` to always return a value ([cac10f9](https://github.com/alan-agius4/speedy-build-tools/commit/cac10f9))
+
+
+
 <a name="0.2.0"></a>
 # [0.2.0](https://github.com/alan-agius4/speedy-build-tools/compare/v0.1.4...v0.2.0) (2017-04-01)
 
