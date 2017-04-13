@@ -95,20 +95,20 @@ ___
 speedy-build-tools lint-sass
 ```
 
-| Option              | Description                                                           | Default Value           | Type    |
-|---------------------|-----------------------------------------------------------------------|-------------------------|---------|
-| `--config`, `-c`    | Lint rules file path                                                  | `.stylelintrc`          | string  |
-| `--files`, `-f`     | Files to be linted - Supports glob patterns                           | `src/**/*.*(scss\|sass)` | Array   |
-| `--formatter`       | Formatter to use to format the linter results                         | `verbose`               | string  |
-| `--fix`             | Determines whether to auto fix lint issues (which support fixing)     | `false`                 | boolean |
-| `--continueOnError` | Determines whether to exit with a non-zero status code on lint errors | `false`                 | boolean |
+| Option              | Description                                                           | Default Value           | Type                       |
+|---------------------|-----------------------------------------------------------------------|-------------------------|----------------------------|
+| `--config`, `-c`    | Lint rules file path                                                  | `.stylelintrc`          | string                     |
+| `--files`, `-f`     | Files to be linted - Supports glob patterns                           | `src/**/*.*(scss\|sass)`| Array                      |
+| `--formatter`       | Formatter to use to format the linter results                         | `verbose`               | `json \| verbose \| string`  |
+| `--fix`             | Determines whether to auto fix lint issues (which support fixing)     | `false`                 | boolean                    |
+| `--continueOnError` | Determines whether to exit with a non-zero status code on lint errors | `false`                 | boolean                    |
 
 #### Rules
 By default, it will try to locate the `.stylelintrc` file in the root of your project folder.
 
 If the file is not found it will fallback to an internal `.stylelintrc` found in `config` folder.
 This file can also be used as a base for your rules.
-
+`vso | verbose | prose | stylish | pmd | json | msbuild | fileList | codeFrame	| checkstyle`
 ___
 
 ### Lint TypeScript
@@ -117,13 +117,13 @@ ___
 speedy-build-tools lint-ts
 ```
 
-| Option              | Description                                                           | Default Value | Type    |
-|---------------------|-----------------------------------------------------------------------|---------------|---------|
-| `--config`, `-c`    | Lint rules file path                                                  | `tslint.json` | string  |
-| `--files`, `-f`     | Files to be linted - Supports glob patterns                           | `src/**/*.ts` | Array   |
-| `--formatter`       | Formatter to use to format the linter results                         | `stylish`     | string  |
-| `--fix`             | Determines whether to auto fix lint issues (which support fixing)     | `false`       | boolean |
-| `--continueOnError` | Determines whether to exit with a non-zero status code on lint errors | `false`       | boolean |
+| Option              | Description                                                           | Default Value | Type                                                                                          |
+|---------------------|-----------------------------------------------------------------------|---------------|-----------------------------------------------------------------------------------------------|
+| `--config`, `-c`    | Lint rules file path                                                  | `tslint.json` | string                                                                                        |
+| `--files`, `-f`     | Files to be linted - Supports glob patterns                           | `src/**/*.ts` | Array                                                                                         |
+| `--formatter`       | Formatter to use to format the linter results                         | `stylish`     | `vso \| verbose \| prose \| stylish \| pmd \| json \| msbuild \| fileList \| codeFrame	\| checkstyle` |
+| `--fix`             | Determines whether to auto fix lint issues (which support fixing)     | `false`       | boolean                                                                                       |
+| `--continueOnError` | Determines whether to exit with a non-zero status code on lint errors | `false`       | boolean                                                                                       |
 
 #### Rules
 By default, it will try to locate the `tslint.json` file in the root of your project folder.
