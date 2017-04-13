@@ -79,7 +79,7 @@ speedy-build-tools lint-html
 | Option              | Description                                                           | Default Value           | Type    |
 |---------------------|-----------------------------------------------------------------------|-------------------------|---------|
 | `--config`, `-c`    | Lint rules file path                                                  | `.htmlhintrc`           | string  |
-| `--files`, `-f`     | Files to be linted - Supports glob patterns                           | `src/**/*.*(html|htm)`  | Array   |
+| `--files`, `-f`     | Files to be linted - Supports glob patterns                           | `src/**/*.*(html\|htm)`  | Array   |
 | `--continueOnError` | Determines whether to exit with a non-zero status code on lint errors | `false`                 | boolean |
 
 #### Rules
@@ -98,7 +98,7 @@ speedy-build-tools lint-sass
 | Option              | Description                                                           | Default Value           | Type    |
 |---------------------|-----------------------------------------------------------------------|-------------------------|---------|
 | `--config`, `-c`    | Lint rules file path                                                  | `.stylelintrc`          | string  |
-| `--files`, `-f`     | Files to be linted - Supports glob patterns                           | `src/**/*.*(scss|sass)` | Array   |
+| `--files`, `-f`     | Files to be linted - Supports glob patterns                           | `src/**/*.*(scss\|sass)` | Array   |
 | `--formatter`       | Formatter to use to format the linter results                         | `verbose`               | string  |
 | `--fix`             | Determines whether to auto fix lint issues (which support fixing)     | `false`                 | boolean |
 | `--continueOnError` | Determines whether to exit with a non-zero status code on lint errors | `false`                 | boolean |
