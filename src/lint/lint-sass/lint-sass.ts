@@ -2,20 +2,10 @@ import * as stylefmt from "stylefmt";
 import * as postcss from "postcss";
 import * as postcssScss from "postcss-scss";
 import { writeFileSync } from "fs";
+import { Logger, Timer, fileSystem } from "@speedy/node-core";
 import { lint, LinterResult, formatters, LinterOptions } from "stylelint";
 
-import {
-	Logger,
-	Worker,
-	Timer,
-	Args,
-	readJsonFileAsync,
-	readFileAsync,
-	glob,
-	buildCommandModule,
-	getConfigFilePath
-} from "../../utils";
-
+import { Worker, args, buildCommandModule, getConfigFilePath } from "../../utils";
 import { LintSassOptions } from "./lint-sass.model";
 import { ARGS } from "./lint-sass.args";
 
@@ -24,7 +14,7 @@ const logger = new Logger("Lint SASS");
 export async function lintSass(options?: Partial<LintSassOptions>): Promise<LinterResult[]> {
 	const timer = new Timer(logger);
 	let result: LinterResult[] | undefined;
-	const mergedOptions = Args.mergeWithOptions(ARGS, options);
+	const mergedOptions = args.mergeWithOptions(ARGS, options);
 
 	try {
 		timer.start();
@@ -47,11 +37,11 @@ export async function handleLintSass(options: LintSassOptions): Promise<LinterRe
 	const configFilePath = getConfigFilePath(options.config);
 	logger.debug(handleLintSass.name, `Config file path: ${configFilePath}`);
 
-	const configData = await readJsonFileAsync<JSON>(configFilePath);
+	const configData = await fileSystem.readJsonFileAsync<JSON>(configFilePath);
 
 	const failures = (
 		await Promise.all(
-			glob(options.files).map(x => lintFile(x, configData, options))
+			fileSystem.glob(options.files).map(x => lintFile(x, configData, options))
 		)
 	).filter(x => x.errored);
 
@@ -60,7 +50,7 @@ export async function handleLintSass(options: LintSassOptions): Promise<LinterRe
 }
 
 async function lintFile(filePath: string, configData: JSON, options: LintSassOptions): Promise<LinterResult> {
-	const fileContent = await readFileAsync(filePath);
+	const fileContent = await fileSystem.readFileAsync(filePath);
 
 	const lintOptions: LinterOptions = {
 		config: configData,

@@ -1,7 +1,7 @@
 import * as yargs from "yargs";
 
 import { ArgumentOptions } from "./args/args.model";
-import { Args } from "./args/args";
+import { args } from "./args/args";
 
 export interface CommandModule {
 	command: string;
@@ -15,6 +15,6 @@ export function buildCommandModule(options: CommandModule): yargs.CommandModule 
 		command: options.command,
 		describe: options.description,
 		handler: args => options.handler(args).catch(() => process.exit(1)),
-		builder: () => Args.set(options.args)
+		builder: () => args.set(options.args)
 	};
 }

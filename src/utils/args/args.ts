@@ -1,15 +1,12 @@
 import * as  _ from "lodash";
+import { args as coreArgs } from "@speedy/node-core";
 import * as yargs from "yargs";
 
-import { Dictionary } from "../dictionary";
-import { toPrimitive } from "../string";
 import { Arguments, ArgumentOptions } from "./args.model";
 
-export namespace Args {
+export namespace args {
 
-	const ARGS_REGEXP = /^(-+)([\w\-]*)(=?)([\w\-\s]*)$/;
-
-	yargs.parse(mergedConfigArgsAndProcessArgv());
+	yargs.parse(coreArgs.mergedConfigArgsAndProcessArgv());
 
 	set<Arguments>([{
 		key: "debug",
@@ -50,84 +47,6 @@ export namespace Args {
 		}
 
 		return yargs.argv;
-	}
-
-	/**
-	 * Merges `process.env.npm_config_argv` with `process.argv` and remove duplicate arguments
-	 *
-	 * @export
-	 * @returns {string[]}
-	 */
-	export function mergedConfigArgsAndProcessArgv(): string[] {
-		if (!process.env.npm_config_argv) {
-			return process.argv.slice(2);
-		}
-
-		const parsedArgv = parse(process.argv);
-		const parsedConfigArgv = parse(JSON.parse(process.env.npm_config_argv).cooked);
-		const mergedArgv = { ...parsedArgv, ...parsedConfigArgv };
-		const tranformedArgs = _.flatten(_.get<string[]>(parsedArgv, "_"));
-
-		_.forEach(mergedArgv, (value, key) => {
-			if (key === "_") {
-				return;
-			}
-
-			const tranformedKey = `--${key}`;
-
-			if (_.isArray(value)) {
-				tranformedArgs.push(tranformedKey, ..._.flatten(value).map(_.toString));
-				return;
-			}
-
-			tranformedArgs.push(tranformedKey, _.toString(value));
-		});
-
-		return tranformedArgs;
-	}
-
-	/**
-	 * Parse Argv and transform them to a Dictionary
-	 *
-	 * @export
-	 * @param {string[]} argv
-	 * @returns {Dictionary<any>}
-	 */
-	export function parse(argv: string[]): Dictionary<any> {
-		const parsedArgv: Dictionary<any> = {
-			_: []
-		};
-
-		let previousKey = "_";
-		let i = _.startsWith(argv[0], "-") ? 0 : 2;
-
-		for (i; i < argv.length; i++) {
-			const keyOrValue = argv[i];
-			const castedValue = toPrimitive(keyOrValue);
-
-			if (_.startsWith(keyOrValue, "-") && !_.isNumber(castedValue)) {
-				const stringPartial = ARGS_REGEXP.exec(keyOrValue)!;
-
-				previousKey = stringPartial[2];
-				// by default set the value to true, since argv with no value are truthy
-				const value = stringPartial[4];
-				parsedArgv[previousKey] = value ? toPrimitive(value) : true;
-				continue;
-			}
-
-			const currentValue = parsedArgv[previousKey];
-
-			if (_.isBoolean(currentValue)) {
-				// we have a value for the parameter, so we override it.
-				parsedArgv[previousKey] = castedValue;
-			} else if (_.isArray(currentValue)) {
-				parsedArgv[previousKey] = [...currentValue, castedValue];
-			} else {
-				parsedArgv[previousKey] = [currentValue, castedValue];
-			}
-		}
-
-		return parsedArgv;
 	}
 
 	/**

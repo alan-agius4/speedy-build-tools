@@ -1,20 +1,9 @@
 import * as _ from "lodash";
 import { HTMLHint, RuleSet } from "htmlhint";
 import { yellow, white, red } from "chalk";
+import { Logger, Timer, fileSystem } from "@speedy/node-core";
 
-import {
-	getRootPath,
-	Logger,
-	Worker,
-	Timer,
-	Args,
-	readJsonFileAsync,
-	readFileAsync,
-	glob,
-	buildCommandModule,
-	getConfigFilePath
-} from "../../utils";
-
+import { Worker, args, buildCommandModule, getConfigFilePath } from "../../utils";
 import { LintHtmlOptions, HtmlLintResult } from "./lint-html.model";
 import { ARGS } from "./lint-html.args";
 
@@ -23,7 +12,7 @@ const logger = new Logger("Lint HTML");
 export async function lintHtml(options?: Partial<LintHtmlOptions>): Promise<HtmlLintResult[]> {
 	const timer = new Timer(logger);
 	let result: HtmlLintResult[] | undefined;
-	const mergedOptions = Args.mergeWithOptions(ARGS, options);
+	const mergedOptions = args.mergeWithOptions(ARGS, options);
 
 	try {
 		timer.start();
@@ -45,11 +34,11 @@ export async function lintHtml(options?: Partial<LintHtmlOptions>): Promise<Html
 export async function handleLintHtml(options: LintHtmlOptions): Promise<HtmlLintResult[]> {
 	const configFilePath = getConfigFilePath(options.config);
 	logger.debug(handleLintHtml.name, `Config file path: ${configFilePath}`);
-	const rules = await readJsonFileAsync<RuleSet>(configFilePath);
+	const rules = await fileSystem.readJsonFileAsync<RuleSet>(configFilePath);
 
 	const failures = _.filter(
 		await Promise.all(
-			glob(options.files).map(x => lintFile(x, rules))
+			fileSystem.glob(options.files).map(x => lintFile(x, rules))
 		),
 		x => !_.isEmpty(x.result)
 	);
@@ -62,13 +51,13 @@ async function lintFile(filePath: string, configData: RuleSet): Promise<HtmlLint
 	logger.debug(lintFile.name, `filePath: ${filePath}`);
 
 	return {
-		result: HTMLHint.verify(await readFileAsync(filePath), configData),
+		result: HTMLHint.verify(await fileSystem.readFileAsync(filePath), configData),
 		filePath
 	};
 }
 
 function formatFailuresForFile(failure: HtmlLintResult): string {
-	let message = `\n${failure.filePath.replace(getRootPath(), "")}`;
+	let message = `\n${failure.filePath.replace(fileSystem.getRootPath(), "")}`;
 
 	for (const error of failure.result) {
 		message += `\n${red(`${error.line}:${error.col}`)}: ${white(error.message)} ${yellow(`(${error.rule.id})`)}`;

@@ -1,13 +1,7 @@
 import * as _ from "lodash";
+import { fileSystem, Logger, Timer } from "@speedy/node-core";
 
-import {
-	deleteAsync,
-	Logger,
-	Timer,
-	Args,
-	glob,
-	buildCommandModule
-} from "../utils";
+import { args, buildCommandModule } from "../utils";
 
 import { ARGS } from "./clean.args";
 
@@ -22,13 +16,13 @@ export async function clean(options: CleanOptions): Promise<void> {
 
 	try {
 		timer.start();
-		const { paths } = Args.mergeWithOptions(ARGS, options);
+		const { paths } = args.mergeWithOptions(ARGS, options);
 
 		if (_.isEmpty(paths)) {
 			throw new Error("Paths is missing");
 		}
 
-		await Promise.all(glob(paths).map(deleteAsync));
+		await Promise.all(fileSystem.glob(paths).map(fileSystem.deleteAsync));
 	} catch (error) {
 		logger.error("", error);
 		throw error;

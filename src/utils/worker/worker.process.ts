@@ -1,4 +1,5 @@
-import { Logger } from "../logger";
+import { Logger } from "@speedy/node-core";
+
 import { WorkerMessage } from "./worker.model";
 
 const logger = new Logger("Worker Process");
