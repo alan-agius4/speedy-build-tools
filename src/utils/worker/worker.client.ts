@@ -1,8 +1,8 @@
 import { fork, ChildProcess } from "child_process";
 import { join } from "path";
 import { findIndex } from "lodash";
+import { Logger } from "@speedy/node-core";
 
-import { Logger } from "../logger";
 import "./worker.process";
 import { WorkerProcess, WorkerMessage } from "./worker.model";
 

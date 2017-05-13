@@ -1,16 +1,8 @@
 import * as _ from "lodash";
 import { Linter, Configuration } from "tslint";
+import { Logger, Timer, fileSystem } from "@speedy/node-core";
 
-import {
-	Logger,
-	Worker,
-	Timer,
-	readFileAsync,
-	buildCommandModule,
-	Args,
-	glob,
-	getConfigFilePath
-} from "../../utils";
+import { Worker, buildCommandModule, args, getConfigFilePath } from "../../utils";
 import { LintTsOptions, LintTsResult } from "./lint-ts.model";
 import { ARGS } from "./lint-ts.args";
 
@@ -19,7 +11,7 @@ const logger = new Logger("Lint TS");
 export async function lintTs(options?: Partial<LintTsOptions>): Promise<LintTsResult> {
 	const timer = new Timer(logger);
 	let result: LintTsResult | undefined;
-	const mergedOptions = Args.mergeWithOptions(ARGS, options);
+	const mergedOptions = args.mergeWithOptions(ARGS, options);
 
 	try {
 		timer.start();
@@ -54,7 +46,7 @@ export async function handleLintTs(options: LintTsOptions): Promise<LintTsResult
 	});
 
 	await Promise.all(
-		glob(options.files).map(x => lintFile(x, configData, linter))
+		fileSystem.glob(options.files).map(x => lintFile(x, configData, linter))
 	);
 
 	const result = linter.getResult();
@@ -70,7 +62,7 @@ export async function handleLintTs(options: LintTsOptions): Promise<LintTsResult
 
 async function lintFile(filePath: string, configData: Configuration.IConfigurationFile, linter: Linter): Promise<void> {
 	logger.debug(lintFile.name, `filePath: ${filePath}`);
-	linter.lint(filePath, await readFileAsync(filePath), configData);
+	linter.lint(filePath, await fileSystem.readFileAsync(filePath), configData);
 }
 
 /** @internal */

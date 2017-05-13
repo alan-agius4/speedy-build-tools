@@ -1,6 +1,6 @@
 import * as mockFs from "mock-fs";
+import { Logger } from "@speedy/node-core";
 
-import { Logger } from "../../utils";
 import { handleLintSass } from "./lint-sass";
 import { LintSassOptions } from "./lint-sass.model";
 

@@ -1,6 +1,6 @@
 import * as mockFs from "mock-fs";
 
-import { Logger, glob, Timer } from "../utils";
+import { Logger, fileSystem, Timer } from "@speedy/node-core";
 import { clean } from "./clean";
 
 describe("cleanSpec", () => {
@@ -43,7 +43,7 @@ describe("cleanSpec", () => {
 		];
 
 		await clean({ paths });
-		expect(glob(paths).length).toBe(0);
+		expect(fileSystem.glob(paths).length).toBe(0);
 
 		done();
 	});
@@ -57,7 +57,7 @@ describe("cleanSpec", () => {
 		];
 
 		await clean({ paths });
-		expect(glob("**/file-1.json").length).toBe(1);
+		expect(fileSystem.glob("**/file-1.json").length).toBe(1);
 
 		done();
 	});
