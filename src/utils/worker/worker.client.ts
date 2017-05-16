@@ -63,7 +63,7 @@ export namespace Worker {
 		}
 	}
 
-	function kill(pid: Number) {
+	function kill(pid: number) {
 		const workerIndex = findIndex(workers, x => pid === (x && x.process.pid));
 
 		if (workerIndex < 0) {
