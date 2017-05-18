@@ -1,3 +1,27 @@
+<a name="0.4.0"></a>
+# [0.4.0](https://github.com/alan-agius4/speedy-build-tools/compare/v0.3.0...v0.4.0) (2017-05-18)
+
+
+### Features
+
+* **config:** add `ban-types` to tslint rules ([a6ed5ff](https://github.com/alan-agius4/speedy-build-tools/commit/a6ed5ff))
+* **lint html:** format lint errors better ([00693b7](https://github.com/alan-agius4/speedy-build-tools/commit/00693b7))
+* **packages:** bump `postcss` to `6.x.x` and `postcss-scss` to `1.x.x` ([9e870e7](https://github.com/alan-agius4/speedy-build-tools/commit/9e870e7))
+* **packages:** bump `yargs` to `8.x.x` ([c21ed4b](https://github.com/alan-agius4/speedy-build-tools/commit/c21ed4b))
+
+
+### Performance Improvements
+
+* **all:** implement caching of resolved `require` paths ([47bcdaf](https://github.com/alan-agius4/speedy-build-tools/commit/47bcdaf))
+* **tasks:** lazy register tasks to speed up `cli` boot time ([b56ec54](https://github.com/alan-agius4/speedy-build-tools/commit/b56ec54))
+
+
+### BREAKING CHANGES
+
+* **packages:** Node 4+ is now required
+
+
+
 <a name="0.3.0"></a>
 # [0.3.0](https://github.com/alan-agius4/speedy-build-tools/compare/v0.2.0...v0.3.0) (2017-04-10)
 
