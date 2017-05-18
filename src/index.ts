@@ -1,4 +1,4 @@
-import { initCache } from "./utils";
+import { initCache } from "./utils/require-cache";
 initCache();
 
 export * from "./utils";

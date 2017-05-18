@@ -1,4 +1,4 @@
-import { initCache } from "./utils";
+import { initCache } from "./utils/require-cache";
 initCache();
 
 import * as yargs from "yargs";
