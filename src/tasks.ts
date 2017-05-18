@@ -1,3 +1,6 @@
+import { initCache } from "./utils";
+initCache();
+
 import * as yargs from "yargs";
 
 import { cleanModule } from "./clean/clean.cli";
