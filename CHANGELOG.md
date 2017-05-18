@@ -19,6 +19,7 @@
 ### BREAKING CHANGES
 
 * **packages:** Node 4+ is now required
+* **utils:** Most of the utils have been removed in favor of `@speedy/node-core`
 
 
 
