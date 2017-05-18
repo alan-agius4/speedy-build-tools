@@ -1,16 +1,15 @@
 import * as yargs from "yargs";
 
-import { cleanModule } from "./clean/clean";
-import { lintSassModule } from "./lint/lint-sass/lint-sass";
-import { lintTsModule } from "./lint/lint-ts/lint-ts";
-import { lintHtmlModule } from "./lint/lint-html/lint-html";
+import { cleanModule } from "./clean/clean.cli";
+import { lintSassModule } from "./lint/lint-sass/lint-sass.cli";
+import { lintTsModule } from "./lint/lint-ts/lint-ts.cli";
+import { lintHtmlModule } from "./lint/lint-html/lint-html.cli";
 
 // tslint:disable-next-line:no-unused-expression
 yargs
-	.command(lintSassModule)
 	.command(lintTsModule)
+	.command(lintSassModule)
 	.command(lintHtmlModule)
-
 	.command(cleanModule)
 
 	.help()
@@ -18,6 +17,5 @@ yargs
 
 	.version()
 	.alias("version", "v")
-
 	.wrap(yargs.terminalWidth() - 1) // - 1 is required to fit in screen
 	.argv;
