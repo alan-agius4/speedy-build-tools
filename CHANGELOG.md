@@ -1,3 +1,14 @@
+<a name="0.4.1"></a>
+## [0.4.1](https://github.com/alan-agius4/speedy-build-tools/compare/v0.4.0...v0.4.1) (2017-05-18)
+
+
+### Bug Fixes
+
+* **config:** set default path relative to this file location ([3768af7](https://github.com/alan-agius4/speedy-build-tools/commit/3768af7))
+* **require cache:** update relative path ([e6601d0](https://github.com/alan-agius4/speedy-build-tools/commit/e6601d0))
+
+
+
 <a name="0.4.0"></a>
 # [0.4.0](https://github.com/alan-agius4/speedy-build-tools/compare/v0.3.0...v0.4.0) (2017-05-18)
 
