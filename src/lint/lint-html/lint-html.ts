@@ -3,7 +3,7 @@ import { HTMLHint, RuleSet } from "htmlhint";
 import { yellow, gray, red } from "chalk";
 import { Logger, Timer, fileSystem } from "@speedy/node-core";
 
-import { Worker, args, buildCommandModule, getConfigFilePath } from "../../utils";
+import { Worker, args, getConfigFilePath } from "../../utils";
 import { LintHtmlOptions, HtmlLintResult } from "./lint-html.model";
 import { ARGS } from "./lint-html.args";
 
@@ -65,11 +65,3 @@ function formatFailuresForFile(failure: HtmlLintResult): string {
 
 	return `\n ${message} \n`;
 }
-
-/** @internal */
-export const lintHtmlModule = buildCommandModule({
-	command: "lint-html",
-	description: "Lint Html files",
-	handler: lintHtml,
-	args: ARGS
-});

@@ -2,7 +2,7 @@ import * as _ from "lodash";
 import { Linter, Configuration } from "tslint";
 import { Logger, Timer, fileSystem } from "@speedy/node-core";
 
-import { Worker, buildCommandModule, args, getConfigFilePath } from "../../utils";
+import { Worker, args, getConfigFilePath } from "../../utils";
 import { LintTsOptions, LintTsResult } from "./lint-ts.model";
 import { ARGS } from "./lint-ts.args";
 
@@ -64,11 +64,3 @@ async function lintFile(filePath: string, configData: Configuration.IConfigurati
 	logger.debug(lintFile.name, `filePath: ${filePath}`);
 	linter.lint(filePath, await fileSystem.readFileAsync(filePath), configData);
 }
-
-/** @internal */
-export const lintTsModule = buildCommandModule({
-	command: "lint-ts",
-	description: "Lint TypeScript files",
-	handler: lintTs,
-	args: ARGS
-});

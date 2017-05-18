@@ -1,8 +1,7 @@
 import * as _ from "lodash";
 import { fileSystem, Logger, Timer } from "@speedy/node-core";
 
-import { args, buildCommandModule } from "../utils";
-
+import { args } from "../utils";
 import { ARGS } from "./clean.args";
 
 export interface CleanOptions {
@@ -30,11 +29,3 @@ export async function clean(options: CleanOptions): Promise<void> {
 		timer.finish();
 	}
 }
-
-/** @internal */
-export const cleanModule = buildCommandModule({
-	command: "clean [paths...]",
-	description: "Delete files and directories",
-	handler: clean,
-	args: ARGS
-});

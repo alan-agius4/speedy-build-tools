@@ -5,7 +5,7 @@ import { writeFileSync } from "fs";
 import { Logger, Timer, fileSystem } from "@speedy/node-core";
 import { lint, LinterResult, formatters, LinterOptions } from "stylelint";
 
-import { Worker, args, buildCommandModule, getConfigFilePath } from "../../utils";
+import { Worker, args, getConfigFilePath } from "../../utils";
 import { LintSassOptions } from "./lint-sass.model";
 import { ARGS } from "./lint-sass.args";
 
@@ -86,11 +86,3 @@ async function lintFile(filePath: string, configData: JSON, options: LintSassOpt
 	lintOptions.code = fixedFilesContent;
 	return await lint(lintOptions);
 }
-
-/** @internal */
-export const lintSassModule = buildCommandModule({
-	command: "lint-sass",
-	description: "Lint Sass files",
-	handler: lintSass,
-	args: ARGS
-});
