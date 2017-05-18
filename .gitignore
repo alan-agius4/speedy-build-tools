@@ -2,6 +2,7 @@ node_modules
 /dist
 /test
 /.vscode
+/.cache
 npm-debug.*
 *.tgz
 .DS_Store
