@@ -6,13 +6,14 @@ import { Arguments, ArgumentOptions } from "./args.model";
 
 export namespace args {
 
-	yargs.parse(coreArgs.mergedConfigArgsAndProcessArgv());
-
-	set<Arguments>([{
-		key: "debug",
-		description: "Show debug information",
-		boolean: true
-	}]);
+	export function init() {
+		yargs.parse(coreArgs.mergedConfigArgsAndProcessArgv());
+		set<Arguments>([{
+			key: "debug",
+			description: "Show debug information",
+			boolean: true
+		}]);
+	}
 
 	/**
 	 * Register command arguments. When `default` value is specified the argument `type` will be inferred.
