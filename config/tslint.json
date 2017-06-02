@@ -74,7 +74,7 @@
 		"no-bitwise": true,
 		"no-consecutive-blank-lines": [
 			true,
-			2
+			1
 		],
 		"no-console": [
 			true,
