@@ -129,7 +129,7 @@
 		"selector-max-empty-lines": 1,
 		"selector-pseudo-class-case": "lower",
 		"selector-pseudo-element-case": "lower",
-		"selector-pseudo-element-colon-notation": "single",
+		"selector-pseudo-element-colon-notation": "double",
 		"selector-pseudo-element-no-unknown": true,
 		"shorthand-property-no-redundant-values": true,
 		"string-quotes": "double",
