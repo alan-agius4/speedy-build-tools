@@ -112,7 +112,7 @@
 			}
 		],
 		"declaration-block-trailing-semicolon": "always",
-		"selector-no-id": true,
+		"selector-max-id": 0,
 		"selector-attribute-brackets-space-inside": "never",
 		"selector-attribute-operator-space-after": "never",
 		"selector-attribute-operator-space-before": "never",
