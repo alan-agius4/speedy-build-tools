@@ -43,7 +43,7 @@
     "@speedy/require-cache": "^1.2.0",
     "@types/htmlhint": "^0.9.1",
     "@types/stylelint": "^7.9.1",
-    "@types/yargs": "^8.0.1",
+    "@types/yargs": "^6.6.0",
     "chalk": "^2.0.1",
     "htmlhint": "^0.9.13",
     "lodash": "^4.17.4",
