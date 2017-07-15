@@ -57,7 +57,7 @@ describe("cleanSpec", () => {
 		];
 
 		await clean({ paths });
-		expect(fileSystem.glob("**/file-1.json").length).toBe(1);
+		expect(fileSystem.glob("**/file-1.json").length).toBeGreaterThan(0);
 
 		done();
 	});
