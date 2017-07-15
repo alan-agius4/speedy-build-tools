@@ -4,7 +4,7 @@
 
 ### Features
 
-* **config:** add `interface-name` rule with `never-prefix` in `tsconfig` ([86857fa](https://github.com/alan-agius4/speedy-build-tools/commit/86857fa))
+* **config:** add `interface-name` rule with `never-prefix` in `ts lint config` ([86857fa](https://github.com/alan-agius4/speedy-build-tools/commit/86857fa))
 * **config:** replace `selector-no-id` with `selector-max-id` as it has been deprecated ([d4d1d25](https://github.com/alan-agius4/speedy-build-tools/commit/d4d1d25))
 * **config:** sass lint set `selector-pseudo-element-colon-notation` to `double` ([550fd55](https://github.com/alan-agius4/speedy-build-tools/commit/550fd55))
 * **packages:** bump `stylefmt` to `6.x.x` and `chalk` to `2.x.x` ([f96f874](https://github.com/alan-agius4/speedy-build-tools/commit/f96f874))
