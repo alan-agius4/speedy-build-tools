@@ -1,3 +1,21 @@
+<a name="0.4.2"></a>
+## [0.4.2](https://github.com/alan-agius4/speedy-build-tools/compare/v0.4.1...v0.4.2) (2017-07-15)
+
+
+### Features
+
+* **config:** add `interface-name` rule with `never-prefix` in `tsconfig` ([86857fa](https://github.com/alan-agius4/speedy-build-tools/commit/86857fa))
+* **config:** replace `selector-no-id` with `selector-max-id` as it has been deprecated ([d4d1d25](https://github.com/alan-agius4/speedy-build-tools/commit/d4d1d25))
+* **config:** sass lint set `selector-pseudo-element-colon-notation` to `double` ([550fd55](https://github.com/alan-agius4/speedy-build-tools/commit/550fd55))
+* **packages:** bump `stylefmt` to `6.x.x` and `chalk` to `2.x.x` ([f96f874](https://github.com/alan-agius4/speedy-build-tools/commit/f96f874))
+
+
+### Performance Improvements
+
+* **all:** import `require-cache` file from the specific file rather than from the index ([0d1f332](https://github.com/alan-agius4/speedy-build-tools/commit/0d1f332))
+
+
+
 <a name="0.4.1"></a>
 ## [0.4.1](https://github.com/alan-agius4/speedy-build-tools/compare/v0.4.0...v0.4.1) (2017-05-18)
 
