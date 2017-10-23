@@ -4,13 +4,13 @@
 
 ### Features
 
-* **args:** change `args.set` generic type to extend from `Arguments` ([2904fa2](https://github.com/alan-agius4/speedy-build-tools/commit/2904fa2))
+* **args:** change `args.set` generic type to extends from `Arguments` ([2904fa2](https://github.com/alan-agius4/speedy-build-tools/commit/2904fa2))
 * **packages:** update `chalk`to latest version ([b1801f8](https://github.com/alan-agius4/speedy-build-tools/commit/b1801f8))
 
 
 ### BREAKING CHANGES
 
-- `args.set` generic type must now extend `Arguments`
+- `args.set` generic type must now extends `Arguments`
 - `Arguments` interface now extends `yargs.Arguments`
 
 
