@@ -10,7 +10,7 @@
 
 ### BREAKING CHANGES
 
-* **args:** - `args.set` generic type must now extend `Arguments`
+- `args.set` generic type must now extend `Arguments`
 - `Arguments` interface now extends `yargs.Arguments`
 
 
