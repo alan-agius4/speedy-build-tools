@@ -19,11 +19,11 @@ export namespace args {
 	 * Register command arguments. When `default` value is specified the argument `type` will be inferred.
 	 * @export
 	 * @template T
-	 * @param {ArgumentOptions<T>[]} args
+	 * @param {ArgumentOptions<T>[]} argOptions
 	 * @returns {T}
 	 */
-	export function set<T>(args: ArgumentOptions<T>[]): T {
-		for (const x of args) {
+	export function set<T extends Arguments>(argOptions: ArgumentOptions<T>[]): T {
+		for (const x of argOptions) {
 			yargs.option(x.key, x);
 
 			if (_.isNil(x.default) || x.boolean || x.type || x.number || x.array || x.string) {
