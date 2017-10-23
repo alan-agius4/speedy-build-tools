@@ -1,6 +1,6 @@
 import * as _ from "lodash";
+import chalk from "chalk";
 import { HTMLHint, RuleSet } from "htmlhint";
-import { yellow, gray, red } from "chalk";
 import { Logger, Timer, fileSystem } from "@speedy/node-core";
 
 import { Worker, args, getConfigFilePath } from "../../utils";
@@ -60,7 +60,7 @@ function formatFailuresForFile(failure: HtmlLintResult): string {
 	let message = `\n${failure.filePath.replace(fileSystem.getRootPath(), "")}`;
 
 	for (const error of failure.result) {
-		message += `\n${red(`ERROR: ${error.line}:${error.col}`)}  ${gray(`${error.rule.id}`)}  ${yellow(error.message)}`;
+		message += `\n${chalk.red(`ERROR: ${error.line}:${error.col}`)}  ${chalk.gray(`${error.rule.id}`)}  ${chalk.yellow(error.message)}`;
 	}
 
 	return `\n ${message} \n`;

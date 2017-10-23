@@ -1,6 +1,6 @@
 import * as yargs from "yargs";
 
-export interface Arguments {
+export interface Arguments extends yargs.Arguments {
 	debug: boolean;
 }
 
