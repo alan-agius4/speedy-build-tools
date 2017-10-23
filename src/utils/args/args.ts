@@ -47,7 +47,7 @@ export namespace args {
 			}
 		}
 
-		return yargs.argv;
+		return yargs.argv as T;
 	}
 
 	/**
@@ -57,7 +57,7 @@ export namespace args {
 	 * @returns {string[]}
 	 */
 	export function mergeWithOptions<T>(defaultArgs: ArgumentOptions<T>[], options?: Partial<T>): T {
-		const defaultOptions = {} as T;
+		const defaultOptions = {};
 
 		for (const arg of defaultArgs) {
 			if (_.isNil(arg.default)) {
@@ -69,7 +69,7 @@ export namespace args {
 
 		// todo: add generic type when issue is solved
 		// https://github.com/Microsoft/TypeScript/issues/10727
-		return Object.assign({}, defaultOptions, options);
+		return Object.assign({}, defaultOptions, options) as T;
 	}
 
 	export const getAll = <T extends Arguments>() => yargs.argv as T;
