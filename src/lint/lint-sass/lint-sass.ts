@@ -1,7 +1,3 @@
-import * as stylefmt from "stylefmt";
-import * as postcss from "postcss";
-import * as postcssScss from "postcss-scss";
-import { writeFileSync } from "fs";
 import { Logger, Timer, fileSystem } from "@speedy/node-core";
 import { lint, LinterResult, formatters, LinterOptions } from "stylelint";
 
@@ -56,33 +52,9 @@ async function lintFile(filePath: string, configData: JSON, options: LintSassOpt
 		config: configData,
 		codeFilename: filePath,
 		formatter: options.formatter,
-		code: fileContent
+		code: fileContent,
+		fix: options.fix
 	};
 
-	const lintResult = await lint(lintOptions);
-
-	if (!lintResult.errored || (lintResult.errored && !options.fix)) {
-		return lintResult;
-	}
-
-	// let's try to fix lint issues
-	const result = await postcss([
-		stylefmt({ configFile: options.config })
-	]).process(fileContent, {
-		from: filePath,
-		syntax: postcssScss
-	});
-
-	const fixedFilesContent = result.css;
-
-	if (fixedFilesContent === fileContent) {
-		logger.debug(lintFile.name, `Cannot fix lint issues, file: ${filePath}`);
-		return lintResult;
-	}
-
-	logger.debug(lintFile.name, `Fixed some lint issues, file: ${filePath}`);
-	writeFileSync(filePath, fixedFilesContent);
-
-	lintOptions.code = fixedFilesContent;
 	return await lint(lintOptions);
 }

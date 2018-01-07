@@ -161,6 +161,5 @@ npm run lint-sass help
 
 - [Stylelint](https://github.com/stylelint/stylelint)
 - [Stylelint SCSS](https://github.com/kristerkari/stylelint-scss)
-- [Stylefmt](https://github.com/morishitter/stylefmt)
 - [TSLint](http://palantir.github.io/tslint)
 - [HTMLHint](https://github.com/yaniswang/HTMLHint)
