@@ -7,20 +7,20 @@ import { LintSassOptions } from "./lint-sass.model";
 describe("lintSassSpec", () => {
 
 	const OPTIONS: LintSassOptions = {
-		config: ".stylelintrc",
+		config: "config/.stylelintrc",
 		continueOnError: true,
 		formatter: "verbose",
 		fix: false,
 		files: []
 	};
 
-	beforeEach(() => {
+	beforeEach(async () => {
 		mockFs({
 			"src/invalid.scss": "a {color: red}",
 			"src/can-fix.scss": "div {width: 10.0em}",
 			"src/valid.scss": "a {color: #000}",
 			"package.json": "",
-			".stylelintrc": `{
+			"config/.stylelintrc": `{
 				"rules": {
 					"color-named": "never",
 					"number-no-trailing-zeros": true
@@ -42,38 +42,38 @@ describe("lintSassSpec", () => {
 			files: "**/*.scss"
 		});
 
-		expect(result.length).toBeGreaterThan(0);
+		expect(result.errored).toBe(true);
 		done();
 	});
 
 	it("should not return errors when SASS is valid", async done => {
 		const result = await handleLintSass({
 			...OPTIONS,
-			files: "src/valid.scss"
+			files: "./src/valid.scss"
 		});
 
-		expect(result.length).toBe(0);
+		expect(result.errored).toBe(false);
 		done();
 	});
 
 	it("should fix errors when `fix` parameter is set to true", async done => {
 		const result = await handleLintSass({
 			...OPTIONS,
-			files: "src/can-fix.scss",
+			files: "./src/can-fix.scss",
 			fix: true
 		});
 
-		expect(result.length).toBe(0);
+		expect(result.errored).toBe(false);
 		done();
 	});
 
 	it("should not fix errors when `fix` parameter is set to false", async done => {
 		const result = await handleLintSass({
 			...OPTIONS,
-			files: "src/can-fix.scss"
+			files: "./src/can-fix.scss"
 		});
 
-		expect(result.length).toBeGreaterThan(0);
+		expect(result.errored).toBe(true);
 		done();
 	});
 
