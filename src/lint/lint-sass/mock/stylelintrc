@@ -1,0 +1,6 @@
+{
+	"rules": {
+		"color-named": "never",
+		"number-no-trailing-zeros": true
+	}
+}

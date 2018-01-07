@@ -1,5 +1,5 @@
 import { Logger, Timer, fileSystem } from "@speedy/node-core";
-import { lint, LinterResult, formatters, LinterOptions } from "stylelint";
+import { lint, LinterResult, formatters } from "stylelint";
 import { Worker, args, getConfigFilePath } from "../../utils";
 import { LintSassOptions } from "./lint-sass.model";
 import { ARGS } from "./lint-sass.args";
