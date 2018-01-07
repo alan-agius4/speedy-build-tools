@@ -32,19 +32,21 @@ export async function handleLintSass(options: LintSassOptions): Promise<LinterRe
 	const configFilePath = getConfigFilePath(options.config);
 	logger.debug(handleLintSass.name, `Config file path: ${configFilePath}`);
 
-	const configData = await fileSystem.readJsonFileAsync<JSON>(configFilePath);
-	const lintOptions: LinterOptions = {
+	const [configData, files] = await Promise.all([
+		fileSystem.readJsonFileAsync<JSON>(configFilePath),
+		fileSystem.glob(options.files)
+	]);
+
+	const result = await lint({
 		config: configData,
 		formatter: options.formatter,
-		files: options.files,
+		files,
 		fix: options.fix
-	} as any;
+	});
 
-	const failures = await lint(lintOptions);
-
-	if (failures.errored) {
-		failures.results.forEach(x => logger.info(formatters.string([x])));
+	if (result.errored) {
+		result.results.forEach(x => logger.info(formatters.string([x])));
 	}
 
-	return failures;
+	return result;
 }
