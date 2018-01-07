@@ -7,7 +7,7 @@ import { handleLintSass } from "./lint-sass";
 import { LintSassOptions } from "./lint-sass.model";
 
 const MOCK_DIR = join(__dirname.replace("test", "src"), "mock");
-const TEST_DIR = resolve("./test", uniqueId());
+const TEST_DIR = resolve("./test", uniqueId("scss"));
 const getPath = (path: string) => join(TEST_DIR, path);
 
 describe("lintSassSpec", () => {
