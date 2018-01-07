@@ -46,12 +46,10 @@ export async function handleLintSass(options: LintSassOptions): Promise<LinterRe
 }
 
 async function lintFile(filePath: string, configData: JSON, options: LintSassOptions): Promise<LinterResult> {
-	const fileContent = await fileSystem.readFileAsync(filePath);
 	const lintOptions: LinterOptions = {
 		config: configData,
-		codeFilename: filePath,
 		formatter: options.formatter,
-		code: fileContent,
+		files: filePath,
 		fix: options.fix
 	};
 
