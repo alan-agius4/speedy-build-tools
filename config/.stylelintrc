@@ -114,7 +114,6 @@
 		],
 		"declaration-block-trailing-semicolon": "always",
 		"selector-max-id": 0,
-		"selector-max-specificity": 4,
 		"selector-attribute-brackets-space-inside": "never",
 		"selector-attribute-operator-space-after": "never",
 		"selector-attribute-operator-space-before": "never",
