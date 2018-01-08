@@ -2,11 +2,6 @@
 # [0.6.0](https://github.com/alan-agius4/speedy-build-tools/compare/v0.5.0...v0.6.0) (2018-01-08)
 
 
-### Code Refactoring
-
-* call lint once ([a2886d2](https://github.com/alan-agius4/speedy-build-tools/commit/a2886d2))
-
-
 ### Features
 
 * update several dependencies ([0a8a3ed](https://github.com/alan-agius4/speedy-build-tools/commit/0a8a3ed))
