@@ -1,3 +1,25 @@
+<a name="0.6.0"></a>
+# [0.6.0](https://github.com/alan-agius4/speedy-build-tools/compare/v0.5.0...v0.6.0) (2018-01-08)
+
+
+### Code Refactoring
+
+* call lint once ([a2886d2](https://github.com/alan-agius4/speedy-build-tools/commit/a2886d2))
+
+
+### Features
+
+* update several dependencies ([0a8a3ed](https://github.com/alan-agius4/speedy-build-tools/commit/0a8a3ed))
+* **config:** add `no-duplicate-at-import-rules` in scss lint rules ([065539c](https://github.com/alan-agius4/speedy-build-tools/commit/065539c))
+* **lint:** `SASS` auto fixes are now provided via  `stylelint` ([8fb34c8](https://github.com/alan-agius4/speedy-build-tools/commit/8fb34c8))
+
+
+### BREAKING CHANGES
+
+* `lintSass` now returns `Promise<LinterResult>` instead of `Promise<LinterResult[]>`
+
+
+
 <a name="0.5.0"></a>
 # [0.5.0](https://github.com/alan-agius4/speedy-build-tools/compare/v0.4.2...v0.5.0) (2017-10-23)
 
