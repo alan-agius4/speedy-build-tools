@@ -21,7 +21,7 @@ export async function lintSass(options?: Partial<LintSassOptions>): Promise<Lint
 	} finally {
 		timer.finish();
 
-		if (result && !mergedOptions.continueOnError) {
+		if (result && result.errored && !mergedOptions.continueOnError) {
 			process.exit(1);
 		}
 	}

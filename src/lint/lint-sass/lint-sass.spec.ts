@@ -6,7 +6,7 @@ import { Logger, fileSystem } from "@speedy/node-core";
 import { handleLintSass } from "./lint-sass";
 import { LintSassOptions } from "./lint-sass.model";
 
-const MOCK_DIR = join(__dirname.replace("test", "src"), "mock");
+const MOCK_DIR = join(__dirname.replace("test", "src"), "mocks");
 const TEST_DIR = resolve("./test", uniqueId("scss"));
 const getPath = (path: string) => join(TEST_DIR, path);
 
