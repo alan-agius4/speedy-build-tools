@@ -45,7 +45,9 @@ export async function handleLintSass(options: LintSassOptions): Promise<LinterRe
 	});
 
 	if (result.errored) {
-		result.results.forEach(x => logger.info(formatters.string([x])));
+		result.results
+			.filter(x => x.errored)
+			.forEach(x => logger.info(formatters.string([x])));
 	}
 
 	return result;
