@@ -4,7 +4,6 @@
 		"outDir": "./dist"
 	},
 	"include": [
-		"typings/**/*.d.ts",
 		"src/index.ts",
 		"src/tasks.ts"
 	]
