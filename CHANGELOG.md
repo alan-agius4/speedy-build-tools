@@ -1,3 +1,14 @@
+<a name="0.7.0"></a>
+# [0.7.0](https://github.com/alan-agius4/speedy-build-tools/compare/v0.6.0...v0.7.0) (2018-01-30)
+
+
+### Features
+
+* **lint:** add several new typescript line rules ([00f73fd](https://github.com/alan-agius4/speedy-build-tools/commit/00f73fd))
+* **lint ts:** add option to pass typescript program ([bb74a8b](https://github.com/alan-agius4/speedy-build-tools/commit/bb74a8b))
+
+
+
 <a name="0.6.0"></a>
 # [0.6.0](https://github.com/alan-agius4/speedy-build-tools/compare/v0.5.0...v0.6.0) (2018-01-08)
 
