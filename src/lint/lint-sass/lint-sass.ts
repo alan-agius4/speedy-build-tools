@@ -1,8 +1,10 @@
-import { Logger, Timer, fileSystem } from "@speedy/node-core";
-import { lint, LinterResult, formatters } from "stylelint";
-import { Worker, args, getConfigFilePath } from "../../utils";
-import { LintSassOptions } from "./lint-sass.model";
+import { fileSystem, Logger, Timer } from "@speedy/node-core";
+import { formatters, lint, LinterResult } from "stylelint";
+
+import { args, getConfigFilePath, Worker } from "../../utils";
+
 import { ARGS } from "./lint-sass.args";
+import { LintSassOptions } from "./lint-sass.model";
 
 const logger = new Logger("Lint SASS");
 

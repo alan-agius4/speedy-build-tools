@@ -1,10 +1,10 @@
-import { fork, ChildProcess } from "child_process";
-import { join } from "path";
-import { findIndex } from "lodash";
 import { Logger } from "@speedy/node-core";
+import { ChildProcess, fork } from "child_process";
+import { findIndex } from "lodash";
+import { join } from "path";
 
+import { WorkerMessage, WorkerProcess } from "./worker.model";
 import "./worker.process";
-import { WorkerProcess, WorkerMessage } from "./worker.model";
 
 const logger = new Logger("Worker Client");
 

@@ -1,7 +1,7 @@
-import { uniqueId } from "lodash";
+import { fileSystem, Logger } from "@speedy/node-core";
 import { copySync } from "cpx";
+import { uniqueId } from "lodash";
 import { join, resolve } from "path";
-import { Logger, fileSystem } from "@speedy/node-core";
 
 import { handleLintSass } from "./lint-sass";
 import { LintSassOptions } from "./lint-sass.model";

@@ -1,7 +1,8 @@
 import * as _ from "lodash";
 
 import { ArgumentOptions } from "../../utils";
-import { LintSassOptions, LINT_SASS_FORMATTERS } from "./lint-sass.model";
+
+import { LINT_SASS_FORMATTERS, LintSassOptions } from "./lint-sass.model";
 
 export const ARGS: ArgumentOptions<LintSassOptions>[] = [
 	{

@@ -1,5 +1,5 @@
-import { RequireCache } from "@speedy/require-cache";
 import { packageMeta } from "@speedy/node-core";
+import { RequireCache } from "@speedy/require-cache";
 import { join } from "path";
 
 export function initCache(readOnlyMode = false) {

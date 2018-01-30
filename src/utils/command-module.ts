@@ -1,8 +1,8 @@
+import { Logger } from "@speedy/node-core";
 import * as _ from "lodash";
 import * as yargs from "yargs";
-import { Logger } from "@speedy/node-core";
 
-import { ArgumentOptions, args } from "./args";
+import { args, ArgumentOptions } from "./args";
 
 const logger = new Logger("Build Command Module");
 

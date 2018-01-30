@@ -1,7 +1,8 @@
-import * as _ from "lodash";
 import { fileSystem, Logger, Timer } from "@speedy/node-core";
+import * as _ from "lodash";
 
 import { args } from "../utils";
+
 import { ARGS } from "./clean.args";
 
 export interface CleanOptions {

@@ -1,11 +1,12 @@
-import * as _ from "lodash";
+import { fileSystem, Logger, Timer } from "@speedy/node-core";
 import chalk from "chalk";
 import { HTMLHint, RuleSet } from "htmlhint";
-import { Logger, Timer, fileSystem } from "@speedy/node-core";
+import * as _ from "lodash";
 
-import { Worker, args, getConfigFilePath } from "../../utils";
-import { LintHtmlOptions, HtmlLintResult } from "./lint-html.model";
+import { args, getConfigFilePath, Worker } from "../../utils";
+
 import { ARGS } from "./lint-html.args";
+import { HtmlLintResult, LintHtmlOptions } from "./lint-html.model";
 
 const logger = new Logger("Lint HTML");
 

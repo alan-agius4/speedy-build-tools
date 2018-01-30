@@ -1,4 +1,5 @@
 import { ArgumentOptions } from "../utils";
+
 import { CleanOptions } from "./clean";
 
 export const ARGS: ArgumentOptions<CleanOptions>[] = [

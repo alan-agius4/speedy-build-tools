@@ -1,10 +1,11 @@
+import { fileSystem, Logger, Timer } from "@speedy/node-core";
 import * as _ from "lodash";
-import { Linter, Configuration } from "tslint";
-import { Logger, Timer, fileSystem } from "@speedy/node-core";
+import { Configuration, Linter } from "tslint";
 
-import { Worker, args, getConfigFilePath } from "../../utils";
-import { LintTsOptions, LintTsResult } from "./lint-ts.model";
+import { args, getConfigFilePath, Worker } from "../../utils";
+
 import { ARGS } from "./lint-ts.args";
+import { LintTsOptions, LintTsResult } from "./lint-ts.model";
 
 const logger = new Logger("Lint TS");
 

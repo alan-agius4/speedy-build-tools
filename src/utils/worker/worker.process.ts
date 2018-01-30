@@ -1,6 +1,7 @@
 import { Logger } from "@speedy/node-core";
 
 import { initCache } from "../require-cache";
+
 import { WorkerMessage } from "./worker.model";
 
 const logger = new Logger("Worker Process");
