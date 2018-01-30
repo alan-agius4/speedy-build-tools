@@ -1,4 +1,5 @@
 import { buildCommandModule } from "../../utils";
+
 import { ARGS } from "./lint-html.args";
 
 /** @internal */

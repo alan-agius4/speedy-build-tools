@@ -1,8 +1,8 @@
-import * as  _ from "lodash";
 import { args as coreArgs } from "@speedy/node-core";
+import * as  _ from "lodash";
 import * as yargs from "yargs";
 
-import { Arguments, ArgumentOptions } from "./args.model";
+import { ArgumentOptions, Arguments } from "./args.model";
 
 export namespace args {
 
@@ -17,10 +17,6 @@ export namespace args {
 
 	/**
 	 * Register command arguments. When `default` value is specified the argument `type` will be inferred.
-	 * @export
-	 * @template T
-	 * @param {ArgumentOptions<T>[]} argOptions
-	 * @returns {T}
 	 */
 	export function set<T extends Arguments>(argOptions: ArgumentOptions<T>[]): T {
 		for (const x of argOptions) {
@@ -52,9 +48,6 @@ export namespace args {
 
 	/**
 	 * Merges `Arguments` default values with `Options`
-	 *
-	 * @export
-	 * @returns {string[]}
 	 */
 	export function mergeWithOptions<T>(defaultArgs: ArgumentOptions<T>[], options?: Partial<T>): T {
 		const defaultOptions = {};

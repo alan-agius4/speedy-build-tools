@@ -1,6 +1,6 @@
+import { fileSystem, Logger, Timer } from "@speedy/node-core";
 import * as mockFs from "mock-fs";
 
-import { Logger, fileSystem, Timer } from "@speedy/node-core";
 import { clean } from "./clean";
 
 describe("cleanSpec", () => {

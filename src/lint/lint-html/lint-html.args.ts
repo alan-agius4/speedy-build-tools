@@ -1,4 +1,5 @@
 import { ArgumentOptions } from "../../utils";
+
 import { LintHtmlOptions } from "./lint-html.model";
 
 export const ARGS: ArgumentOptions<LintHtmlOptions>[] = [

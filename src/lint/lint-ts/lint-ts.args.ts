@@ -1,7 +1,8 @@
 import * as _ from "lodash";
 
 import { ArgumentOptions } from "../../utils";
-import { LintTsOptions, LINT_TS_FORMATTERS } from "./lint-ts.model";
+
+import { LINT_TS_FORMATTERS, LintTsOptions } from "./lint-ts.model";
 
 export const ARGS: ArgumentOptions<LintTsOptions>[] = [
 	{

@@ -1,5 +1,5 @@
-import * as mockFs from "mock-fs";
 import { Logger } from "@speedy/node-core";
+import * as mockFs from "mock-fs";
 
 import { handleLintHtml } from "./lint-html";
 
