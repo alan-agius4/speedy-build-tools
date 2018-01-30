@@ -28,6 +28,9 @@
 			"check-space"
 		],
 		"curly": true,
+		"deprecation": {
+			"severity": "warning"
+		},
 		"eofline": false,
 		"forin": true,
 		"import-spacing": true,
@@ -91,6 +94,8 @@
 			true
 		],
 		"no-invalid-this": true,
+		"no-internal-module": true,
+		"no-irregular-whitespace": true,
 		"no-shadowed-variable": true,
 		"no-string-literal": true,
 		"no-string-throw": true,
@@ -100,9 +105,17 @@
 		"no-unnecessary-initializer": true,
 		"no-unused-expression": true,
 		"no-var-keyword": true,
+		"no-return-await": true,
+		"no-redundant-jsdoc": true,
 		"object-literal-key-quotes": [
 			true,
 			"as-needed"
+		],
+		"ordered-imports": [
+			true,
+			{
+				"grouped-imports": true
+			}
 		],
 		"object-literal-shorthand": true,
 		"object-literal-sort-keys": false,
