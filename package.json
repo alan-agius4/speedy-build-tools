@@ -30,7 +30,7 @@
     "build": "tsc -p tsconfig.build.json",
     "test": "npm run clean && tsc -p tsconfig.test.json && jasmine JASMINE_CONFIG_PATH=jasmine.json",
     "clean": "rimraf ./dist & rimraf ./test",
-    "lint": "tslint -c tslint.json ./src/**/*.ts --format stylish",
+    "lint": "tslint -c tslint.json ./src/**/*.ts --format stylish -p tsconfig.json",
     "watch": "npm run clean && tsc -p tsconfig.build.json -w",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
     "preversion": "npm test",
