@@ -23,7 +23,7 @@ export async function lintTs(options?: Partial<LintTsOptions>): Promise<LintTsRe
 	} finally {
 		timer.finish();
 
-		if (result && result.failuresCount > 0 && !mergedOptions.continueOnError) {
+		if (result && result.errorCount && !mergedOptions.continueOnError) {
 			process.exit(1);
 		}
 	}
@@ -40,10 +40,13 @@ export async function handleLintTs(options: LintTsOptions): Promise<LintTsResult
 		throw new Error(`Cannot retrieve 'config' data, path: ${options.config}`);
 	}
 
-	const linter = new Linter({
-		fix: options.fix,
-		formatter: options.formatter
-	});
+	const linter = new Linter(
+		{
+			fix: options.fix,
+			formatter: options.formatter
+		},
+		Linter.createProgram(options.program)
+	);
 
 	await Promise.all(
 		fileSystem.glob(options.files).map(x => lintFile(x, configData, linter))
@@ -55,7 +58,8 @@ export async function handleLintTs(options: LintTsOptions): Promise<LintTsResult
 	}
 
 	return {
-		failuresCount: result.failures.length,
+		failureCount: result.failures.length,
+		errorCount: result.errorCount,
 		fixesCount: result.fixes ? result.fixes.length : 0
 	};
 }

@@ -5,6 +5,12 @@ import { LintTsOptions, LINT_TS_FORMATTERS } from "./lint-ts.model";
 
 export const ARGS: ArgumentOptions<LintTsOptions>[] = [
 	{
+		key: "program",
+		alias: "p",
+		description: "tsconfig path",
+		default: "./tsconfig.json"
+	},
+	{
 		key: "config",
 		alias: "c",
 		description: "Lint rules file path",

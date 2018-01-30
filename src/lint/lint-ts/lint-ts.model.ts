@@ -4,11 +4,13 @@ export interface LintTsOptions {
 	formatter: LintTsFormatters;
 	continueOnError: boolean;
 	fix: boolean;
+	program: string;
 }
 
 export interface LintTsResult {
-	failuresCount: number;
+	failureCount: number;
 	fixesCount: number;
+	errorCount: number;
 }
 
 export type LintTsFormatters = "vso"
