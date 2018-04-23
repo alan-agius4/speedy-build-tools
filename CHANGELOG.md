@@ -242,4 +242,3 @@
 * **utils:** add `findRoot` function ([#15](https://github.com/alan-agius4/speedy-build-tools/issues/15)) ([1b8942e](https://github.com/alan-agius4/speedy-build-tools/commit/1b8942e))
 
 
-
