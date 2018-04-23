@@ -128,6 +128,7 @@
 		"selector-list-comma-newline-after": "always",
 		"selector-list-comma-space-before": "never",
 		"selector-max-empty-lines": 1,
+		"selector-max-pseudo-class": 2,
 		"selector-pseudo-class-case": "lower",
 		"selector-pseudo-element-case": "lower",
 		"selector-pseudo-element-colon-notation": "double",
