@@ -1,16 +1,17 @@
-import { fork, ChildProcess } from "child_process";
-import { join } from "path";
+import { Logger } from "@speedy/node-core";
+import { ChildProcess, fork } from "child_process";
 import { findIndex } from "lodash";
+import { join } from "path";
 
-import { Logger } from "../logger";
-import { WorkerProcess, WorkerMessage } from "./worker.model";
+import { WorkerMessage, WorkerProcess } from "./worker.model";
+import "./worker.process";
 
 const logger = new Logger("Worker Client");
 
 export namespace Worker {
 	const workers: WorkerProcess[] = [];
 
-	export function run(modulePath: string, task: string, parameters?: any): Promise<{}> {
+	export function run<T>(modulePath: string, task: string, parameters?: any): Promise<T> {
 		return new Promise((resolve, reject) => {
 			const worker = create(task);
 
@@ -20,46 +21,49 @@ export namespace Worker {
 
 			worker
 				.on("message", (message: WorkerMessage) => {
-					const failure = message.error || message.reject;
-
-					if (failure) {
-						reject(failure);
+					if (message.error) {
+						reject(message.error);
 					} else {
-						resolve(message.resolve);
+						resolve(message.resolved);
 					}
 
-					kill(worker.pid!);
+					kill(worker.pid);
 				})
 				.on("error", error => logger.error(`task: ${task}, pid: ${worker.pid}`, error))
-				.on("exit", () => logger.debug(`Exited, task: ${task}, pid: ${worker.pid}`))
+				.on("exit", code => {
+					logger.debug(run.name, `Exit task: ${task}, pid: ${worker.pid}, exitCode: ${code}`);
+
+					if (code > 0) {
+						process.exit(1);
+					}
+				})
 				.send({
-					task: task,
-					modulePath: modulePath,
-					parameters: parameters
+					task,
+					modulePath,
+					parameters
 				} as WorkerMessage);
 		});
 	}
 
-	function create(task: string): ChildProcess | null {
+	function create(task: string): ChildProcess {
 		try {
 			const childProcess = fork(join(__dirname, "worker.process.js"), process.argv);
 
 			workers.push({
-				task: task,
+				task,
 				process: childProcess
 			});
 
-			logger.debug(`Succesfully created task: ${task}, pid: ${childProcess.pid}`);
+			logger.debug(create.name, `task: ${task}, pid: ${childProcess.pid}`);
 
 			return childProcess;
 		} catch (error) {
 			logger.error(`Unable to 'create' worker task: ${task}`, error);
+			throw error;
 		}
-
-		return null;
 	}
 
-	function kill(pid: Number) {
+	function kill(pid: number) {
 		const workerIndex = findIndex(workers, x => pid === (x && x.process.pid));
 
 		if (workerIndex < 0) {
@@ -70,7 +74,7 @@ export namespace Worker {
 
 		try {
 			worker.process.kill("SIGTERM");
-			logger.debug(`Killed worker task: ${worker.task}, pid: ${pid}`);
+			logger.debug(kill.name, `task: ${worker.task}, pid: ${pid}`);
 		} catch (error) {
 			logger.error(`Unable to 'kill' worker task: ${worker.task}, pid: ${pid}`, error);
 		} finally {

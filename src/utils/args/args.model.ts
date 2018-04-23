@@ -1,4 +1,9 @@
-export interface Arguments {
+import * as yargs from "yargs";
+
+export interface Arguments extends yargs.Arguments {
 	debug: boolean;
-	prod: boolean;
+}
+
+export interface ArgumentOptions<T> extends yargs.Options {
+	key: keyof T;
 }

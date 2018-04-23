@@ -1,6 +1,8 @@
 node_modules
-_artifact
-.idea
-dist/
-*.log
-test
+/dist
+/test
+/.vscode
+/.cache
+npm-debug.*
+*.tgz
+.DS_Store

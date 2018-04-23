@@ -6,10 +6,9 @@ export interface WorkerProcess {
 }
 
 export interface WorkerMessage {
-	task?: string;
-	resolve?: any;
-	reject?: any;
+	task: string;
+	modulePath: string;
+	parameters: any;
+	resolved?: any;
 	error?: any;
-	modulePath?: string;
-	parameters?: any;
 }
