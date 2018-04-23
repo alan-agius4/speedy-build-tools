@@ -16,6 +16,7 @@
 		"strictNullChecks": true,
 		"noEmitOnError": false,
 		"stripInternal": true,
+		"strictPropertyInitialization": true,
 		"noImplicitUseStrict": true,
 		"types": [
 			"node",
