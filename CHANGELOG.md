@@ -1,3 +1,13 @@
+<a name="0.8.0"></a>
+# [0.8.0](https://github.com/alan-agius4/speedy-build-tools/compare/v0.7.0...v0.8.0) (2018-04-23)
+
+
+### Features
+
+* update packages and add `selector-max-pseudo-class` ([9eb8d69](https://github.com/alan-agius4/speedy-build-tools/commit/9eb8d69))
+
+
+
 <a name="0.7.0"></a>
 # [0.7.0](https://github.com/alan-agius4/speedy-build-tools/compare/v0.6.0...v0.7.0) (2018-01-30)
 
