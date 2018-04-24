@@ -114,7 +114,7 @@
 		"no-invalid-this": true,
 		"no-internal-module": true,
 		"no-irregular-whitespace": true,
-		"no-shadowed-variable": true,
+		"no-shadowed-variable": false,
 		"no-string-literal": true,
 		"no-string-throw": true,
 		"no-switch-case-fall-through": false,
