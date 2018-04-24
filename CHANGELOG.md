@@ -1,3 +1,15 @@
+<a name="0.8.1"></a>
+## [0.8.1](https://github.com/alan-agius4/speedy-build-tools/compare/v0.8.0...v0.8.1) (2018-04-24)
+
+
+### Features
+
+* **config:** added `space-before-function-paren` tslint rule ([b4624f4](https://github.com/alan-agius4/speedy-build-tools/commit/b4624f4))
+* **config:** disable tslint rules `no-shadowed-variable` ([b346fc1](https://github.com/alan-agius4/speedy-build-tools/commit/b346fc1))
+* **copy:** implement `copy` task ([6ce5c9c](https://github.com/alan-agius4/speedy-build-tools/commit/6ce5c9c))
+
+
+
 <a name="0.8.0"></a>
 # [0.8.0](https://github.com/alan-agius4/speedy-build-tools/compare/v0.7.0...v0.8.0) (2018-04-23)
 
