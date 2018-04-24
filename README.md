@@ -52,6 +52,7 @@ Available tasks within `speedy-build-tools` which can be used via CLI.
 | Task               | Description                  |
 |--------------------|------------------------------|
 | `clean [paths...]` | Delete files and directories |
+| `copy`             | Copy files and directories   |
 | `lint-html`        | Lint Html files              |
 | `lint-sass`        | Lint Sass files              |
 | `lint-ts`          | Lint TypeScript files        |
@@ -70,6 +71,19 @@ speedy-build-tools clean .tmp/** .test/**
 
 ___
 
+### Copy
+
+```
+speedy-build-tools copy --paths .tmp/** --dest www
+```
+
+| Option        | Description                                   | Type   |
+|---------------|-----------------------------------------------|--------|
+| `--paths, -p` | Paths to be copied - Supports glob patterns   | Array  |
+| `--dest, -d`  | Destination of the copied files               | string |
+
+___
+
 ### Lint Html
 
 ```
@@ -79,7 +93,7 @@ speedy-build-tools lint-html
 | Option              | Description                                                           | Default Value           | Type    |
 |---------------------|-----------------------------------------------------------------------|-------------------------|---------|
 | `--config`, `-c`    | Lint rules file path                                                  | `.htmlhintrc`           | string  |
-| `--files`, `-f`     | Files to be linted - Supports glob patterns                           | `src/**/*.*(html\|htm)`  | Array   |
+| `--files`, `-f`     | Files to be linted - Supports glob patterns                           | `src/**/*.*(html\|htm)` | Array   |
 | `--continueOnError` | Determines whether to exit with a non-zero status code on lint errors | `false`                 | boolean |
 
 #### Rules

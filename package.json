@@ -39,7 +39,7 @@
     "release": "npm publish"
   },
   "dependencies": {
-    "@speedy/node-core": "^1.4.0",
+    "@speedy/node-core": "^1.5.0",
     "@speedy/require-cache": "^1.2.0",
     "@types/htmlhint": "^0.9.1",
     "@types/stylelint": "^7.11.0",

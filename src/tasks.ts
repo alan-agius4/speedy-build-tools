@@ -5,6 +5,7 @@ initCache();
 import * as yargs from "yargs";
 
 import { cleanModule } from "./clean/clean.cli";
+import { copyModule } from "./copy/copy.cli";
 import { lintHtmlModule } from "./lint/lint-html/lint-html.cli";
 import { lintSassModule } from "./lint/lint-sass/lint-sass.cli";
 import { lintTsModule } from "./lint/lint-ts/lint-ts.cli";
@@ -17,6 +18,7 @@ yargs
 	.command(lintSassModule)
 	.command(lintHtmlModule)
 	.command(cleanModule)
+	.command(copyModule)
 
 	.help()
 	.alias("help", "h")
