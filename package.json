@@ -42,7 +42,7 @@
     "@speedy/node-core": "^1.5.0",
     "@speedy/require-cache": "^1.2.0",
     "@types/htmlhint": "^0.9.1",
-    "@types/stylelint": "^7.11.0",
+    "@types/stylelint": "^9.0.0",
     "@types/yargs": "^11.0.0",
     "chalk": "^2.2.0",
     "htmlhint": "^0.9.13",
