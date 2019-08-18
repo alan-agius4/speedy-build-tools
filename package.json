@@ -47,7 +47,7 @@
     "chalk": "^2.2.0",
     "htmlhint": "^0.10.0",
     "lodash": "^4.17.4",
-    "rimraf": "^2.6.0",
+    "rimraf": "^3.0.0",
     "stylelint": "^9.2.0",
     "stylelint-scss": "^3.0.1",
     "tslint": "^5.0.0",
