@@ -43,7 +43,7 @@
     "@speedy/require-cache": "^1.2.0",
     "@types/htmlhint": "^0.9.1",
     "@types/stylelint": "^9.0.0",
-    "@types/yargs": "^13.0.0",
+    "@types/yargs": "^15.0.0",
     "chalk": "^2.2.0",
     "htmlhint": "^0.10.0",
     "lodash": "^4.17.4",
@@ -51,7 +51,7 @@
     "stylelint": "^12.0.0",
     "stylelint-scss": "^3.0.1",
     "tslint": "^5.0.0",
-    "yargs": "^13.0.0"
+    "yargs": "^15.0.0"
   },
   "devDependencies": {
     "@speedy/commit-msg-hook": "^1.3.0",
