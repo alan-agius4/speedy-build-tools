@@ -45,7 +45,7 @@
     "@types/stylelint": "^9.0.0",
     "@types/yargs": "^15.0.0",
     "chalk": "^2.2.0",
-    "htmlhint": "^0.10.0",
+    "htmlhint": "^0.14.0",
     "lodash": "^4.17.4",
     "rimraf": "^3.0.0",
     "stylelint": "^12.0.0",
